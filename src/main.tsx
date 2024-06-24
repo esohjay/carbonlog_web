@@ -4,6 +4,7 @@ import App from "./App.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./error.tsx";
 import Greeting from "./Greeting.tsx";
+import Login from "./screens/Login.tsx";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   {
     path: "greet",
     element: <Greeting />,
+  },
+  {
+    path: "login",
+    element: <Login />,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")!).render(

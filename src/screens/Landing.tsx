@@ -1,12 +1,12 @@
 // import React from 'react'
-import Hero from "./assets/hero.svg";
-import Logo from "./assets/logo.png";
-import LinkBtn from "./components/LinkBtn";
-import Features from "./components/Features";
-import CalculateImg from "./assets/calculate_emission.png";
-import TrackImg from "./assets/track_emmission.png";
-import ActionImg from "./assets/landing_banner.png";
-import CampaignImg from "./assets/campaign.png";
+import Hero from "../assets/hero.svg";
+import Logo from "../assets/logo.png";
+import LinkBtn from "../components/LinkBtn";
+import Features from "../components/Features";
+import CalculateImg from "../assets/calculate_emission.png";
+import TrackImg from "../assets/track_emmission.png";
+import ActionImg from "../assets/landing_banner.png";
+import CampaignImg from "../assets/campaign.png";
 // import HeroBlob from "./assets/hero-blob-solid.png";
 
 export default function Landing() {
@@ -55,7 +55,7 @@ export default function Landing() {
         <figure className="w-full h-[350px] md:w-2/3 lg:w-1/2 md:h-[450px] lg:h-[550px] block">
           <img
             src={Hero}
-            alt=""
+            alt="hero"
             className="block w-full max-w-full max-h-full h-full object-contain"
           />
         </figure>
