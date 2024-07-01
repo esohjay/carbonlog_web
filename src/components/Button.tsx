@@ -2,11 +2,11 @@ import Spinner from "./Spinner";
 
 type BtnProp = {
   text: string;
-  variant: "fill" | "disabled" | "outline";
-  onClick: () => void;
-  mode: "block" | "inline";
-  padding: string;
-  isLoading: boolean;
+  variant?: "fill" | "disabled" | "outline";
+  onClick?: () => void;
+  mode?: "block" | "inline";
+  padding?: string;
+  isLoading?: boolean;
   loaderText?: string;
 };
 
@@ -20,10 +20,10 @@ function Btn({
   loaderText = "",
   ...props
 }: BtnProp) {
-  const fill = "text-white  bg-mainColor text-center rounded-full";
-  const disabled = "text-white  bg-[#D7D3D1] text-center rounded-full";
+  const fill = "text-white  bg-mainColor text-center rounded-md";
+  const disabled = "text-white  bg-[#D7D3D1] text-center rounded-md";
   const outline =
-    "text-mainColor bg-white border-2 border-mainColor text-center rounded-full";
+    "text-mainColor bg-white border-2 border-mainColor text-center rounded-md";
   const block = `w-full block ${padding}`;
   const inline = `inline-block ${padding}`;
   return (
@@ -32,7 +32,7 @@ function Btn({
       onClick={onClick}
       className={`${
         variant === "fill" ? fill : variant === "disabled" ? disabled : outline
-      } ${mode === "block" ? block : inline}`}
+      } ${mode === "block" ? block : inline} font-semibold uppercase`}
     >
       {isLoading ? (
         <span className="inline-flex items-center justify-center gap-x-2">
