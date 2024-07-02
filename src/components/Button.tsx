@@ -32,7 +32,7 @@ function Btn({
       onClick={onClick}
       className={`${
         variant === "fill" ? fill : variant === "disabled" ? disabled : outline
-      } ${mode === "block" ? block : inline} font-semibold uppercase`}
+      } ${mode === "block" ? block : inline} font-semibold uppercase text-sm`}
     >
       {isLoading ? (
         <span className="inline-flex items-center justify-center gap-x-2">
