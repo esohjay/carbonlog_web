@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LoginImg from "../assets/login.png";
 import Image from "../components/Image";
 import Logo from "../assets/logo.png";
@@ -7,6 +7,9 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { MdEmail, MdLock } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useAuthContext } from "../context/providers/auth";
+import { useAuthActions } from "../context/actions/auth";
+import { useNavigate } from "react-router-dom";
 
 type Inputs = {
   password: string;
@@ -15,12 +18,22 @@ type Inputs = {
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const { signIn } = useAuthActions();
+  const { state } = useAuthContext();
+  const navigate = useNavigate();
+  console.log(state);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (data) => signIn(data);
+
+  useEffect(() => {
+    if (state.isAuthenticated && state.user) {
+      navigate(`/${state.user?.uid}`);
+    }
+  }, [state.isAuthenticated]);
   return (
     <main className="bg-white p-5 min-h-screen grid lg:grid-cols-2 gap-5">
       <section className="flex flex-col items-center gap-5">
@@ -113,7 +126,7 @@ export default function Login() {
               </span>
             )}
           </div>
-          <Btn text="Login" />
+          <Btn text="Login" isLoading={state.loading} />
           <Link
             to={"/sign-up"}
             className="font-medium block text-sm text-mainColor py-3 underline text-center"

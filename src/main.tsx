@@ -6,6 +6,8 @@ import ErrorPage from "./error.tsx";
 import Greeting from "./Greeting.tsx";
 import Login from "./screens/Login.tsx";
 import Register from "./screens/Register.tsx";
+import Home from "./screens/Home.tsx";
+import { AuthProvider } from "./context/providers/auth.tsx";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -26,9 +28,16 @@ const router = createBrowserRouter([
     path: "sign-up",
     element: <Register />,
   },
+  {
+    path: ":userId",
+    element: <Home />,
+  },
 ]);
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );
