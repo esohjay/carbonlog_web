@@ -34,9 +34,11 @@ import {
   User,
 } from "firebase/auth";
 import { auth } from "../../lib/firebaseConfig";
+import { useNavigate } from "react-router-dom";
 
 export const useAuthActions = () => {
   const { dispatch } = useAuthContext();
+  const navigate = useNavigate();
   const setUser = (user: User) => {
     dispatch({ type: SIGN_IN_SUCCESS, payload: user });
   };
@@ -197,12 +199,13 @@ export const useAuthActions = () => {
         const user = userCredential.user;
         dispatch({
           type: SIGN_IN_SUCCESS,
-          payload: {
-            id: user.uid,
-            email: user.email,
-            name: user.displayName,
-            phone: user.phoneNumber,
-          },
+          payload: user,
+          //   payload: {
+          //     id: user.uid,
+          //     email: user.email,
+          //     name: user.displayName,
+          //     phone: user.phoneNumber,
+          //   },
         });
         // ...
       })
@@ -254,6 +257,7 @@ export const useAuthActions = () => {
       .then(() => {
         // Sign-out successful.
         dispatch({ type: SIGN_OUT });
+        navigate("/login");
       })
       .catch((error) => {
         // An error happened.

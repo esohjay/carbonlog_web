@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LoginImg from "../assets/login.png";
 import Image from "../components/Image";
 import Logo from "../assets/logo.png";
@@ -7,6 +7,9 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { MdEmail, MdLock } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { FaEye, FaEyeSlash, FaUser } from "react-icons/fa";
+import { useAuthActions } from "../context/actions/auth";
+import { useAuthContext } from "../context/providers/auth";
+import { useNavigate } from "react-router-dom";
 
 type Inputs = {
   password: string;
@@ -17,13 +20,23 @@ type Inputs = {
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
+  const { state } = useAuthContext();
+  const { createProfile } = useAuthActions();
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (data) => createProfile(data);
+
+  useEffect(() => {
+    if (state.isAuthenticated && state.user) {
+      console.log(state.user.uid);
+      navigate(`/${state.user?.uid}`);
+    }
+  }, [state.isAuthenticated]);
   return (
     <main className="bg-white p-5 min-h-screen grid lg:grid-cols-2 gap-5">
       <section className="flex flex-col items-center gap-5">
@@ -168,7 +181,7 @@ export default function Register() {
               </span>
             )}
           </div>
-          <Btn text="Sign Up" />
+          <Btn text="Sign Up" isLoading={state.loading} />
           <Link
             to={"/login"}
             className="font-medium block text-sm text-mainColor py-3 underline text-center"

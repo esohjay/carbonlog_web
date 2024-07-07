@@ -38,7 +38,8 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        dispatch({ type: "SIGN_IN_SUCCESS", payload: user.toJSON() });
+        console.log(user);
+        dispatch({ type: "SIGN_IN_SUCCESS", payload: user });
       }
     });
 
