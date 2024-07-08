@@ -8,6 +8,7 @@ import Login from "./screens/Login.tsx";
 import Register from "./screens/Register.tsx";
 import Home from "./screens/Home.tsx";
 import { AuthProvider } from "./context/providers/auth.tsx";
+import { SurveyProvider } from "./context/providers/survey.tsx";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -37,7 +38,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
+      <SurveyProvider>
+        <RouterProvider router={router} />
+      </SurveyProvider>
     </AuthProvider>
   </React.StrictMode>
 );
