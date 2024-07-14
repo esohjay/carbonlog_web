@@ -10,7 +10,7 @@ function Spinner({ isFullWidth = true, color = "main" }) {
     >
       <svg
         aria-hidden="true"
-        className={`w-8 h-8 ${
+        className={`w-6 h-6 ${
           color !== "main"
             ? "text-mainColor fill-white"
             : "text-white fill-mainColor"
