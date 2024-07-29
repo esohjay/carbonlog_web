@@ -15,19 +15,21 @@ export default function useGetSurvey() {
   const { dispatch, state: surveyState } = useSurveyContext();
   const { state } = useAuthContext();
   useEffect(() => {
-    dispatch({ type: GET_SURVEY_REQUEST });
-    const userId = state?.user?.uid!;
-    const q = doc(db, "profile", userId, "survey", userId);
+    if (state?.user?.uid) {
+      dispatch({ type: GET_SURVEY_REQUEST });
+      const userId = state.user.uid;
+      const q = doc(db, "profile", userId, "survey", userId);
 
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      if (querySnapshot.data()) {
-        dispatch({ type: GET_SURVEY_SUCCESS, payload: querySnapshot.data() });
-      } else {
-        dispatch({ type: GET_SURVEY_SUCCESS, payload: surveyInitialData });
-      }
-    });
-    return () => unsubscribe();
-  }, []);
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        if (querySnapshot.data()) {
+          dispatch({ type: GET_SURVEY_SUCCESS, payload: querySnapshot.data() });
+        } else {
+          dispatch({ type: GET_SURVEY_SUCCESS, payload: surveyInitialData });
+        }
+      });
+      return () => unsubscribe();
+    }
+  }, [state?.user?.uid]);
   return {
     survey: surveyState?.survey,
     loadingState: surveyState?.fetchingSurvey,

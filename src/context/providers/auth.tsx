@@ -2,7 +2,7 @@ import React, { useContext, useReducer, createContext, useEffect } from "react";
 import { AuthState, AuthAction } from "../../types/auth";
 import { authReducer } from "../reducers/auth";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../../lib/firebaseConfig";
+// import { auth } from "../../lib/firebaseConfig";
 import { useTokenRefresher } from "../../lib/useTokenRefresher";
 
 interface AuthContextProps {
@@ -35,16 +35,16 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        console.log(user);
-        dispatch({ type: "SIGN_IN_SUCCESS", payload: user });
-      }
-    });
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       console.log(user);
+  //       dispatch({ type: "SIGN_IN_SUCCESS", payload: user });
+  //     }
+  //   });
 
-    return () => unsubscribe();
-  }, []);
+  //   return () => unsubscribe();
+  // }, []);
   useTokenRefresher(state.user);
   return (
     <AuthContext.Provider

@@ -1,7 +1,7 @@
 // import React from "react";
 // import { useAuthActions } from "../context/actions/auth";
 import Btn from "../components/Button";
-import { useAuthContext } from "../context/providers/auth";
+// import { useAuthContext } from "../context/providers/auth";
 import useGetSurvey from "../lib/useGetSurvey";
 import Image from "../components/Image";
 import { FaPaw } from "react-icons/fa";
@@ -11,13 +11,13 @@ import SurveyImg from "../assets/Analyze-amico.png";
 export default function Home() {
   const { survey, loadingState } = useGetSurvey();
   // const { logOut } = useAuthActions();
-  const { state } = useAuthContext();
+  // const { state } = useAuthContext();
   const navigate = useNavigate();
-  console.log(state);
+  // console.log(state, survey);
   return (
     <main className="p-5">
       {/* <Btn text="Logout" onClick={logOut} /> */}
-      {survey && survey.totalEmission ? (
+      {survey && survey?.totalEmission ? (
         <section className={`mb-7`}>
           <section
             className={`w-full h-44 rounded-lg relative bg-white shadow`}
@@ -31,7 +31,7 @@ export default function Home() {
               className={`h-full w-full flex items-center p-3 rounded-lg bg-black bg-opacity-60`}
             >
               <p className={`text-primaryLight font-bold text-2xl  `}>
-                {(survey.totalEmission / 1000).toFixed(2)} tonnes
+                {(survey?.totalEmission / 1000).toFixed(2)} tonnes
               </p>
               <p className={`text-primaryLight font-bold text-sm mb-3 `}>
                 (Estimated footprint)
