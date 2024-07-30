@@ -10,6 +10,7 @@ import Home from "./screens/Home.tsx";
 import { AuthProvider } from "./context/providers/auth.tsx";
 import { SurveyProvider } from "./context/providers/survey.tsx";
 import { CampaignProvider } from "./context/providers/campaign.tsx";
+import { ActionProvider } from "./context/providers/action.tsx";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -41,7 +42,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <AuthProvider>
       <CampaignProvider>
         <SurveyProvider>
-          <RouterProvider router={router} />
+          <ActionProvider>
+            <RouterProvider router={router} />
+          </ActionProvider>
         </SurveyProvider>
       </CampaignProvider>
     </AuthProvider>

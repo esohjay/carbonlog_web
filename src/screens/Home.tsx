@@ -5,9 +5,10 @@ import Btn from "../components/Button";
 import useGetSurvey from "../lib/useGetSurvey";
 import Image from "../components/Image";
 import { FaPaw } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import SurveyImg from "../assets/Analyze-amico.png";
 import CampaignList from "../components/CampaignList";
+import ActionsList from "../components/ActionsList";
 
 export default function Home() {
   const { survey, loadingState } = useGetSurvey();
@@ -94,6 +95,21 @@ export default function Home() {
         >
           Start campaign
         </p>
+      </section>
+      <section className={`py-2`}>
+        <article
+          className={`flex flex-row items-center justify-between mb-1 w-full`}
+        >
+          <p className={`text-mainColor font-bold text-xl`}>Actions</p>
+          <Link
+            to={"/act"}
+            className={`text-secondaryAlt text-base font-normal`}
+            // onClick={() => navigate("/act")}
+          >
+            See all
+          </Link>
+        </article>
+        <ActionsList />
       </section>
     </main>
   );
