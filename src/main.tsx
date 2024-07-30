@@ -9,6 +9,7 @@ import Register from "./screens/Register.tsx";
 import Home from "./screens/Home.tsx";
 import { AuthProvider } from "./context/providers/auth.tsx";
 import { SurveyProvider } from "./context/providers/survey.tsx";
+import { CampaignProvider } from "./context/providers/campaign.tsx";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -38,9 +39,11 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <AuthProvider>
-      <SurveyProvider>
-        <RouterProvider router={router} />
-      </SurveyProvider>
+      <CampaignProvider>
+        <SurveyProvider>
+          <RouterProvider router={router} />
+        </SurveyProvider>
+      </CampaignProvider>
     </AuthProvider>
   </React.StrictMode>
 );

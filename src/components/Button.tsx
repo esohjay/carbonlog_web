@@ -28,7 +28,7 @@ function Btn({
   const outline =
     "text-mainColor bg-white border-2 border-mainColor text-center rounded-md";
   const block = `w-full flex items-center justify-center gap-x-2 ${padding}`;
-  const inline = `inline-block ${padding}`;
+  const inline = `inline-flex items-center justify-center gap-x-2 ${padding}`;
   return (
     <button
       {...props}
