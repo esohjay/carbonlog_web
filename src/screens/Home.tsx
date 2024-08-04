@@ -9,6 +9,7 @@ import { useNavigate, Link } from "react-router-dom";
 import SurveyImg from "../assets/Analyze-amico.png";
 import CampaignList from "../components/CampaignList";
 import ActionsList from "../components/ActionsList";
+import LinkBtn from "../components/LinkBtn";
 
 export default function Home() {
   const { survey, loadingState } = useGetSurvey();
@@ -110,6 +111,48 @@ export default function Home() {
           </Link>
         </article>
         <ActionsList />
+      </section>
+      <section className={`mb-7`}>
+        <section className={`w-full h-44 rounded-lg relative bg-white shadow`}>
+          <Image
+            height="h-full"
+            width="w-full"
+            path="https://cdn.pixabay.com/photo/2017/09/20/06/27/bridge-2767545_1280.jpg"
+          />
+          <div
+            className={`h-full w-full flex flex-col items-center absolute top-0 left-0 p-3 rounded-lg bg-black bg-opacity-60`}
+          >
+            <p className={`text-primaryLight font-bold text-2xl mb-3 `}>
+              Did you know?
+            </p>
+            <p className={`text-altColor font-semibold mb-3 text-center w-3/4`}>
+              Regular visits to greenspaces improves your mental health.
+            </p>
+            <LinkBtn
+              text={"Explore greenspaces"}
+              // icon={"rocket"}
+              variant="fill"
+              mode="inline"
+              path="https://greenspace-explorer.vercel.app/"
+            />
+          </div>
+        </section>
+      </section>
+      <section className={`pb-10`}>
+        <section className={`bg-white shadow rounded-lg p-5 `}>
+          <p className={`text-xl font-bold mb-2 text-mainColor`}>
+            More is better
+          </p>
+          <p className={` font-medium mb-2 text-mainColor`}>
+            Make a big impact by helping others reduce their carbon emission.
+          </p>
+          <LinkBtn
+            text={"Invite friends"}
+            variant="fill"
+            mode="inline"
+            path="https://greenspace-explorer.vercel.app/"
+          />
+        </section>
       </section>
     </main>
   );

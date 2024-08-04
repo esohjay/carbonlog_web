@@ -11,6 +11,7 @@ import { AuthProvider } from "./context/providers/auth.tsx";
 import { SurveyProvider } from "./context/providers/survey.tsx";
 import { CampaignProvider } from "./context/providers/campaign.tsx";
 import { ActionProvider } from "./context/providers/action.tsx";
+import Template from "./screens/Template.tsx";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -33,7 +34,13 @@ const router = createBrowserRouter([
   },
   {
     path: ":userId",
-    element: <Home />,
+    element: <Template />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+    ],
   },
 ]);
 
