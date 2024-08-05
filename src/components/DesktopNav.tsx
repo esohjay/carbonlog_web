@@ -14,7 +14,7 @@ function DesktopNav({}) {
 
   return (
     <>
-      <section className="hidden fixed top-24 left-0 pl-16 md:flex shadow-md">
+      <section className="hidden fixed top-24 left-0 pl-16 lg:flex shadow-md">
         <nav className={`w-64 h-screen p-5`}>
           <NavItem
             text={"timesheet"}
