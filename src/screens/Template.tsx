@@ -11,7 +11,7 @@ function Template() {
       <section className={`bg-white w-full `}>
         <TopNav />
         <DesktopNav />
-        <section className="lg:ml-80 px-5 lg:pr-20 mt-24 mb-[75px]">
+        <section className="lg:ml-80 px-5 lg:pr-20 mt-24 mb-[75px] overflow-x-hidden">
           <Outlet />
           <MobileNav />
         </section>

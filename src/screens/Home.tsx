@@ -18,7 +18,7 @@ export default function Home() {
   const navigate = useNavigate();
   // console.log(state, survey);
   return (
-    <main className="p-5">
+    <main className="">
       {/* <Btn text="Logout" onClick={logOut} /> */}
       {survey && survey?.totalEmission ? (
         <section className={`mb-7`}>
@@ -55,23 +55,34 @@ export default function Home() {
         </section>
       ) : (
         <section
-          className={`flex flex-row gap-10 w-full md:h-[350px] p-5 items-center shadow md:shadow-none bg-white rounded-lg`}
+          className={`lg:flex lg:flex-row gap-10 w-full md:h-[350px] p-5 lg:items-center shadow md:shadow-none bg-white rounded-lg lg:mb-10`}
         >
-          <section
-            className={`h-20 md:h-[400px] mb-3 bg-transparent w-3/12 md:w-1/3`}
-          >
-            <Image width="w-full" height="h-full" path={SurveyImg} />
-          </section>
-          <section className={` w-9/12 md:w-1/2`}>
+          <section className="flex items-center justify-center flex-col gap-y-3 lg:block lg:gap-x-0 md:w-1/3">
+            <div
+              className={`h-24 md:h-[400px] lg:mb-3 bg-transparent w-24 md:w-full `}
+            >
+              <Image width="w-full" height="h-full" path={SurveyImg} />
+            </div>
             <p
-              className={`font-semibold text-lg text-mainColor mb-1 md:font-bold md:text-4xl`}
+              className={`font-semibold text-xl text-mainColor mb-1 md:font-bold md:text-4xl lg:hidden`}
             >
               Estimate footprint
             </p>
-            <p className={`text-dark mb-3 font-normal md:text-2xl`}>
+          </section>
+          <section className={` w-full md:w-1/2`}>
+            <p
+              className={`font-semibold text-lg text-mainColor mb-1 md:font-bold md:text-4xl lg:block hidden`}
+            >
+              Estimate footprint
+            </p>
+            <p
+              className={`text-dark mb-3 font-normal md:text-xl text-center lg:text-left`}
+            >
               Take a quick survey to estimate how much carbon you emit yearly.
             </p>
-            <section className={`flex items-start`}>
+            <section
+              className={`flex items-start justify-center lg:justify-start`}
+            >
               <Btn
                 text={"Start now"}
                 Icon={FaPaw}
