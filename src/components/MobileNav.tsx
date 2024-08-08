@@ -13,8 +13,10 @@ import {
 function Nav() {
   const pathname = useLocation().pathname;
   return (
-    <div className={`fixed bottom-0 left-0 w-full place-items-center block`}>
-      <nav className="z-20 flex max-w-lg justify-around gap-4 border-t border-gray-200 bg-white p-2.5 shadow-lg backdrop-blur-2xl fixed bottom-0  min-h-[auto]  w-full rounded-t-xl border">
+    <div
+      className={`fixed bottom-0 left-0 w-full place-items-center block lg:hidden`}
+    >
+      <nav className="z-20 flex  justify-around gap-4 border-t border-gray-200 bg-white p-2.5 shadow-lg backdrop-blur-2xl fixed bottom-0  min-h-[auto]  w-full rounded-t-xl border">
         <NavLink
           to="/"
           className={({ isActive }) =>

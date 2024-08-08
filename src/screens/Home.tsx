@@ -55,28 +55,28 @@ export default function Home() {
         </section>
       ) : (
         <section
-          className={`lg:flex lg:flex-row gap-10 w-full md:h-[350px] p-5 lg:items-center shadow md:shadow-none bg-white rounded-lg lg:mb-10`}
+          className={`lg:flex lg:flex-row gap-10 w-full lg:h-[350px] p-5 lg:items-center shadow lg:shadow-none bg-white rounded-lg lg:mb-10`}
         >
-          <section className="flex items-center justify-center flex-col gap-y-3 lg:block lg:gap-x-0 md:w-1/3">
+          <section className="flex items-center justify-center flex-col gap-y-3 lg:block lg:gap-x-0 lg:w-1/3">
             <div
-              className={`h-24 md:h-[400px] lg:mb-3 bg-transparent w-24 md:w-full `}
+              className={`h-24 lg:h-[400px] lg:mb-3 bg-transparent w-24 lg:w-full `}
             >
               <Image width="w-full" height="h-full" path={SurveyImg} />
             </div>
             <p
-              className={`font-semibold text-xl text-mainColor mb-1 md:font-bold md:text-4xl lg:hidden`}
+              className={`font-semibold text-xl text-mainColor mb-1 lg:font-bold lg:text-4xl lg:hidden`}
             >
               Estimate footprint
             </p>
           </section>
-          <section className={` w-full md:w-1/2`}>
+          <section className={` w-full lg:w-1/2`}>
             <p
-              className={`font-semibold text-lg text-mainColor mb-1 md:font-bold md:text-4xl lg:block hidden`}
+              className={`font-semibold text-lg text-mainColor mb-1 lg:font-bold lg:text-4xl lg:block hidden`}
             >
               Estimate footprint
             </p>
             <p
-              className={`text-dark mb-3 font-normal md:text-xl text-center lg:text-left`}
+              className={`text-dark mb-3 font-normal lg:text-xl text-center lg:text-left`}
             >
               Take a quick survey to estimate how much carbon you emit yearly.
             </p>

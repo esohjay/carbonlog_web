@@ -39,3 +39,16 @@
   font-family: "Thin";
   src: url("../fonts/MontserratAlternates-Thin.ttf");
 }
+/* Hide the horizontal scrollbar */
+::-webkit-scrollbar {
+  width: 0.5rem; /* You can adjust the width as needed */
+  height: 0.5rem; /* You can adjust the height as needed */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Make the scrollbar track transparent */
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent; /* Make the scrollbar thumb (the draggable part) transparent */
+}

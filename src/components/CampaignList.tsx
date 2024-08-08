@@ -10,8 +10,8 @@ function CampaignList() {
   return (
     <>
       {campaign ? (
-        <section className={` flex flex-row gap-x-5 mb-2`}>
-          <div className={`flex flex-row gap-x-3`}>
+        <section className={`flex flex-row gap-x-5 mb-2 w-full `}>
+          <div className={`flex flex-row gap-x-5 w-full overflow-x-scroll`}>
             {[
               campaign?.map((data, i) => {
                 if (i < 5)

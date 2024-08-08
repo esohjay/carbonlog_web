@@ -18,7 +18,7 @@ function CampignCard({ title, id }: PropType) {
     >
       <div className={`border-[3px] border-secondaryAlt rounded-full`}>
         <div
-          className={`w-20 h-20 rounded-full flex justify-center items-center bg-transparent bg-dark`}
+          className={`w-20 h-20 lg:w-28 lg:h-28 rounded-full flex justify-center items-center bg-dark`}
         >
           <p className={`text-2xl font-bold uppercase text-primaryLight`}>
             {abbrev}

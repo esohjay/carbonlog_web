@@ -14,7 +14,7 @@ export default function TextAbbrevavtion({ text, size, textSize }: PropType) {
   const badgeText = textSize || `text-2xl`;
   return (
     <div
-      className={`rounded-full flex justify-center items-center bg-transparent bg-dark ${badgeSize}`}
+      className={`rounded-full flex justify-center items-center bg-dark ${badgeSize}`}
     >
       <p className={`font-extrabold uppercase text-primaryLight ${badgeText}`}>
         {abbrev}
