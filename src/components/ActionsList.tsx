@@ -15,7 +15,9 @@ export default function ActionsList() {
   }, [state.actionList]);
 
   return (
-    <section className={`flex my-4 items-center gap-x-5 overflow-x-scroll`}>
+    <section
+      className={` flex overflow-x-scroll flex-cl py-5 gap-x-3 flex-nowrap `}
+    >
       {state?.actionList ? (
         state?.actionList
           ?.slice(state?.actionList?.length - 4, state?.actionList?.length - 1)

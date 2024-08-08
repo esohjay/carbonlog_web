@@ -10,6 +10,7 @@ import SurveyImg from "../assets/Analyze-amico.png";
 import CampaignList from "../components/CampaignList";
 import ActionsList from "../components/ActionsList";
 import LinkBtn from "../components/LinkBtn";
+import ActionCard from "../components/ActionCard";
 
 export default function Home() {
   const { survey, loadingState } = useGetSurvey();
@@ -122,6 +123,17 @@ export default function Home() {
           </Link>
         </article>
         <ActionsList />
+        <ActionCard
+          data={{
+            title: "Hgehe",
+            category: "djdjjd",
+            description: "jshhsh",
+            sdg: [9],
+            id: "dd",
+            emission: 9,
+            point: 10,
+          }}
+        />
       </section>
       <section className={`mb-7`}>
         <section className={`w-full h-44 rounded-lg relative bg-white shadow`}>

@@ -13,14 +13,14 @@ function ActionCard({ data, isFullWidth = false }: PropType) {
   return (
     <article
       onClick={() => navigate(`action/${id}`)}
-      className={`shadow bg-white p-3 rounded-lg  ${
+      className={`shadow bg-white p-3 rounded-lg shrink-0  ${
         isFullWidth ? "w-full" : "w-[300px]"
       }`}
     >
       <p className={`font-semibold text-lg mb-2 text-dark`}>{title}</p>
       <div className={`flex flex-row justify-start gap-2 mb-3 flex-wrap`}>
         <Badge text={category} variant="success" textStyle={`capitalize`} />
-        <div className={`flex gap-x-1 flex-row items-center `}>
+        <div className={`flex gap-x-1 flex-row items-center flex-wrap`}>
           {sdg.map((goal, i) => {
             if (i === 2) {
               return;
@@ -29,7 +29,7 @@ function ActionCard({ data, isFullWidth = false }: PropType) {
           })}
         </div>
       </div>
-      <p className={`text-mainColor font-normal mb-3`}>
+      <p className={`text-mainColor text-sm font-normal mb-3`}>
         {description.substring(0, 65)}...
       </p>
       <div className={`flex flex-row justify-between items-center`}>
@@ -43,7 +43,7 @@ function ActionCard({ data, isFullWidth = false }: PropType) {
           className={`flex flex-row gap-x-1 py-1 items-center px-2 bg-[#f5b700] rounded-full`}
         >
           {/* <Ionicons name={"cloud-download"} size={16} color="#ffffff" /> */}
-          <span className={`text-white`}>
+          <span className={`text-white flex items-end`}>
             <p className={`text-sm `}> {emission}kgC0</p>
             <p className={`text-xs `}>2</p>
           </span>

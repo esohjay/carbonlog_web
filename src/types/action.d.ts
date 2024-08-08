@@ -26,5 +26,5 @@ export interface Action {
   id: string;
   emission: number;
   point: number;
-  timestamp: Timestamp;
+  timestamp?: Timestamp;
 }
