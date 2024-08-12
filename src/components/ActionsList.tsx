@@ -21,7 +21,7 @@ export default function ActionsList() {
       {state?.actionList ? (
         state?.actionList
           ?.slice(state?.actionList?.length - 4, state?.actionList?.length - 1)
-          .map((item) => <ActionCard data={item} />)
+          .map((item) => <ActionCard data={item} key={item.id} />)
       ) : (
         // <ActionCardSkeleton />
         <Spinner />

@@ -12,6 +12,7 @@ import {
 
 function Nav() {
   const pathname = useLocation().pathname;
+  console.log(pathname);
   return (
     <div
       className={`fixed bottom-0 left-0 w-full place-items-center block lg:hidden`}
@@ -29,7 +30,7 @@ function Nav() {
           <small className="text-center text-xs font-medium"> Home </small>
         </NavLink>
         <NavLink
-          to="/places"
+          to="/sgsgs/track"
           className={({ isActive }) =>
             isActive
               ? "text-mainColor flex aspect-square text-2xl  flex-col items-center justify-center gap-y-1 "

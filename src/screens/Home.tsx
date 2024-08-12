@@ -10,10 +10,10 @@ import SurveyImg from "../assets/Analyze-amico.png";
 import CampaignList from "../components/CampaignList";
 import ActionsList from "../components/ActionsList";
 import LinkBtn from "../components/LinkBtn";
-import ActionCard from "../components/ActionCard";
+import { MdRocketLaunch } from "react-icons/md";
 
 export default function Home() {
-  const { survey, loadingState } = useGetSurvey();
+  const { survey } = useGetSurvey();
   // const { logOut } = useAuthActions();
   // const { state } = useAuthContext();
   const navigate = useNavigate();
@@ -24,15 +24,16 @@ export default function Home() {
       {survey && survey?.totalEmission ? (
         <section className={`mb-7`}>
           <section
-            className={`w-full h-44 rounded-lg relative bg-white shadow`}
+            className={`w-full h-48 rounded-lg relative bg-white shadow`}
           >
             <Image
               width="w-full"
               height="h-full"
+              borderRadius="rounded-lg"
               path="https://cdn.pixabay.com/photo/2018/04/04/13/38/nature-3289812_1280.jpg"
             />
             <section
-              className={`h-full w-full flex items-center p-3 rounded-lg bg-black bg-opacity-60`}
+              className={`h-full absolute top-0 left-0 w-full flex flex-col items-center p-3 rounded-lg bg-black bg-opacity-60`}
             >
               <p className={`text-primaryLight font-bold text-2xl  `}>
                 {(survey?.totalEmission / 1000).toFixed(2)} tonnes
@@ -41,14 +42,15 @@ export default function Home() {
                 (Estimated footprint)
               </p>
               <p
-                className={`text-altColor font-semibold mb-3 text-center w-3/4`}
+                className={`text-altColor text-sm font-semibold mb-3 text-center w-3/4`}
               >
-                section more details about your carbon footprint
+                View more details about your carbon footprint
               </p>
               <Btn
                 text={"View"}
                 Icon={FaPaw}
                 variant="outline"
+                mode="inline"
                 onClick={() => navigate("/estimate")}
               />
             </section>
@@ -123,23 +125,13 @@ export default function Home() {
           </Link>
         </article>
         <ActionsList />
-        <ActionCard
-          data={{
-            title: "Hgehe",
-            category: "djdjjd",
-            description: "jshhsh",
-            sdg: [9],
-            id: "dd",
-            emission: 9,
-            point: 10,
-          }}
-        />
       </section>
-      <section className={`mb-7`}>
-        <section className={`w-full h-44 rounded-lg relative bg-white shadow`}>
+      <section className={`mb-7 rounded-lg`}>
+        <section className={`w-full h-52 rounded-lg relative bg-white shadow`}>
           <Image
             height="h-full"
             width="w-full"
+            borderRadius="rounded-lg"
             path="https://cdn.pixabay.com/photo/2017/09/20/06/27/bridge-2767545_1280.jpg"
           />
           <div
@@ -154,7 +146,8 @@ export default function Home() {
             <LinkBtn
               text={"Explore greenspaces"}
               // icon={"rocket"}
-              variant="fill"
+              Icon={MdRocketLaunch}
+              variant="outline"
               mode="inline"
               path="https://greenspace-explorer.vercel.app/"
             />

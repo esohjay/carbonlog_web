@@ -37,15 +37,17 @@ function ActionCard({ data, isFullWidth = false }: PropType) {
           className={`flex flex-row gap-x-1 py-1 items-center px-2 bg-[#0d47a1] rounded-full`}
         >
           {/* <Ionicons name={"trophy"} size={16} color="#ffffff" /> */}
-          <p className={`text-white font-semibold`}>{point} points</p>
+          <p className={`text-white text-sm lg:text-base font-semibold`}>
+            {point} points
+          </p>
         </div>
         <div
           className={`flex flex-row gap-x-1 py-1 items-center px-2 bg-[#f5b700] rounded-full`}
         >
           {/* <Ionicons name={"cloud-download"} size={16} color="#ffffff" /> */}
           <span className={`text-white flex items-end`}>
-            <p className={`text-sm `}> {emission}kgC0</p>
-            <p className={`text-xs `}>2</p>
+            <p className={`text-sm lg:text-base `}> {emission}kgC0</p>
+            <p className={`text-xs lg:text-sm `}>2</p>
           </span>
           {/* <Text className={`text-white font-semibold`}>
             {val.toFixed(1)}kg saved

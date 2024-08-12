@@ -7,6 +7,7 @@ import Greeting from "./Greeting.tsx";
 import Login from "./screens/Login.tsx";
 import Register from "./screens/Register.tsx";
 import Home from "./screens/Home.tsx";
+import Track from "./screens/Track.tsx";
 import { AuthProvider } from "./context/providers/auth.tsx";
 import { SurveyProvider } from "./context/providers/survey.tsx";
 import { CampaignProvider } from "./context/providers/campaign.tsx";
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        index: true,
+        element: <Track />,
+        path: "track",
       },
     ],
   },

@@ -4,7 +4,7 @@ import TextAbbrevavtion from "./TextAbbrevation";
 
 export default function TopNav() {
   return (
-    <nav className="w-full flex bg-white justify-between items-center px-5 lg:px-20 shadow py-2 fixed left-0 top-0">
+    <nav className="w-full flex bg-white z-30 justify-between items-center px-5 lg:px-20 shadow py-2 fixed left-0 top-0">
       <Image
         path={Logo}
         height="h-[50px] lg:h-[80px]"
