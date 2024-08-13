@@ -3,7 +3,7 @@ import { IconType } from "react-icons";
 
 type BtnProp = {
   text: string;
-  variant?: "fill" | "disabled" | "outline" | "outlineBorder";
+  variant?: "fill" | "disabled" | "outline" | "outlineBorder" | "light";
   onClick?: () => void;
   mode?: "block" | "inline";
   padding?: string;
@@ -24,6 +24,7 @@ function Btn({
   ...props
 }: BtnProp) {
   const fill = "text-white  bg-mainColor text-center rounded-md";
+  const light = "text-mainColor  bg-altColor text-center rounded-md";
   const disabled = "text-white  bg-[#D7D3D1] text-center rounded-md";
   const outline = "text-mainColor bg-altColor text-center rounded-md";
   const outlineBorder =
@@ -41,6 +42,8 @@ function Btn({
           ? disabled
           : variant === "outline"
           ? outline
+          : variant === "light"
+          ? light
           : outlineBorder
       } ${mode === "block" ? block : inline} font-semibold uppercase text-sm`}
     >

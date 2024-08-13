@@ -4,7 +4,7 @@ import { Timestamp } from "firebase/firestore";
 
 export interface CampaignAction {
   type: CampaignActionType;
-  payload?: any;
+  payload?: HttpResponse<unknown>;
 }
 interface JoinedCampaign {
   message: string;
