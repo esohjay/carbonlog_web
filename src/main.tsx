@@ -12,6 +12,7 @@ import { AuthProvider } from "./context/providers/auth.tsx";
 import { SurveyProvider } from "./context/providers/survey.tsx";
 import { CampaignProvider } from "./context/providers/campaign.tsx";
 import { ActionProvider } from "./context/providers/action.tsx";
+import { TrackProvider } from "./context/providers/track.tsx";
 import Template from "./screens/Template.tsx";
 import "./index.css";
 
@@ -56,7 +57,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <CampaignProvider>
         <SurveyProvider>
           <ActionProvider>
-            <RouterProvider router={router} />
+            <TrackProvider>
+              <RouterProvider router={router} />
+            </TrackProvider>
           </ActionProvider>
         </SurveyProvider>
       </CampaignProvider>

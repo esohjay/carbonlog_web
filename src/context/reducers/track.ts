@@ -10,6 +10,7 @@ import {
   DELETE_ACTIVITY_REQUEST,
   DELETE_ACTIVITY_RESET,
   DELETE_ACTIVITY_SUCCESS,
+  SET_ACTIVITY_TOBEDELETED,
 } from "../constants/track";
 import { TrackAction, TrackState } from "../../types/track";
 
@@ -56,6 +57,11 @@ export const TrackReducer = (state: TrackState, action: TrackAction) => {
         ...state,
         fetchingActivity: false,
         activityError: action.payload,
+      };
+    case SET_ACTIVITY_TOBEDELETED:
+      return {
+        ...state,
+        toBeDeleted: action.payload,
       };
     case RESET_ACTIVITY:
       return {

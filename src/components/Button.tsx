@@ -8,6 +8,7 @@ type BtnProp = {
   mode?: "block" | "inline";
   padding?: string;
   isLoading?: boolean;
+  textSize?: string;
   loaderText?: string;
   Icon?: IconType;
 };
@@ -18,6 +19,7 @@ function Btn({
   onClick = () => null,
   mode = "block",
   padding = "px-6 py-2",
+  textSize = "text-sm",
   isLoading = false,
   loaderText = "",
   Icon,
@@ -45,7 +47,9 @@ function Btn({
           : variant === "light"
           ? light
           : outlineBorder
-      } ${mode === "block" ? block : inline} font-semibold uppercase text-sm`}
+      } ${
+        mode === "block" ? block : inline
+      } font-semibold uppercase ${textSize}`}
     >
       {Icon && <Icon className="text-sm text-mainColor" />}
       {isLoading ? (

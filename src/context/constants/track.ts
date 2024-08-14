@@ -14,6 +14,7 @@ export const RESET_ACTIVITY = "RESET_ACTIVITY";
 export const GET_ACTIVITY_REQUEST = "GET_ACTIVITY_REQUEST";
 export const GET_ACTIVITY_SUCCESS = "GET_ACTIVITY_SUCCESS";
 export const GET_ACTIVITY_FAIL = "GET_ACTIVITY_FAIL";
+export const SET_ACTIVITY_TOBEDELETED = "SET_ACTIVITY_TOBEDELETED";
 
 export type TrackActionTypes =
   | typeof ADD_ACTIVITY_REQUEST
@@ -27,4 +28,5 @@ export type TrackActionTypes =
   | typeof RESET_ACTIVITY
   | typeof GET_ACTIVITY_REQUEST
   | typeof GET_ACTIVITY_SUCCESS
-  | typeof GET_ACTIVITY_FAIL;
+  | typeof GET_ACTIVITY_FAIL
+  | typeof SET_ACTIVITY_TOBEDELETED;

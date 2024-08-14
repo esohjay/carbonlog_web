@@ -157,11 +157,11 @@ export default function TrackTravel() {
   }, [state.activityAdded]);
   return (
     <section>
-      <div className={`flex gap-2 p-5 pb-8`}>
+      <div className={`flex flex-col gap-2 p-5 pb-8`}>
         <p className={`font-semibold text-base text-dark mb-2`}>
           Select your travel mode
         </p>
-        <div className={`flex flex-row justify-center gap-x-2`}>
+        <div className={`flex flex-row justify-cente gap-x-2`}>
           <TrackTravelBtn mode={CAR} currentMode={mode} setMode={setMode} />
           <TrackTravelBtn mode={BIKE} currentMode={mode} setMode={setMode} />
           <TrackTravelBtn mode={FLIGHT} currentMode={mode} setMode={setMode} />

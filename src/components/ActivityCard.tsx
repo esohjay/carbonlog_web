@@ -1,19 +1,24 @@
 import { formatText } from "../lib/formatTrackText";
 import { useTrackActions } from "../context/actions/track";
 import { useTrackContext } from "../context/providers/track";
-import { CarActivity } from "../types/track";
+import { Activity, ActivityList } from "../types/track";
 import { AiOutlineDelete } from "react-icons/ai";
+import Spinner from "./Spinner";
+import { SET_ACTIVITY_TOBEDELETED } from "../context/constants/track";
 
 type PropType = {
-  data: CarActivity;
-  category: string;
+  data: Activity;
+  category: keyof ActivityList;
 };
 export default function ActivityCard({ data, category }: PropType) {
   const { deleteActivity } = useTrackActions();
-  const { state } = useTrackContext();
+  const { state, dispatch } = useTrackContext();
   const { activity, amount, emission, value, mode, unit, id } = data;
   const handleDelete = () => {
-    state.setToBeDeleted({ ...data, category });
+    dispatch({
+      type: SET_ACTIVITY_TOBEDELETED,
+      payload: { ...data, category },
+    });
     deleteActivity({ ...data, category });
   };
   //   const createAlert = () =>
@@ -33,51 +38,51 @@ export default function ActivityCard({ data, category }: PropType) {
     <section style={{ flex: 1 }}>
       {activity ? (
         <section
-          style={tw`flex flex-row justify-between gap-x-5  bg-white shadow  rounded-md p-3`}
+          className={`flex flex-row justify-between gap-x-5  bg-white shadow  rounded-md p-3`}
         >
-          <article style={tw`flex gap-y-5`}>
-            <p style={tw`capitalize font-semibold text-base text-mainColor`}>
+          <article className={`flex gap-y-5`}>
+            <p className={`capitalize font-semibold text-base text-mainColor`}>
               {formatText(activity)}
             </p>
-            <p style={tw`font-medium text-mainColor text-sm`}>£{amount}</p>
+            <p className={`font-medium text-mainColor text-sm`}>£{amount}</p>
           </article>
-          <article style={tw`flex gap-y-3 items-end`}>
+          <article className={`flex gap-y-3 items-end`}>
             <article>
-              <p style={tw`font-semibold text-sm text-dark`}>
+              <p className={`font-semibold text-sm text-dark`}>
                 {emission.toFixed(2)}
                 kg
               </p>
-              <p style={tw`text-dark font-medium -my-1`}>
-                <p style={tw`text-sm `}>of C0</p>
-                <p style={tw`text-xs leading-3`}>2e</p>
+              <p className={`text-dark font-medium -my-1`}>
+                <p className={`text-sm `}>of C0</p>
+                <p className={`text-xs leading-3`}>2e</p>
               </p>
             </article>
-            <Pressable
-              onPress={createAlert}
+            <button
+              // onPress={createAlert}
               disabled={state.deletingActivity || state.activityDeleted}
             >
               {(state.deletingActivity || state.activityDeleted) &&
-              id === toBeDelete.id ? (
-                <ActivityIndicator
-                  animating={true}
+              id === state.toBeDeleted?.id ? (
+                <Spinner
+                  // animating={true}
                   color="#7d4f50"
-                  size="small"
+                  // size="small"
                 />
               ) : (
-                <MaterialIcons name="delete-outline" size={18} color="red" />
+                <AiOutlineDelete name="delete-outline" size={18} color="red" />
               )}
-            </Pressable>
+            </button>
           </article>
         </section>
       ) : (
         <section
-          style={tw`flex flex-row justify-between gap-x-5 bg-white shadow  rounded-md p-3`}
+          className={`flex flex-row justify-between gap-x-5 bg-white shadow  rounded-md p-3`}
         >
-          <article style={tw`flex gap-y-5`}>
-            <p style={tw`capitalize font-semibold text-base text-mainColor`}>
+          <article className={`flex gap-y-5`}>
+            <p className={`capitalize font-semibold text-base text-mainColor`}>
               {mode === "publicTransport" ? "Public transport" : mode}
             </p>
-            <p style={tw`font-medium text-mainColor text-sm`}>
+            <p className={`font-medium text-mainColor text-sm`}>
               {value === "longHaul"
                 ? "Long haul"
                 : value === "shortHaul"
@@ -86,15 +91,15 @@ export default function ActivityCard({ data, category }: PropType) {
               {unit === "mile" ? "miles" : unit}
             </p>
           </article>
-          <section style={tw`flex gap-y-3 items-end`}>
+          <section className={`flex gap-y-3 items-end`}>
             <article>
-              <p style={tw`font-semibold text-sm text-dark`}>
+              <p className={`font-semibold text-sm text-dark`}>
                 {emission.toFixed(2)}
                 kg
               </p>
-              <p style={tw`text-dark font-medium -my-1`}>
-                <p style={tw`text-sm `}>of C0</p>
-                <p style={tw`text-xs leading-3`}>2e</p>
+              <p className={`text-dark font-medium -my-1`}>
+                <p className={`text-sm `}>of C0</p>
+                <p className={`text-xs leading-3`}>2e</p>
               </p>
             </article>
             <button
@@ -102,11 +107,11 @@ export default function ActivityCard({ data, category }: PropType) {
             //   disabled={state.deletingActivity || state.activityDeleted}
             >
               {(state.deletingActivity || state.activityDeleted) &&
-              id === toBeDelete.id ? (
-                <ActivityIndicator
-                  animating={true}
+              id === state.toBeDeleted?.id ? (
+                <Spinner
+                  // animating={true}
                   color="#7d4f50"
-                  size="small"
+                  // size="small"
                 />
               ) : (
                 <AiOutlineDelete />

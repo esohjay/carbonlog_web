@@ -1,35 +1,49 @@
 import { Sheet, SheetRef } from "react-modal-sheet";
-import { useState, useRef } from "react";
+import { useRef } from "react";
+import Btn from "./Button";
 
-export const TrackModal: React.FC<{ children: React.ReactNode }> = ({
+type PropType = {
+  children: React.ReactNode;
+  isOpen: boolean;
+  closeModal: (arg: string) => void;
+};
+export const TrackModal: React.FC<PropType> = ({
   children,
+  isOpen,
+  closeModal,
 }) => {
-  const [isOpen, setOpen] = useState(false);
+  // const [isOpen, setOpen] = useState(false);
   const ref = useRef<SheetRef>();
   const snapTo = (i: number) => ref.current?.snapTo(i);
 
   return (
     <>
-      <button onClick={() => setOpen(true)}>Open sheet</button>
+      {/* <button onClick={() => setOpen(true)}>Open sheet</button> */}
 
       {/* Opens to 400 since initial index is 1 */}
       <Sheet
         ref={ref}
         isOpen={isOpen}
-        onClose={() => setOpen(false)}
-        snapPoints={[600, 400, 100, 0]}
+        onClose={() => closeModal("")}
+        snapPoints={[600, 500, 300, 100, 0]}
         initialSnap={1}
         onSnap={(snapIndex) =>
           console.log("> Current snap point index:", snapIndex)
         }
       >
         <Sheet.Container>
+          <Sheet.Header>
+            <div className="flex justify-end p-5">
+              <Btn text="Close" onClick={() => snapTo(4)} mode="inline" />
+            </div>
+          </Sheet.Header>
+
           <Sheet.Content>
-            {children}
-            <button onClick={() => snapTo(0)}>Snap to index 0</button>
-            <button onClick={() => snapTo(1)}>Snap to index 1</button>
-            <button onClick={() => snapTo(2)}>Snap to index 2</button>
-            <button onClick={() => snapTo(3)}>Snap to index 3</button>
+            <section className="w-full flex justify-center">
+              <section className="w-full md:max-w-md lg:bg-slate-50 lg:shadow-md rounded-lg">
+                {children}
+              </section>
+            </section>
           </Sheet.Content>
         </Sheet.Container>
       </Sheet>

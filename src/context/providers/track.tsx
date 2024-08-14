@@ -42,7 +42,7 @@ const TrackProvider: React.FC<{ children: React.ReactNode }> = ({
 export const useTrackContext = () => {
   const context = useContext(TrackContext);
   if (context === undefined) {
-    throw new Error("useAuthContext must be used within an AuthProvider");
+    throw new Error("useTrackContext must be used within an TrackProvider");
   }
   return context;
 };

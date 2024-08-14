@@ -13,11 +13,7 @@ import { ErrorType } from "../../types/context";
 
 import { useTrackContext } from "../providers/track";
 import { auth } from "../../lib/firebaseConfig";
-import { CarActivity } from "../../types/track";
-
-interface DeleteActivityArg extends CarActivity {
-  category: string;
-}
+import { Activity } from "../../types/track";
 
 export const useTrackActions = () => {
   const { dispatch } = useTrackContext();
@@ -108,7 +104,7 @@ export const useTrackActions = () => {
       }
     }
   };
-  const deleteActivity = async (activityData: DeleteActivityArg) => {
+  const deleteActivity = async (activityData: Activity) => {
     try {
       dispatch({ type: DELETE_ACTIVITY_REQUEST });
       const token = await auth?.currentUser?.getIdToken();

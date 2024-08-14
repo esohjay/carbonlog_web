@@ -16,6 +16,8 @@ export default function TrackTravelBtn({
         variant={currentMode === mode ? "light" : "fill"}
         text={mode}
         onClick={() => setMode(mode)}
+        padding="px-3 py-1"
+        textSize="text-xs"
       />
     </div>
   );

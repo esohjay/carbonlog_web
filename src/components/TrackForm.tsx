@@ -13,8 +13,12 @@ type Inputs = {
   amount: string;
 };
 
+type Option = {
+  label: string;
+  value: string;
+};
 type PropType = {
-  options: string[];
+  options: Option[];
   category: string;
   heading: string;
 };
@@ -43,7 +47,7 @@ export default function TrackForm({ options, category, heading }: PropType) {
     reset();
   };
   return (
-    <section className={`flex gap-2 p-5`}>
+    <section className={`flex flex-col gap-2 p-5`}>
       <p className={`font-semibold text-base text-dark mb-2`}>{heading}</p>
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -60,10 +64,12 @@ export default function TrackForm({ options, category, heading }: PropType) {
             <select
               id=""
               {...register("activity", { required: true })}
-              className="bg-transparent text-sm block w-full border-none outline-none px-2"
+              className="bg-transparent text-sm block text-mainColor w-full border-none outline-none px-2"
             >
               {options.map((opt) => (
-                <option value={opt}>{opt}</option>
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
+                </option>
               ))}
             </select>
           </div>

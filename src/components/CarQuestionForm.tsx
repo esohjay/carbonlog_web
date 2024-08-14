@@ -56,6 +56,7 @@ export default function CarQuestionForm({
           <p className={`font-semibold mb-2 text-dark`}>Car size</p>
           <select
             name=""
+            className="bg-transparent text-sm block text-mainColor w-full border outline-none p-2 rounded-md "
             id=""
             onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
               setSize(e.target.value)
@@ -74,6 +75,7 @@ export default function CarQuestionForm({
           <select
             name=""
             id=""
+            className="bg-transparent text-sm block text-mainColor w-full border outline-none p-2 rounded-md "
             onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
               setFuelType(e.target.value)
             }
@@ -97,6 +99,7 @@ export default function CarQuestionForm({
               }
               type="number"
               placeholder="0"
+              className="bg-transparent text-sm block text-mainColor w-full border outline-none p-2 rounded-md "
               // label={"Distance travelled"}
               value={value}
             />
@@ -110,6 +113,7 @@ export default function CarQuestionForm({
                 setUnit(e.target.value)
               }
               value={unit}
+              className="bg-transparent text-sm block text-mainColor w-full border outline-none p-2 rounded-md "
             >
               {unitOptions.map((unit) => (
                 <option key={unit.value} value={unit.value}>
@@ -127,6 +131,7 @@ export default function CarQuestionForm({
                   setPeriod(e.target.value)
                 }
                 value={period}
+                className="bg-transparent text-sm block text-mainColor w-full border outline-none p-2 rounded-md "
               >
                 {periodOption.map((period) => (
                   <option key={period.value} value={period.value}>
