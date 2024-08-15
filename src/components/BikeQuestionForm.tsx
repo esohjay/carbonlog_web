@@ -1,5 +1,4 @@
 type PropType = {
-  setFuelType: (arg: string) => void;
   setPeriod?: (arg: string) => void;
   setUnit: (arg: string) => void;
   setSize: (arg: string) => void;
@@ -8,7 +7,6 @@ type PropType = {
   unit: string;
   size: string;
   value: string;
-  fuelType: string;
   allowPeriod: boolean;
 };
 
@@ -18,17 +16,6 @@ const sizeOptions = [
   { label: "Medium", value: "medium" },
   { label: "Large", value: "large" },
   { label: "Average", value: "average" },
-];
-const fuelOptions = [
-  { label: "Select fuel type", value: "" },
-  { label: "Diesel", value: "diesel" },
-  { label: "Petrol", value: "petrol" },
-  { label: "Hybrid", value: "hybrid" },
-  { label: "CNG", value: "cng" },
-  { label: "LPG", value: "lpg" },
-  { label: "Plugin Hybrid", value: "pluginHybrid" },
-  { label: "Battery Hybrid", value: "batteryHybrid" },
-  { label: "Unknown", value: "unknown" },
 ];
 const unitOptions = [
   { label: "Unit", value: "" },
@@ -40,8 +27,7 @@ const periodOption = [
   { label: "Monthly", value: "monthly" },
   { label: "Yearly", value: "yearly" },
 ];
-export default function CarQuestionForm({
-  setFuelType,
+export default function BikeQuestionForm({
   setPeriod,
   setUnit,
   setSize,
@@ -50,13 +36,12 @@ export default function CarQuestionForm({
   unit,
   size,
   value,
-  fuelType,
   allowPeriod,
 }: PropType) {
   return (
     <section>
       <section className={`flex flex-row gap-x-3 mb-3`}>
-        <div className={`w-1/3`}>
+        <div className={`w-2/3`}>
           <p className={`font-semibold mb-2 text-dark`}>Car size</p>
           <select
             name=""
@@ -70,24 +55,6 @@ export default function CarQuestionForm({
             {sizeOptions.map((size) => (
               <option key={size.value} value={size.value}>
                 {size.label}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className={`w-1/2`}>
-          <p className={`font-semibold mb-2 text-dark`}>Fuel type</p>
-          <select
-            name=""
-            id=""
-            className="bg-transparent text-sm block text-mainColor w-full border outline-none p-2 rounded-md "
-            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-              setFuelType(e.target.value)
-            }
-            value={fuelType}
-          >
-            {fuelOptions.map((fuel) => (
-              <option key={fuel.value} value={fuel.value}>
-                {fuel.label}
               </option>
             ))}
           </select>

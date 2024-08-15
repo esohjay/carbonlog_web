@@ -24,7 +24,7 @@ export const useSurveyActions = () => {
       dispatch({ type: CREATE_SURVEY_REQUEST });
       const token = await auth?.currentUser?.getIdToken();
       const response = await fetch(
-        `${process.env.EXPO_PUBLIC_BACKEND_URL}/api/v1/survey`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/survey`,
         {
           method: "POST",
           headers: {

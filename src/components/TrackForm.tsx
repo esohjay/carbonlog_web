@@ -43,6 +43,7 @@ export default function TrackForm({ options, category, heading }: PropType) {
     formState: { errors },
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (data) => {
+    console.log(data);
     addActivity({ ...data, category });
     reset();
   };

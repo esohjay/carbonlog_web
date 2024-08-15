@@ -53,14 +53,18 @@ function Nav() {
         </NavLink>
 
         <NavLink
-          to="/act"
+          to={`/${state.user?.uid}/act`}
           className={({ isActive }) =>
             isActive
               ? "text-mainColor flex aspect-square text-2xl  flex-col items-center justify-center gap-y-1 "
               : "text-mainColor flex aspect-square text-2xl  flex-col items-center justify-center gap-y-1 "
           }
         >
-          {pathname === "/act" ? <IoMedal /> : <IoMedalOutline />}
+          {pathname === `/${state.user?.uid}/act` ? (
+            <IoMedal />
+          ) : (
+            <IoMedalOutline />
+          )}
           <small className="text-center text-xs font-medium"> Act </small>
         </NavLink>
         <NavLink

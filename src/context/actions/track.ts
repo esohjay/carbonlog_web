@@ -33,7 +33,7 @@ export const useTrackActions = () => {
       dispatch({ type: ADD_ACTIVITY_REQUEST });
       const token = await auth?.currentUser?.getIdToken();
       const response = await fetch(
-        `${process.env.EXPO_PUBLIC_BACKEND_URL}/api/v1/track`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/track`,
         {
           method: "POST",
           headers: {
@@ -59,7 +59,7 @@ export const useTrackActions = () => {
       dispatch({ type: ADD_ACTIVITY_REQUEST });
       const token = await auth?.currentUser?.getIdToken();
       const response = await fetch(
-        `${process.env.EXPO_PUBLIC_BACKEND_URL}/api/v1/track/travel`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/track/travel`,
         {
           method: "POST",
           headers: {
@@ -83,9 +83,9 @@ export const useTrackActions = () => {
   const getActivity = async () => {
     try {
       dispatch({ type: GET_ACTIVITY_REQUEST });
-      const token = await auth?.currentUser?.getIdToken();
+      const token = await auth?.currentUser?.getIdToken(true);
       const response = await fetch(
-        `${process.env.EXPO_PUBLIC_BACKEND_URL}/api/v1/track`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/track`,
         {
           method: "GET",
           headers: {
@@ -108,7 +108,7 @@ export const useTrackActions = () => {
     try {
       dispatch({ type: DELETE_ACTIVITY_REQUEST });
       const token = await auth?.currentUser?.getIdToken();
-      await fetch(`${process.env.EXPO_PUBLIC_BACKEND_URL}/api/v1/track`, {
+      await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/track`, {
         method: "DELETE",
         headers: {
           Accept: "application/json",

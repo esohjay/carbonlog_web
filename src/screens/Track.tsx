@@ -1,4 +1,4 @@
-import { useMemo, useRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "../components/Image";
 // import Btn from "../components/Button";
 import TrackCategoryCard from "../components/TrackCategoryCard";
@@ -43,7 +43,6 @@ function TrackScreen() {
   const { state, dispatch } = useTrackContext();
   const {
     activityList,
-    fetchingActivity,
     activityFetched,
     activityAdded,
     activity,
@@ -58,9 +57,6 @@ function TrackScreen() {
     shopping: { sum: 0, data: [] },
   });
   const { getActivity } = useTrackActions();
-  const snapPoints = useMemo(() => ["80%"], []);
-  const listSnapPoints = useMemo(() => ["65%", "80%", "95%"], []);
-
   // function handleShowModal(ref) {
   //   ref?.present();
   // }
@@ -71,24 +67,25 @@ function TrackScreen() {
     }
   }, [activityFetched]);
   const sumEmission = (category: Activity[]) => {
-    return category.reduce(
+    return category?.reduce(
       (accumulator, categoryData) => accumulator + categoryData.emission,
       0
     );
   };
+
   useEffect(() => {
     if (activityFetched && activityList) {
       const { travel, home, foodAndDrink, shopping } = activityList;
       setCategories({
-        home: { data: home, sum: Number(sumEmission(home).toFixed(2)) },
-        travel: { data: travel, sum: Number(sumEmission(travel).toFixed(2)) },
+        home: { data: home, sum: Number(sumEmission(home)?.toFixed(2)) },
+        travel: { data: travel, sum: Number(sumEmission(travel)?.toFixed(2)) },
         shopping: {
           data: shopping,
-          sum: Number(sumEmission(shopping).toFixed(2)),
+          sum: Number(sumEmission(shopping)?.toFixed(2)),
         },
         foodAndDrink: {
           data: foodAndDrink,
-          sum: Number(sumEmission(foodAndDrink).toFixed(2)),
+          sum: Number(sumEmission(foodAndDrink)?.toFixed(2)),
         },
       });
       setTotalEmission(
@@ -176,7 +173,7 @@ function TrackScreen() {
                   className={`h-[130px] w-[130px] lg:h-[230px] lg:w-[230px] flex flex-col justify-center items-center rounded-full border-[3px] lg:border-[6px] border-altColor`}
                 >
                   <p className={`font-semibold text-lg text-primaryLight`}>
-                    {totalEmission}
+                    {totalEmission.toFixed(2)}
                     kg
                   </p>{" "}
                   <span className={`text-primaryLight flex items-end`}>

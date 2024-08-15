@@ -38,24 +38,24 @@ export default function ActivityCard({ data, category }: PropType) {
     <section style={{ flex: 1 }}>
       {activity ? (
         <section
-          className={`flex flex-row justify-between gap-x-5  bg-white shadow  rounded-md p-3`}
+          className={`flex flex-row justify-between gap-x-5  bg-white shadow  mb-2 rounded-md p-3`}
         >
-          <article className={`flex gap-y-5`}>
+          <article className={`flex flex-col gap-y-5`}>
             <p className={`capitalize font-semibold text-base text-mainColor`}>
               {formatText(activity)}
             </p>
             <p className={`font-medium text-mainColor text-sm`}>£{amount}</p>
           </article>
-          <article className={`flex gap-y-3 items-end`}>
+          <article className={`flex flex-col gap-y-3 items-end`}>
             <article>
               <p className={`font-semibold text-sm text-dark`}>
                 {emission.toFixed(2)}
                 kg
               </p>
-              <p className={`text-dark font-medium -my-1`}>
-                <p className={`text-sm `}>of C0</p>
-                <p className={`text-xs leading-3`}>2e</p>
-              </p>
+              <span className={`text-dark  flex items-end -my-1`}>
+                <p className={`text-sm font-medium`}>of C0</p>
+                <p className={`text-xs font-medium leading-3`}>2e</p>
+              </span>
             </article>
             <button
               // onPress={createAlert}
@@ -76,9 +76,9 @@ export default function ActivityCard({ data, category }: PropType) {
         </section>
       ) : (
         <section
-          className={`flex flex-row justify-between gap-x-5 bg-white shadow  rounded-md p-3`}
+          className={`flex flex-row justify-between gap-x-5 bg-white shadow mb-2 rounded-md p-3`}
         >
-          <article className={`flex gap-y-5`}>
+          <article className={`flex flex-col gap-y-5`}>
             <p className={`capitalize font-semibold text-base text-mainColor`}>
               {mode === "publicTransport" ? "Public transport" : mode}
             </p>
@@ -91,16 +91,16 @@ export default function ActivityCard({ data, category }: PropType) {
               {unit === "mile" ? "miles" : unit}
             </p>
           </article>
-          <section className={`flex gap-y-3 items-end`}>
+          <section className={`flex flex-col gap-y-3 items-end`}>
             <article>
               <p className={`font-semibold text-sm text-dark`}>
                 {emission.toFixed(2)}
                 kg
               </p>
-              <p className={`text-dark font-medium -my-1`}>
-                <p className={`text-sm `}>of C0</p>
-                <p className={`text-xs leading-3`}>2e</p>
-              </p>
+              <span className={`text-dark  flex items-end -my-1`}>
+                <p className={`text-sm font-medium`}>of C0</p>
+                <p className={`text-xs font-medium leading-3`}>2e</p>
+              </span>
             </article>
             <button
             //   onPress={createAlert}
@@ -114,7 +114,7 @@ export default function ActivityCard({ data, category }: PropType) {
                   // size="small"
                 />
               ) : (
-                <AiOutlineDelete />
+                <AiOutlineDelete name="delete-outline" size={18} color="red" />
               )}
             </button>
           </section>

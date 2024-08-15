@@ -45,7 +45,7 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
     return () => unsubscribe();
   }, []);
-  useTokenRefresher(state.user);
+  // useTokenRefresher(state.user);
   return (
     <AuthContext.Provider
       value={{

@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import Btn from "./Button";
 import TrackTravelBtn from "./TrackTravelBtn";
 import CarQuestionForm from "./CarQuestionForm";
-// import BikeQuestionForm from "./BikeQuestionForm";
-// import FlightQuestionForm from "./FlightQuestionForm";
-// import PublicTransportForm from "./PublicTransportForm";
+import BikeQuestionForm from "./BikeQuestionForm";
+import FlightQuestionForm from "./FlightQuestionForm";
+import PublicTransportForm from "./PublicTransportForm";
 import { useTrackActions } from "../context/actions/track";
 import { useTrackContext } from "../context/providers/track";
 import { RESET_ACTIVITY } from "../context/constants/track";
@@ -49,22 +49,23 @@ export default function TrackTravel() {
   const setUnit = (unit: string) => {
     setDetail({ ...detail, unit });
   };
-  //   const setFlightValue = (field:string, value:string) => {
-  //     setFlight({
-  //       ...flight,
-  //       [field]: value,
-  //     });
-  //   };
+  const setFlightValue = (field: string, value: string) => {
+    setFlight({
+      ...flight,
+      [field]: value,
+    });
+  };
 
-  //   const setPublicTransportValue = (field:string, value:string) => {
-  //     setPublicTransport({
-  //       ...publicTransport,
-  //       [field]: value,
-  //     });
-  //   };
+  const setPublicTransportValue = (field: string, value: string) => {
+    setPublicTransport({
+      ...publicTransport,
+      [field]: value,
+    });
+  };
 
   const handleSubmit = () => {
     if (mode === CAR) {
+      console.log(detail);
       if (
         detail.fuelType &&
         detail.size &&
@@ -168,9 +169,8 @@ export default function TrackTravel() {
           <TrackTravelBtn mode={PUBLIC} currentMode={mode} setMode={setMode} />
         </div>
         <div className={`pt-5 pb-3`}>
-          {/* {mode === BIKE && (
+          {mode === BIKE && (
             <BikeQuestionForm
-              setPeriod={null}
               setSize={setSize}
               setUnit={setUnit}
               setValue={setValue}
@@ -180,7 +180,7 @@ export default function TrackTravel() {
               size={detail.size}
               allowPeriod={false}
             />
-          )} */}
+          )}
           {mode === CAR && (
             <CarQuestionForm
               setFuelType={setFuelType}
@@ -195,21 +195,21 @@ export default function TrackTravel() {
               allowPeriod={false}
             />
           )}
-          {/* {mode === FLIGHT && (
+          {mode === FLIGHT && (
             <FlightQuestionForm
               setValue={setFlightValue}
               trip={flight.trip}
               distance={flight.distance}
             />
-          )} */}
-          {/* {mode === PUBLIC && (
+          )}
+          {mode === PUBLIC && (
             <PublicTransportForm
               setValue={setPublicTransportValue}
               distance={publicTransport.distance}
               transportMode={publicTransport.transportMode}
               unit={publicTransport.unit}
             />
-          )} */}
+          )}
         </div>
         <p className={`text-red-500 py-2 `}>{errMsg}</p>
         {state.activityAdded && (

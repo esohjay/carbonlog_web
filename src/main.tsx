@@ -8,6 +8,7 @@ import Login from "./screens/Login.tsx";
 import Register from "./screens/Register.tsx";
 import Home from "./screens/Home.tsx";
 import Track from "./screens/Track.tsx";
+import Action from "./screens/Action.tsx";
 import { AuthProvider } from "./context/providers/auth.tsx";
 import { SurveyProvider } from "./context/providers/survey.tsx";
 import { CampaignProvider } from "./context/providers/campaign.tsx";
@@ -47,13 +48,18 @@ const router = createBrowserRouter([
         element: <Track />,
         path: "track",
       },
+      {
+        index: true,
+        element: <Action />,
+        path: "act",
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <AuthProvider>
+  <AuthProvider>
+    <React.StrictMode>
       <CampaignProvider>
         <SurveyProvider>
           <ActionProvider>
@@ -63,6 +69,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           </ActionProvider>
         </SurveyProvider>
       </CampaignProvider>
-    </AuthProvider>
-  </React.StrictMode>
+    </React.StrictMode>
+  </AuthProvider>
 );
