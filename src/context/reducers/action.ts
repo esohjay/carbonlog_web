@@ -8,6 +8,9 @@ import {
   GET_LOGGED_ACTION_FAIL,
   GET_LOGGED_ACTION_REQUEST,
   GET_LOGGED_ACTION_SUCCESS,
+  GET_MY_ACTION_REQUEST,
+  GET_MY_ACTION_SUCCESS,
+  GET_MY_ACTION_FAIL,
   RESET_ACTION_LOGGING,
 } from "../constants/action";
 import { ActionState, ActionsAction } from "../../types/action";
@@ -35,6 +38,21 @@ export const ActionReducer = (state: ActionState, action: ActionsAction) => {
         actionList: action.payload,
       };
     case GET_ALL_ACTION_FAIL:
+      return {
+        ...state,
+        fetchingAction: false,
+        actionError: action.payload,
+      };
+    case GET_MY_ACTION_REQUEST:
+      return { ...state, fetchingAction: true };
+    case GET_MY_ACTION_SUCCESS:
+      return {
+        ...state,
+        fetchingAction: false,
+        myActionsFetched: true,
+        myActions: action.payload,
+      };
+    case GET_MY_ACTION_FAIL:
       return {
         ...state,
         fetchingAction: false,

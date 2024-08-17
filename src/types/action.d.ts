@@ -16,6 +16,8 @@ export interface ActionState {
   actionError: ErrorType | null;
   addingAction: boolean;
   fetchingAction: boolean;
+  myActions: MyAction | null;
+  myActionsFetched: boolean;
 }
 
 export interface Action {
@@ -26,5 +28,14 @@ export interface Action {
   id: string;
   emission: number;
   point: number;
+  timestamp?: Timestamp;
+}
+export interface MyAction {
+  title: string;
+  category: string;
+  attemptCount: number;
+  carbonSaved: number;
+  pointsEarned: number;
+  emission: number;
   timestamp?: Timestamp;
 }

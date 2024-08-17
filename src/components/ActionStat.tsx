@@ -3,13 +3,13 @@ import { IconType } from "react-icons";
 type PropType = {
   bgColor: string;
   text: string;
-  value: number;
+  value: number | string;
   Icon: IconType;
 };
 
 function ActionStat({ bgColor, text, Icon, value }: PropType) {
   return (
-    <section className={`flex gap-x-1 items-center w-[31%]`}>
+    <section className={`flex flex-col gap-x-1 items-center w-[31%]`}>
       <div
         className={`h-10 w-10 rounded-full bg-[${bgColor}] flex items-center justify-center `}
       >

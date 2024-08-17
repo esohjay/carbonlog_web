@@ -19,6 +19,8 @@ const initialState: ActionState = {
   actionError: null,
   addingAction: false,
   fetchingAction: false,
+  myActions: null,
+  myActionsFetched: false,
 };
 const ActionProvider: React.FC<{ children: React.ReactNode }> = ({
   children,

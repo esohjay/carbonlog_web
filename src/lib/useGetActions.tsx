@@ -64,7 +64,8 @@ export default function useGetActions() {
         treeCount,
       });
     }
-  }, [actions]);
+  }, [actions.length]);
+  console.log(actions);
   useEffect(() => {
     if (actionSummary) {
       setPointDetails(getPointTarget(actionSummary.pointsEarned));

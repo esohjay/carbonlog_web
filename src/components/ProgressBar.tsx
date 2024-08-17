@@ -1,5 +1,5 @@
 type PropType = {
-  variant: "success" | "default" | "warning" | "destructive";
+  variant?: "success" | "default" | "warning" | "destructive";
   progress: number;
   containerStyle: string;
   barStyle: string;
