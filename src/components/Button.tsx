@@ -51,7 +51,7 @@ function Btn({
         mode === "block" ? block : inline
       } font-semibold uppercase ${textSize}`}
     >
-      {Icon && <Icon className="text-sm text-mainColor" />}
+      {Icon && <Icon className="text-sm " />}
       {isLoading ? (
         <span className="inline-flex items-center justify-center gap-x-2">
           <Spinner isFullWidth={loaderText ? false : true} />{" "}

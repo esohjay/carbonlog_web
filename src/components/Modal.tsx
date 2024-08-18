@@ -7,11 +7,7 @@ type PropType = {
   isOpen: boolean;
   closeModal: (arg: string) => void;
 };
-export const TrackModal: React.FC<PropType> = ({
-  children,
-  isOpen,
-  closeModal,
-}) => {
+export const Modal: React.FC<PropType> = ({ children, isOpen, closeModal }) => {
   // const [isOpen, setOpen] = useState(false);
   const ref = useRef<SheetRef>();
   const snapTo = (i: number) => ref.current?.snapTo(i);

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Image from "../components/Image";
 // import Btn from "../components/Button";
 import TrackCategoryCard from "../components/TrackCategoryCard";
-import { TrackModal } from "../components/TrackModal";
+import { Modal } from "../components/Modal";
 import { useTrackActions } from "../context/actions/track";
 import { useTrackContext } from "../context/providers/track";
 import {
@@ -254,24 +254,21 @@ function TrackScreen() {
             handleListBtn={() => setShowCategory(SHOPPINGLIST)}
           />
         </article>
-        <TrackModal isOpen={showCategory === HOME} closeModal={setShowCategory}>
+        <Modal isOpen={showCategory === HOME} closeModal={setShowCategory}>
           <TrackForm
             category={"home"}
             options={homeOptions}
             heading={"Emissions from activities in your home"}
           />
-        </TrackModal>
-        <TrackModal
-          isOpen={showCategory === SHOPPING}
-          closeModal={setShowCategory}
-        >
+        </Modal>
+        <Modal isOpen={showCategory === SHOPPING} closeModal={setShowCategory}>
           <TrackForm
             category={"shopping"}
             options={shoppingOptions}
             heading={"Emissions from expenses on lifestyle"}
           />
-        </TrackModal>
-        <TrackModal
+        </Modal>
+        <Modal
           isOpen={showCategory === FOODANDDRINK}
           closeModal={setShowCategory}
         >
@@ -280,26 +277,20 @@ function TrackScreen() {
             options={foodAndDrinkOptions}
             heading={"Emissions from food and drink consumption"}
           />
-        </TrackModal>
-        <TrackModal
-          isOpen={showCategory === TRAVEL}
-          closeModal={setShowCategory}
-        >
+        </Modal>
+        <Modal isOpen={showCategory === TRAVEL} closeModal={setShowCategory}>
           <TrackTravel />
-        </TrackModal>
+        </Modal>
         {/* Activity Lists */}
-        <TrackModal
-          isOpen={showCategory === HOMELIST}
-          closeModal={setShowCategory}
-        >
+        <Modal isOpen={showCategory === HOMELIST} closeModal={setShowCategory}>
           <ActivityList
             sliderData={categories.home.data}
             heading={"Home activities"}
             total={categories.home.sum}
             category={"home"}
           />
-        </TrackModal>
-        <TrackModal
+        </Modal>
+        <Modal
           isOpen={showCategory === SHOPPINGLIST}
           closeModal={setShowCategory}
         >
@@ -309,8 +300,8 @@ function TrackScreen() {
             total={categories.shopping.sum}
             category={"shopping"}
           />
-        </TrackModal>
-        <TrackModal
+        </Modal>
+        <Modal
           isOpen={showCategory === TRAVELLIST}
           closeModal={setShowCategory}
         >
@@ -320,8 +311,8 @@ function TrackScreen() {
             total={categories.travel.sum}
             category={"travel"}
           />
-        </TrackModal>
-        <TrackModal
+        </Modal>
+        <Modal
           isOpen={showCategory === FOODANDDRINKLIST}
           closeModal={setShowCategory}
         >
@@ -331,7 +322,7 @@ function TrackScreen() {
             total={categories.foodAndDrink.sum}
             category={"foodAndDrink"}
           />
-        </TrackModal>
+        </Modal>
       </article>
     </main>
   );

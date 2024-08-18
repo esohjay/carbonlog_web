@@ -16,13 +16,14 @@ export interface ActionState {
   actionError: ErrorType | null;
   addingAction: boolean;
   fetchingAction: boolean;
-  myActions: MyAction | null;
+  myActions: MyAction[] | null;
   myActionsFetched: boolean;
 }
+type Category = "energy" | "shopping" | "food" | "travel";
 
 export interface Action {
   title: string;
-  category: string;
+  category: Category;
   description: string;
   sdg: number[];
   id: string;

@@ -1,5 +1,5 @@
 import { Badge } from "./Badge";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Action } from "../types/action";
 
 type PropType = {
@@ -9,15 +9,16 @@ type PropType = {
 
 function ActionCard({ data, isFullWidth = false }: PropType) {
   const navigate = useNavigate();
+  const { userId } = useParams();
   const { title, category, description, sdg, id, emission, point } = data;
   return (
     <article
-      onClick={() => navigate(`action/${id}`)}
+      onClick={() => navigate(`/${userId}/action/${id}`)}
       className={`shadow bg-white p-3 rounded-lg shrink-0  ${
         isFullWidth ? "w-full" : "w-[300px]"
       }`}
     >
-      <p className={`font-semibold text-lg mb-2 text-dark`}>{title}</p>
+      <p className={`font-semibold lg:text-lg mb-2 text-dark`}>{title}</p>
       <div className={`flex flex-row justify-start gap-2 mb-3 flex-wrap`}>
         <Badge text={category} variant="success" textStyle={`capitalize`} />
         <div className={`flex gap-x-1 flex-row items-center flex-wrap`}>
@@ -29,7 +30,7 @@ function ActionCard({ data, isFullWidth = false }: PropType) {
           })}
         </div>
       </div>
-      <p className={`text-mainColor text-sm font-normal mb-3`}>
+      <p className={`text-mainColor text-xs lg:text-sm font-normal mb-3`}>
         {description.substring(0, 65)}...
       </p>
       <div className={`flex flex-row justify-between items-center`}>

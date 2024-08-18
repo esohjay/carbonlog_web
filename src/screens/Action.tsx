@@ -10,9 +10,11 @@ import { IoTrophy } from "react-icons/io5";
 import { IoCloud } from "react-icons/io5";
 import LinkBtn from "../components/LinkBtn";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function ActScreen({}) {
   const { actionSummary, actions, pointDetails } = useGetActions();
+  const { userId } = useParams();
   //   const navigate = useNavigate()
 
   return (
@@ -60,19 +62,22 @@ function ActScreen({}) {
 
         <div className={`flex flex-col items-start gap-y-3 py-5`}>
           <p className={`text-lg font-bold text-mainColor`}>Recent action</p>
-          {actions.length > 0 && <MyActionCard data={actions[0]} />}
+          {actions && actions.length > 0 && <MyActionCard data={actions[0]} />}
 
           <LinkBtn
             text={"See my actions"}
             variant="fill"
-            path="all"
+            path={`/${userId}/my-actions`}
             mode="inline"
           />
         </div>
         <div className={`h-[1px] bg-gray-200 w-full`}></div>
         <div className={`pt-5 pb-2 flex justify-between flex-row items-center`}>
           <p className={`text-lg font-bold text-mainColor`}>Actions</p>
-          <Link className={`text-secondaryAlt text-base font-normal`} to={""}>
+          <Link
+            className={`text-secondaryAlt text-base font-normal`}
+            to={`/${userId}/all-actions`}
+          >
             See all
           </Link>
         </div>
@@ -82,7 +87,7 @@ function ActScreen({}) {
             text={"See all actions"}
             mode="inline"
             // className={`w-2/3`}
-            path="all"
+            path={`/${userId}/all-actions`}
           />
         </div>
         {/* <BottomSheetModal

@@ -9,11 +9,14 @@ import Register from "./screens/Register.tsx";
 import Home from "./screens/Home.tsx";
 import Track from "./screens/Track.tsx";
 import Action from "./screens/Action.tsx";
+import ActDetails from "./screens/ActionDetail.tsx";
+import AllActionsScreen from "./screens/AllActions.tsx";
 import { AuthProvider } from "./context/providers/auth.tsx";
 import { SurveyProvider } from "./context/providers/survey.tsx";
 import { CampaignProvider } from "./context/providers/campaign.tsx";
 import { ActionProvider } from "./context/providers/action.tsx";
 import { TrackProvider } from "./context/providers/track.tsx";
+import MyActions from "./screens/MyActions.tsx";
 import Template from "./screens/Template.tsx";
 import "./index.css";
 
@@ -44,14 +47,24 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        index: true,
         element: <Track />,
         path: "track",
       },
       {
-        index: true,
         element: <Action />,
         path: "act",
+      },
+      {
+        element: <MyActions />,
+        path: "my-actions",
+      },
+      {
+        element: <AllActionsScreen />,
+        path: "all-actions",
+      },
+      {
+        element: <ActDetails />,
+        path: ":actionId",
       },
     ],
   },

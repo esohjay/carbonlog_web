@@ -3,6 +3,11 @@ import { onSnapshot, collection, orderBy, query } from "firebase/firestore";
 import { useAuthContext } from "../context/providers/auth";
 import { db } from "../lib/firebaseConfig";
 import { getPointTarget } from "../lib/helperFn";
+import {
+  GET_MY_ACTION_REQUEST,
+  GET_MY_ACTION_SUCCESS,
+} from "../context/constants/action";
+import { useActionContext } from "../context/providers/action";
 
 type Action = {
   title: string;
@@ -20,7 +25,9 @@ type PointDetails = {
 };
 export default function useGetActions() {
   const { state } = useAuthContext();
-  const [actions, setActions] = useState<Action[]>([]);
+  const { dispatch, state: actionState } = useActionContext();
+  const { fetchingAction, myActionsFetched, myActions } = actionState;
+  //   const [actions, setActions] = useState<Action[]>([]);
   const [pointDetails, setPointDetails] = useState<PointDetails>();
   const [actionSummary, setActionSummary] = useState({
     pointsEarned: 0,
@@ -31,6 +38,7 @@ export default function useGetActions() {
 
   useEffect(() => {
     if (state.user?.uid) {
+      dispatch({ type: GET_MY_ACTION_REQUEST });
       const userId = state.user.uid;
       const q = query(
         collection(db, "profile", userId, "action-log"),
@@ -41,18 +49,19 @@ export default function useGetActions() {
           ...(doc.data() as Omit<Action, "id">),
           id: doc.id,
         }));
-        setActions(fetchedActions);
+        dispatch({ type: GET_MY_ACTION_SUCCESS, payload: fetchedActions });
+        // setActions(fetchedActions);
       });
       return () => unsubscribe();
     }
-  }, []);
+  }, [state?.user?.uid]);
   useEffect(() => {
-    if (actions) {
+    if (myActionsFetched && myActions) {
       const carbonPerTree = 22;
       let carbonSaved = 0;
       let pointsEarned = 0;
-      const actionTaken = actions.length;
-      for (let action of actions) {
+      const actionTaken = myActions.length;
+      for (let action of myActions) {
         pointsEarned += action.pointsEarned;
         carbonSaved += action.carbonSaved;
       }
@@ -64,12 +73,17 @@ export default function useGetActions() {
         treeCount,
       });
     }
-  }, [actions.length]);
-  console.log(actions);
+  }, [myActionsFetched]);
+  console.log(myActions);
   useEffect(() => {
     if (actionSummary) {
       setPointDetails(getPointTarget(actionSummary.pointsEarned));
     }
   }, [actionSummary]);
-  return { actionSummary, actions, pointDetails };
+  return {
+    actionSummary,
+    actions: myActions,
+    pointDetails,
+    isFetching: fetchingAction,
+  };
 }
