@@ -17,7 +17,7 @@ export interface CampaignState {
   campaignError: ErrorType | null;
   addingCampaign: boolean;
   fetchingCampaign: boolean;
-  joinedCampaignList: JoinedCampaign | null;
+  joinedCampaignList: Campaign[] | null;
   joinedCampaignFetched: boolean;
   fetchingJoinedCampaign: boolean;
   joined: boolean;

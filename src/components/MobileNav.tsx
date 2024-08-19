@@ -68,14 +68,18 @@ function Nav() {
           <small className="text-center text-xs font-medium"> Act </small>
         </NavLink>
         <NavLink
-          to="/campaign"
+          to={`/${state.user?.uid}/campaign`}
           className={({ isActive }) =>
             isActive
               ? "text-mainColor flex aspect-square text-2xl  flex-col items-center justify-center gap-y-1 "
               : "text-mainColor flex aspect-square text-2xl  flex-col items-center justify-center gap-y-1 "
           }
         >
-          {pathname === "/campaign" ? <IoLeaf /> : <IoLeafOutline />}
+          {pathname === `/${state.user?.uid}/campaign` ? (
+            <IoLeaf />
+          ) : (
+            <IoLeafOutline />
+          )}
           <small className="text-center text-xs font-medium"> Campaign </small>
         </NavLink>
         <NavLink
