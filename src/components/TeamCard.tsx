@@ -23,9 +23,9 @@ export default function TeamCard({ data, isFullWidth = true }: PropType) {
     >
       <section className={`bg-white`}>
         <article className={`flex gap-x-3 flex-row items-center`}>
-          <TextAbbrevavtion text={title} />
+          <TextAbbrevavtion text={title} size="w-12 h-12" textSize="text-xl" />
           <p
-            className={`text-xl font-bold text-mainColor flex flex-wrap flex-1`}
+            className={`text-lg lg:text-xl font-bold text-mainColor flex flex-wrap flex-1`}
           >
             {title}
           </p>

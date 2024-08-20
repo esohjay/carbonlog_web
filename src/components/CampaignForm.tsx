@@ -40,7 +40,7 @@ export default function CampaignForm({ closeForm }: { closeForm: () => void }) {
     }
   }, [state.campaignAdded]);
   return (
-    <section className={``}>
+    <section className={`p-5 bg-white`}>
       <p className={`font-semibold text-base mb-2 text-mainColor`}>
         Start a campaign
       </p>
