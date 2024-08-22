@@ -19,7 +19,7 @@ type ActionCategory = {
 };
 
 const categories: Category[] = ["energy", "shopping", "food", "travel"];
-export default function AllActionsScreen() {
+export default function AllCampaignScreen() {
   const { getActions } = useActionActions();
   const { state } = useActionContext();
   const [searchOpened, setSearchOpened] = useState("");

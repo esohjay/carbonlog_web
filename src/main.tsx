@@ -13,6 +13,7 @@ import ActDetails from "./screens/ActionDetail.tsx";
 import AllActionsScreen from "./screens/AllActions.tsx";
 import CampaignContainer from "./screens/CampaignContainer.tsx";
 import CampaignScreen from "./screens/Campaign.tsx";
+import AllCampaignScreen from "./screens/AllCampaigns.tsx";
 import { AuthProvider } from "./context/providers/auth.tsx";
 import { SurveyProvider } from "./context/providers/survey.tsx";
 import { CampaignProvider } from "./context/providers/campaign.tsx";
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
           {
             element: <CampaignScreen />,
             index: true,
+          },
+          {
+            element: <AllCampaignScreen />,
+            path: "all",
           },
         ],
       },
