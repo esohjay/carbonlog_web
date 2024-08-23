@@ -1,9 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  createRoutesFromElements,
+  Route,
+} from "react-router-dom";
 import ErrorPage from "./error.tsx";
-import Greeting from "./Greeting.tsx";
+import Root from "./Root.tsx";
 import Login from "./screens/Login.tsx";
 import Register from "./screens/Register.tsx";
 import Home from "./screens/Home.tsx";
@@ -14,6 +19,7 @@ import AllActionsScreen from "./screens/AllActions.tsx";
 import CampaignContainer from "./screens/CampaignContainer.tsx";
 import CampaignScreen from "./screens/Campaign.tsx";
 import AllCampaignScreen from "./screens/AllCampaigns.tsx";
+import CampaignDetails from "./screens/CampaignDetails.tsx";
 import { AuthProvider } from "./context/providers/auth.tsx";
 import { SurveyProvider } from "./context/providers/survey.tsx";
 import { CampaignProvider } from "./context/providers/campaign.tsx";
@@ -22,70 +28,93 @@ import { TrackProvider } from "./context/providers/track.tsx";
 import MyActions from "./screens/MyActions.tsx";
 import Template from "./screens/Template.tsx";
 import "./index.css";
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
+      <Route path="" index element={<App />} />
+      <Route path="login" element={<Login />} />
+      <Route path="sign-up" element={<Register />} />
+      <Route path=":userId" element={<Template />}>
+        <Route path="" index element={<Home />} />
+        <Route path="track" element={<Track />} />
+        <Route path="act" element={<Action />} />
+        <Route path="my-actions" element={<MyActions />} />
+        <Route path="all-actions" element={<AllActionsScreen />} />
+        <Route path=":actionsId" element={<ActDetails />} />
+        <Route element={<CampaignContainer />} path="campaign">
+          <Route index element={<CampaignScreen />} />
+          <Route path=":campaignId" element={<CampaignDetails />} />
+        </Route>
+        <Route path="all-campaign" element={<AllCampaignScreen />} />
+      </Route>
+    </Route>
+  )
+);
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "greet",
-    element: <Greeting />,
-  },
-  {
-    path: "login",
-    element: <Login />,
-  },
-  {
-    path: "sign-up",
-    element: <Register />,
-  },
-  {
-    path: ":userId",
-    element: <Template />,
-    children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-      {
-        element: <Track />,
-        path: "track",
-      },
-      {
-        element: <Action />,
-        path: "act",
-      },
-      {
-        element: <MyActions />,
-        path: "my-actions",
-      },
-      {
-        element: <AllActionsScreen />,
-        path: "all-actions",
-      },
-      {
-        element: <ActDetails />,
-        path: ":actionId",
-      },
-      {
-        element: <CampaignContainer />,
-        path: "campaign",
-        children: [
-          {
-            element: <CampaignScreen />,
-            index: true,
-          },
-          {
-            element: <AllCampaignScreen />,
-            path: "all",
-          },
-        ],
-      },
-    ],
-  },
-]);
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <App />,
+//     errorElement: <ErrorPage />,
+//   },
+//   {
+//     path: "greet",
+//     element: <Greeting />,
+//   },
+//   {
+//     path: "login",
+//     element: <Login />,
+//   },
+//   {
+//     path: "sign-up",
+//     element: <Register />,
+//   },
+//   {
+//     path: ":userId",
+//     element: <Template />,
+//     children: [
+//       {
+//         index: true,
+
+//         element: <Home />,
+//       },
+//       {
+//         element: <Track />,
+//         path: "track",
+//       },
+//       {
+//         element: <Action />,
+//         path: "act",
+//       },
+//       {
+//         element: <MyActions />,
+//         path: "my-actions",
+//       },
+//       {
+//         element: <AllActionsScreen />,
+//         path: "all-actions",
+//       },
+//       {
+//         element: <ActDetails />,
+//         path: ":actionId",
+//       },
+//       {
+//         element: <CampaignContainer />,
+//         path: "campaign",
+//         children: [
+//           {
+//             element: <CampaignScreen />,
+//             index: true,
+//           },
+//           {
+//             element: <AllCampaignScreen />,
+//             path: "campaign/all",
+//           },
+//         ],
+//       },
+//     ],
+//   },
+// ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <AuthProvider>

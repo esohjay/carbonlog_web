@@ -34,7 +34,14 @@ function Nav() {
           ) : (
             <RiHome5Line />
           )}
-          <small className="text-center text-xs font-medium"> Home </small>
+          <small
+            className={`text-center text-xs ${
+              pathname === `/${state.user?.uid}` ? "font-bold" : "font-medium"
+            } `}
+          >
+            {" "}
+            Home{" "}
+          </small>
         </NavLink>
         <NavLink
           to={`/${state.user?.uid}/track`}
@@ -49,7 +56,15 @@ function Nav() {
           ) : (
             <AiOutlineDashboard />
           )}
-          <small className="text-center text-xs font-medium">Track</small>
+          <small
+            className={`text-center text-xs ${
+              pathname === `/${state.user?.uid}/track`
+                ? "font-bold"
+                : "font-medium"
+            } `}
+          >
+            Track
+          </small>
         </NavLink>
 
         <NavLink
@@ -65,7 +80,16 @@ function Nav() {
           ) : (
             <IoMedalOutline />
           )}
-          <small className="text-center text-xs font-medium"> Act </small>
+          <small
+            className={`text-center text-xs ${
+              pathname === `/${state.user?.uid}/act`
+                ? "font-bold"
+                : "font-medium"
+            } `}
+          >
+            {" "}
+            Act{" "}
+          </small>
         </NavLink>
         <NavLink
           to={`/${state.user?.uid}/campaign`}
@@ -80,7 +104,15 @@ function Nav() {
           ) : (
             <IoLeafOutline />
           )}
-          <small className="text-center text-xs font-medium"> Campaign </small>
+          <small
+            className={`text-center text-xs ${
+              pathname === `/${state.user?.uid}/campaign`
+                ? "font-bold"
+                : "font-medium"
+            } `}
+          >
+            Campaign
+          </small>
         </NavLink>
         <NavLink
           to="/settings"
@@ -91,7 +123,16 @@ function Nav() {
           }
         >
           {pathname === "/settings" ? <IoSettings /> : <IoSettingsOutline />}
-          <small className="text-center text-xs font-medium"> Settings </small>
+          <small
+            className={`text-center text-xs ${
+              pathname === `/${state.user?.uid}/settings`
+                ? "font-bold"
+                : "font-medium"
+            } `}
+          >
+            {" "}
+            Settings{" "}
+          </small>
         </NavLink>
       </nav>
     </div>

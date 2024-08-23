@@ -72,7 +72,7 @@ function CampaignScreen() {
             Your teams
           </p>
           {state?.joinedCampaignList && state?.joinedCampaignList?.length ? (
-            <section className={`flex gap-y-3 `}>
+            <section className={`flex flex-col gap-y-3 `}>
               {/* Change to flatlist */}
               {state?.joinedCampaignList?.map((campaign) => (
                 <TeamCard
@@ -98,7 +98,7 @@ function CampaignScreen() {
             <p className={`text-xl text-mainColor font-bold mb-3`}>Campaigns</p>
             <Link
               className={`text-secondaryAlt text-base font-normal`}
-              to={"/"}
+              to={"all-campaign"}
             >
               See all
             </Link>

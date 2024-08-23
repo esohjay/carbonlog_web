@@ -1,57 +1,15 @@
-import { useEffect, useState } from "react";
-import { useActionActions } from "../context/actions/action";
-import { useActionContext } from "../context/providers/action";
-import AllActions from "../components/AllActions";
-import { Action } from "../types/action";
+import { useState } from "react";
 import { Modal } from "../components/Modal";
-import SearchAction from "../components/SearchAction";
+import SearchCampaign from "../components/SearchCampaign";
 import Btn from "../components/Button";
 import { LuSearch } from "react-icons/lu";
 import BackButton from "../components/BackButton";
 import TeamCard from "../components/TeamCard";
+import { useCampaignContext } from "../context/providers/campaign";
 
-type Category = "energy" | "shopping" | "food" | "travel";
-type ActionCategory = {
-  food: Action[] | null;
-  energy: Action[] | null;
-  travel: Action[] | null;
-  shopping: Action[] | null;
-};
-
-const categories: Category[] = ["energy", "shopping", "food", "travel"];
 export default function AllCampaignScreen() {
-  const { getActions } = useActionActions();
-  const { state } = useActionContext();
   const [searchOpened, setSearchOpened] = useState("");
-  const [currentCategory, setCurrentCategory] = useState(categories[0]);
-  const [actionsCategories, setActionsCategories] = useState<ActionCategory>({
-    food: null,
-    energy: null,
-    travel: null,
-    shopping: null,
-  });
-  useEffect(() => {
-    if (!state.actionList) {
-      getActions();
-    }
-  }, [state.actionList]);
-  useEffect(() => {
-    if (state.actionList) {
-      const actionData: ActionCategory = {
-        food: null,
-        energy: null,
-        travel: null,
-        shopping: null,
-      };
-      for (const category of categories) {
-        const filtered = state.actionList.filter(
-          (action) => action.category === category
-        );
-        actionData[category] = filtered;
-      }
-      setActionsCategories(actionData);
-    }
-  }, [state.actionList]);
+  const { state } = useCampaignContext();
 
   return (
     <section className={`lg:py-5`}>
@@ -66,9 +24,15 @@ export default function AllCampaignScreen() {
           onClick={() => setSearchOpened("Opened")}
         />
       </div>
-
+      <section className={`grid grid-cols-1 md:grid-cols-2 gap-3`}>
+        {state?.campaignList &&
+          state?.campaignList?.length &&
+          state.campaignList.map((campaign) => (
+            <TeamCard data={campaign} key={campaign.id} isFullWidth={true} />
+          ))}
+      </section>
       <Modal isOpen={searchOpened === "Opened"} closeModal={setSearchOpened}>
-        <SearchAction />
+        <SearchCampaign />
       </Modal>
     </section>
   );

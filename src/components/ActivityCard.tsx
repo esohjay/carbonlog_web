@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { formatText } from "../lib/formatTrackText";
 import { useTrackActions } from "../context/actions/track";
 import { useTrackContext } from "../context/providers/track";
@@ -5,12 +6,14 @@ import { Activity, ActivityList } from "../types/track";
 import { AiOutlineDelete } from "react-icons/ai";
 import Spinner from "./Spinner";
 import { SET_ACTIVITY_TOBEDELETED } from "../context/constants/track";
+import PopUpModal from "./PopUpModal";
 
 type PropType = {
   data: Activity;
   category: keyof ActivityList;
 };
 export default function ActivityCard({ data, category }: PropType) {
+  const [popUpModalOpened, setPopUpModalOpened] = useState(false);
   const { deleteActivity } = useTrackActions();
   const { state, dispatch } = useTrackContext();
   const { activity, amount, emission, value, mode, unit, id } = data;
@@ -58,7 +61,7 @@ export default function ActivityCard({ data, category }: PropType) {
               </span>
             </article>
             <button
-              // onPress={createAlert}
+              onClick={() => setPopUpModalOpened(true)}
               disabled={state.deletingActivity || state.activityDeleted}
             >
               {(state.deletingActivity || state.activityDeleted) &&
@@ -103,8 +106,8 @@ export default function ActivityCard({ data, category }: PropType) {
               </span>
             </article>
             <button
-            //   onPress={createAlert}
-            //   disabled={state.deletingActivity || state.activityDeleted}
+              onClick={() => setPopUpModalOpened(true)}
+              disabled={state.deletingActivity || state.activityDeleted}
             >
               {(state.deletingActivity || state.activityDeleted) &&
               id === state.toBeDeleted?.id ? (
@@ -120,6 +123,13 @@ export default function ActivityCard({ data, category }: PropType) {
           </section>
         </section>
       )}
+      <PopUpModal
+        controlModal={setPopUpModalOpened}
+        heading="Delete activity?"
+        text="This activity will be deleted permanently"
+        show={popUpModalOpened}
+        onConfirm={handleDelete}
+      />
     </section>
   );
 }

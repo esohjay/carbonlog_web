@@ -3,6 +3,7 @@ import TextAbbrevavtion from "./TextAbbrevation";
 import { Campaign } from "../types/campaign";
 import { Link } from "react-router-dom";
 import { IoPeople } from "react-icons/io5";
+import { useParams } from "react-router-dom";
 
 type PropType = {
   data: Campaign;
@@ -12,11 +13,12 @@ type PropType = {
 export default function TeamCard({ data, isFullWidth = true }: PropType) {
   //   const { state } = useAuthContext();
   //   const navigation = useNavigation();
+  const { userId } = useParams();
   const { title, description, users, id } = data;
 
   return (
     <Link
-      to={`campaign/${id}`}
+      to={`/${userId}/campaign/${id}`}
       className={`${
         isFullWidth ? "w-full" : "w-[300px]"
       } bg-white flex justify-between gap-y-5 shadow rounded-lg p-5`}

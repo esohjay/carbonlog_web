@@ -22,7 +22,6 @@ import {
   SEND_MESSAGE_SUCCESS,
   UPDATE_CAMPAIGN_FAIL,
   UPDATE_CAMPAIGN_REQUEST,
-  UPDATE_CAMPAIGN_RESET,
   UPDATE_CAMPAIGN_SUCCESS,
   DELETE_CAMPAIGN_FAIL,
   DELETE_CAMPAIGN_REQUEST,
@@ -153,31 +152,38 @@ export const useCampaignActions = () => {
       }
     }
   };
-  // const updateCampaign = async (campaign) => {
-  //   try {
-  //     dispatch({ type: UPDATE_CAMPAIGN_REQUEST });
-  //     const token = await auth?.currentUser?.getIdToken();
-  //     const response = await fetch(
-  //       `${import.meta.env.VITE_BACKEND_URL}/api/v1/campaign/${campaign.id}/edit`,
-  //       {
-  //         method: "PUT",
-  //         headers: {
-  //           Accept: "application/json",
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //         body: JSON.stringify(campaign),
-  //       }
-  //     );
-  //     const data = await response.json();
-  //     // const data = await response;
-  //     dispatch({ type: UPDATE_CAMPAIGN_SUCCESS, payload: data });
-  //   } catch (error) {
-  //     const message = handleError(error);
-
-  //     dispatch({ type: UPDATE_CAMPAIGN_FAIL, payload: message });
-  //   }
-  // };
+  const updateCampaign = async (campaign: {
+    title: string;
+    description: string;
+    id: string;
+  }) => {
+    try {
+      dispatch({ type: UPDATE_CAMPAIGN_REQUEST });
+      const token = await auth?.currentUser?.getIdToken();
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/campaign/${
+          campaign.id
+        }/edit`,
+        {
+          method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(campaign),
+        }
+      );
+      const data = await response.json();
+      // const data = await response;
+      dispatch({ type: UPDATE_CAMPAIGN_SUCCESS, payload: data });
+    } catch (error) {
+      if (error instanceof Error) {
+        const message = handleError(error);
+        dispatch({ type: UPDATE_CAMPAIGN_FAIL, payload: message });
+      }
+    }
+  };
   const deleteCampaign = async (campaignId: string) => {
     try {
       dispatch({ type: DELETE_CAMPAIGN_REQUEST });
@@ -285,6 +291,6 @@ export const useCampaignActions = () => {
     getCampaign,
     //   sendMessage,
     deleteCampaign,
-    //   updateCampaign,
+    updateCampaign,
   };
 };
