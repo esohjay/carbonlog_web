@@ -191,13 +191,7 @@ export default function CampaignDetails() {
                       textSize="text-[9px]"
                       text={"go to chat"}
                       Icon={IoChatbubbles}
-                      // isLoading={state.leaving}
-                      // onPress={() =>
-                      //   navigation.navigate("Chat", {
-                      //     title: campaign?.title,
-                      //     campaignId,
-                      //   })
-                      // }
+                      onClick={() => navigate(`chat`)}
                       variant="light"
                     />
                   </div>

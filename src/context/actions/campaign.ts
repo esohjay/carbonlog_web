@@ -25,7 +25,6 @@ import {
   UPDATE_CAMPAIGN_SUCCESS,
   DELETE_CAMPAIGN_FAIL,
   DELETE_CAMPAIGN_REQUEST,
-  DELETE_CAMPAIGN_RESET,
   DELETE_CAMPAIGN_SUCCESS,
 } from "../constants/campaign";
 import { ErrorType } from "../../types/context";
@@ -71,31 +70,34 @@ export const useCampaignActions = () => {
       }
     }
   };
-  // const sendMessage = async (message) => {
-  //   try {
-  //     dispatch({ type: SEND_MESSAGE_REQUEST });
-  //     const token = await auth?.currentUser?.getIdToken();
-  //     const response = await fetch(
-  //       `${import.meta.env.VITE_BACKEND_URL}/api/v1/campaign/${message.id}/conversation`,
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           Accept: "application/json",
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //         body: JSON.stringify(message),
-  //       }
-  //     );
-  //     const data = await response.json();
-  //     // const data = await response;
-  //     dispatch({ type: SEND_MESSAGE_SUCCESS, payload: data });
-  //   } catch (error) {
-  //     const message = handleError(error);
-
-  //     dispatch({ type: SEND_MESSAGE_FAIL, payload: message });
-  //   }
-  // };
+  const sendMessage = async (message: { message: string; id: string }) => {
+    try {
+      dispatch({ type: SEND_MESSAGE_REQUEST });
+      const token = await auth?.currentUser?.getIdToken();
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/campaign/${
+          message.id
+        }/conversation`,
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(message),
+        }
+      );
+      const data = await response.json();
+      // const data = await response;
+      dispatch({ type: SEND_MESSAGE_SUCCESS, payload: data });
+    } catch (error) {
+      if (error instanceof Error) {
+        const message = handleError(error);
+        dispatch({ type: SEND_MESSAGE_FAIL, payload: message });
+      }
+    }
+  };
   const joinCampaign = async (campaignId: string) => {
     try {
       dispatch({ type: JOIN_CAMPAIGN_REQUEST });
@@ -289,7 +291,7 @@ export const useCampaignActions = () => {
     joinCampaign,
     getJoinedCampaigns,
     getCampaign,
-    //   sendMessage,
+    sendMessage,
     deleteCampaign,
     updateCampaign,
   };

@@ -24,19 +24,6 @@ export default function ActivityCard({ data, category }: PropType) {
     });
     deleteActivity({ ...data, category });
   };
-  //   const createAlert = () =>
-  //     Alert.alert(
-  //       "Delete activity?",
-  //       "This activity will be deleted permanently.",
-  //       [
-  //         {
-  //           text: "Cancel",
-  //           onPress: () => console.log("Cancel Pressed"),
-  //           style: "cancel",
-  //         },
-  //         { text: "Delete", onPress: handleDelete },
-  //       ]
-  //     );
   return (
     <section style={{ flex: 1 }}>
       {activity ? (

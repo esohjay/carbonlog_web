@@ -19,6 +19,7 @@ import AllActionsScreen from "./screens/AllActions.tsx";
 import CampaignContainer from "./screens/CampaignContainer.tsx";
 import CampaignScreen from "./screens/Campaign.tsx";
 import AllCampaignScreen from "./screens/AllCampaigns.tsx";
+import Chat from "./screens/Chat.tsx";
 import CampaignDetails from "./screens/CampaignDetails.tsx";
 import { AuthProvider } from "./context/providers/auth.tsx";
 import { SurveyProvider } from "./context/providers/survey.tsx";
@@ -44,6 +45,7 @@ const router = createBrowserRouter(
         <Route element={<CampaignContainer />} path="campaign">
           <Route index element={<CampaignScreen />} />
           <Route path=":campaignId" element={<CampaignDetails />} />
+          <Route path=":campaignId/chat" element={<Chat />} />
         </Route>
         <Route path="all-campaign" element={<AllCampaignScreen />} />
       </Route>
