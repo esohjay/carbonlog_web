@@ -6,9 +6,8 @@ import localizedFormat from "dayjs/plugin/localizedFormat";
 import { db } from "../lib/firebaseConfig";
 import { onSnapshot, collection, orderBy, query } from "firebase/firestore";
 import { useCampaignActions } from "../context/actions/campaign";
-import Btn from "../components/Button";
-import { useParams } from "react-router-dom";
-import { IoSend } from "react-icons/io5";
+import { useParams, useNavigate } from "react-router-dom";
+import { IoSend, IoChevronBackOutline } from "react-icons/io5";
 import { useForm, SubmitHandler } from "react-hook-form";
 dayjs.extend(localizedFormat);
 // dayjs.extend(relativeTime);
@@ -17,9 +16,10 @@ type Inputs = {
 };
 export default function Chat() {
   const chatContainerRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
   const { state: userState } = useAuthContext();
   const { sendMessage } = useCampaignActions();
-  const { title, campaignId } = useParams();
+  const { campaignId } = useParams();
   const [messages, setMessages] = useState<Message[] | null>(null);
   // const [message, setMessage] = useState('')
   //   const splitTitle = title?.split(" ");
@@ -89,7 +89,7 @@ export default function Chat() {
                   </p>
                 )}
                 <p
-                  className={`rounded-full text-sm font-medium  ${
+                  className={`rounded-full text-sm font-normal  ${
                     message.sender.id === userState?.user?.uid
                       ? " text-primaryLight"
                       : "text-mainColor "
@@ -115,7 +115,10 @@ export default function Chat() {
       <section
         className={`flex h-[10%] items-center flex-row justify-between messages-center gap-x-2 absolute bottom-2 left-0 w-full `}
       >
-        <div className={`w-[90%]`}>
+        <button onClick={() => navigate(-1)} className={`w-[7%]`}>
+          <IoChevronBackOutline size={24} color="#7d4f50" />
+        </button>
+        <div className={`w-[83%]`}>
           <div className="flex items-center  p-2 bg-white rounded-md border">
             <input
               {...register("message", { required: true })}

@@ -29,7 +29,7 @@ export const useActionActions = () => {
       dispatch({ type: ADD_ACTION_REQUEST });
       const token = await auth?.currentUser?.getIdToken();
       const response = await fetch(
-        `${process.env.EXPO_PUBLIC_BACKEND_URL}/api/v1/action/log`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/action/log`,
         {
           method: "POST",
           headers: {
@@ -80,7 +80,7 @@ export const useActionActions = () => {
   //     dispatch({ type: GET_LOGGED_ACTION_REQUEST });
   //     const token = await auth?.currentUser?.getIdToken();
   //     const response = await fetch(
-  //       `${process.env.EXPO_PUBLIC_BACKEND_URL}/api/v1/action/loggedAction`,
+  //       `${import.meta.env.VITE_BACKEND_URL}/api/v1/action/loggedAction`,
   //       {
   //         method: "GET",
   //         headers: {

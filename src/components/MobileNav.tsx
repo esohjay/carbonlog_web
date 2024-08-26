@@ -39,8 +39,7 @@ function Nav() {
               pathname === `/${state.user?.uid}` ? "font-bold" : "font-medium"
             } `}
           >
-            {" "}
-            Home{" "}
+            Home
           </small>
         </NavLink>
         <NavLink
@@ -87,8 +86,7 @@ function Nav() {
                 : "font-medium"
             } `}
           >
-            {" "}
-            Act{" "}
+            Act
           </small>
         </NavLink>
         <NavLink
@@ -115,14 +113,18 @@ function Nav() {
           </small>
         </NavLink>
         <NavLink
-          to="/settings"
+          to={`/${state.user?.uid}/settings`}
           className={({ isActive }) =>
             isActive
               ? "text-mainColor flex aspect-square text-2xl  flex-col items-center justify-center gap-y-1 "
               : "text-mainColor flex aspect-square text-2xl  flex-col items-center justify-center gap-y-1 "
           }
         >
-          {pathname === "/settings" ? <IoSettings /> : <IoSettingsOutline />}
+          {pathname === `/${state.user?.uid}/settings` ? (
+            <IoSettings />
+          ) : (
+            <IoSettingsOutline />
+          )}
           <small
             className={`text-center text-xs ${
               pathname === `/${state.user?.uid}/settings`
@@ -130,8 +132,7 @@ function Nav() {
                 : "font-medium"
             } `}
           >
-            {" "}
-            Settings{" "}
+            Settings
           </small>
         </NavLink>
       </nav>
