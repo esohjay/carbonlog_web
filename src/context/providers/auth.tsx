@@ -3,7 +3,7 @@ import { AuthState, AuthAction } from "../../types/auth";
 import { authReducer } from "../reducers/auth";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../lib/firebaseConfig";
-import { useTokenRefresher } from "../../lib/useTokenRefresher";
+// import { useTokenRefresher } from "../../lib/useTokenRefresher";
 
 interface AuthContextProps {
   state: AuthState;
@@ -15,7 +15,7 @@ export const initialState: AuthState = {
   success: false,
   profileCreated: false,
   profileFetched: false,
-  error: "",
+  error: null,
   profileError: "",
   user: null,
   profile: null,
@@ -34,11 +34,34 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
-
+  const getProfile = async () => {
+    try {
+      dispatch({ type: "GET_PROFILE_REQUEST" });
+      const token = await auth?.currentUser?.getIdToken();
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/user`,
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const data = await response.json();
+      dispatch({ type: "GET_PROFILE_SUCCESS", payload: data });
+    } catch (error) {
+      if (error instanceof Error) {
+        const message = error.message;
+        dispatch({ type: "GET_PROFILE_FAIL", payload: message });
+      }
+    }
+  };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log(user.toJSON());
+        getProfile();
         dispatch({ type: "SIGN_IN_SUCCESS", payload: user.toJSON() });
       }
     });

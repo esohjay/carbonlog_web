@@ -7,16 +7,16 @@ import { useAuthActions } from "../context/actions/auth";
 import {
   IoChevronForward,
   IoInformationCircle,
-  IoPeople,
   IoChatboxEllipses,
   IoLogOut,
 } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import ShareButtons from "../components/SocialShare";
 
 function SettingsScreen() {
   const { state } = useAuthContext();
   const navigate = useNavigate();
+  const { userId } = useParams();
   const { logOut } = useAuthActions();
   //   const handleOpenLink = useOpenLink();
   //   const onShare = useShareHandler();
@@ -31,7 +31,7 @@ function SettingsScreen() {
         <p className={`text-xs font-medium text-mainColor mb-3`}>
           View and update update your profile.
         </p>
-        <article onClick={() => navigate("Profile")}>
+        <Link to={`/${userId}/profile`} className="block">
           <article
             className={`flex flex-row justify-between items-center p-3 bg-white shadow rounded-lg`}
           >
@@ -49,7 +49,7 @@ function SettingsScreen() {
               color="#7d4f50"
             />
           </article>
-        </article>
+        </Link>
       </article>
 
       {/* <View className={`pb-6 pt-4 border-b border-b-altColor`}>
@@ -80,13 +80,13 @@ function SettingsScreen() {
         <SupportList
           text={"About"}
           Icon={IoInformationCircle}
-          onClick={() => navigate("/about")}
+          onClick={() => navigate(`/${userId}/about`)}
         />
-        <SupportList
+        {/* <SupportList
           text={"Share with friend"}
           Icon={IoPeople}
           // onClick={onShare}
-        />
+        /> */}
         <a
           href="https://forms.gle/qzbWXjcn74JyVctYA"
           target="_blank"

@@ -1,5 +1,6 @@
 import { AuthActionType } from "../context/constants/auth";
 import { User } from "firebase/auth";
+import { ErrorType } from "./context";
 
 // Define the shape of each action
 export interface AuthAction {
@@ -11,7 +12,7 @@ export type AuthState = {
   success: boolean;
   profileCreated: boolean;
   profileFetched: boolean;
-  error: string;
+  error: ErrorType | null;
   profileError: string;
   user: User | null;
   profile: Profile | null;

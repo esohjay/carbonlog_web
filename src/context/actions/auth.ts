@@ -13,12 +13,12 @@ import {
   GET_PROFILE_FAIL,
   GET_PROFILE_REQUEST,
   GET_PROFILE_SUCCESS,
-  // UPDATE_PROFILE_FAIL,
-  // UPDATE_PROFILE_REQUEST,
-  // UPDATE_PROFILE_SUCCESS,
-  // DELETE_PROFILE_FAIL,
-  // DELETE_PROFILE_REQUEST,
-  // DELETE_PROFILE_SUCCESS,
+  UPDATE_PROFILE_FAIL,
+  UPDATE_PROFILE_REQUEST,
+  UPDATE_PROFILE_SUCCESS,
+  DELETE_PROFILE_FAIL,
+  DELETE_PROFILE_REQUEST,
+  DELETE_PROFILE_SUCCESS,
   // RESET_PASSWORD_FAIL,
   // RESET_PASSWORD_REQUEST,
   // RESET_PASSWORD_SUCCESS,
@@ -56,7 +56,7 @@ export const useAuthActions = () => {
       dispatch({ type: GET_PROFILE_REQUEST });
       const token = await auth?.currentUser?.getIdToken();
       const response = await fetch(
-        `${process.env.EXPO_PUBLIC_BACKEND_URL}/api/v1/user`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/user`,
         {
           method: "GET",
           headers: {
@@ -75,75 +75,85 @@ export const useAuthActions = () => {
       }
     }
   };
-  // const updateProfile = async (userData) => {
-  //   try {
-  //     dispatch({ type: UPDATE_PROFILE_REQUEST });
-  //     const token = await auth?.currentUser?.getIdToken();
-  //     const response = await fetch(
-  //       `${process.env.EXPO_PUBLIC_BACKEND_URL}/api/v1/user/edit`,
-  //       {
-  //         method: "PUT",
-  //         headers: {
-  //           Accept: "application/json",
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //         body: JSON.stringify(userData),
-  //       }
-  //     );
-  //     const data = await response.json();
-  //     dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: data });
-  //   } catch (error) {
-  //     const message = handleError(error);
-  //     dispatch({ type: UPDATE_PROFILE_FAIL, payload: message });
-  //   }
-  // };
-  // const updatePassword = async (password) => {
-  //   try {
-  //     dispatch({ type: UPDATE_PROFILE_REQUEST });
-  //     const token = await auth?.currentUser?.getIdToken();
-  //     const response = await fetch(
-  //       `${process.env.EXPO_PUBLIC_BACKEND_URL}/api/v1/user/edit-password`,
-  //       {
-  //         method: "PUT",
-  //         headers: {
-  //           Accept: "application/json",
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //         body: JSON.stringify(password),
-  //       }
-  //     );
-  //     const data = await response.json();
-  //     dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: data });
-  //   } catch (error) {
-  //     const message = handleError(error);
-  //     dispatch({ type: UPDATE_PROFILE_FAIL, payload: message });
-  //   }
-  // };
-  // const delteProfile = async () => {
-  //   try {
-  //     dispatch({ type: DELETE_PROFILE_REQUEST });
-  //     const token = await auth?.currentUser?.getIdToken();
-  //     const response = await fetch(
-  //       `${process.env.EXPO_PUBLIC_BACKEND_URL}/api/v1/user`,
-  //       {
-  //         method: "DELETE",
-  //         headers: {
-  //           Accept: "application/json",
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //         body: JSON.stringify({}),
-  //       }
-  //     );
-  //     const data = await response.json();
-  //     dispatch({ type: DELETE_PROFILE_SUCCESS, payload: data });
-  //   } catch (error) {
-  //     const message = handleError(error);
-  //     dispatch({ type: DELETE_PROFILE_FAIL, payload: message });
-  //   }
-  // };
+  const updateProfile = async (userData: {
+    email: string;
+    password: string;
+    fullName: string;
+  }) => {
+    try {
+      dispatch({ type: UPDATE_PROFILE_REQUEST });
+      const token = await auth?.currentUser?.getIdToken();
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/edit`,
+        {
+          method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(userData),
+        }
+      );
+      const data = await response.json();
+      dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: data });
+    } catch (error) {
+      if (error instanceof Error) {
+        const message = handleError(error);
+        dispatch({ type: UPDATE_PROFILE_FAIL, payload: message });
+      }
+    }
+  };
+  const updatePassword = async (password: { password: string }) => {
+    try {
+      dispatch({ type: UPDATE_PROFILE_REQUEST });
+      const token = await auth?.currentUser?.getIdToken();
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/edit-password`,
+        {
+          method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(password),
+        }
+      );
+      const data = await response.json();
+      dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: data });
+    } catch (error) {
+      if (error instanceof Error) {
+        const message = handleError(error);
+        dispatch({ type: UPDATE_PROFILE_FAIL, payload: message });
+      }
+    }
+  };
+  const delteProfile = async () => {
+    try {
+      dispatch({ type: DELETE_PROFILE_REQUEST });
+      const token = await auth?.currentUser?.getIdToken();
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/user`,
+        {
+          method: "DELETE",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({}),
+        }
+      );
+      const data = await response.json();
+      dispatch({ type: DELETE_PROFILE_SUCCESS, payload: data });
+    } catch (error) {
+      if (error instanceof Error) {
+        const message = handleError(error);
+        dispatch({ type: DELETE_PROFILE_FAIL, payload: message });
+      }
+    }
+  };
 
   // const signUp = async ({ email, password, fullName }: {email:string, password: string, fullName:string}) => {
   //   dispatch({ type: SIGN_UP_REQUEST });
@@ -197,6 +207,7 @@ export const useAuthActions = () => {
       .then((userCredential) => {
         // Signed up
         const user = userCredential.user;
+        getProfile();
         dispatch({
           type: SIGN_IN_SUCCESS,
           payload: user,
@@ -271,5 +282,8 @@ export const useAuthActions = () => {
     signIn,
     logOut,
     createProfile,
+    updateProfile,
+    updatePassword,
+    delteProfile,
   };
 };

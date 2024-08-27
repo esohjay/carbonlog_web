@@ -17,6 +17,7 @@ type BtnProp = {
   textSize?: string;
   loaderText?: string;
   Icon?: IconType;
+  disable?: boolean;
 };
 
 function Btn({
@@ -28,6 +29,7 @@ function Btn({
   textSize = "text-sm",
   isLoading = false,
   loaderText = "",
+  disable = false,
   Icon,
   ...props
 }: BtnProp) {
@@ -43,6 +45,7 @@ function Btn({
   return (
     <button
       {...props}
+      disabled={disable}
       onClick={onClick}
       className={`${
         variant === "fill"
