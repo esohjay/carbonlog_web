@@ -5,7 +5,7 @@ import Btn from "../components/Button";
 import useGetSurvey from "../lib/useGetSurvey";
 import Image from "../components/Image";
 import { FaPaw } from "react-icons/fa";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useParams } from "react-router-dom";
 import SurveyImg from "../assets/Analyze-amico.png";
 import CampaignList from "../components/CampaignList";
 import ActionsList from "../components/ActionsList";
@@ -14,6 +14,7 @@ import { MdRocketLaunch } from "react-icons/md";
 
 export default function Home() {
   const { survey } = useGetSurvey();
+  const { userId } = useParams();
   // const { logOut } = useAuthActions();
   // const { state } = useAuthContext();
   const navigate = useNavigate();
@@ -51,7 +52,7 @@ export default function Home() {
                 Icon={FaPaw}
                 variant="outline"
                 mode="inline"
-                onClick={() => navigate("/estimate")}
+                onClick={() => navigate(`/${userId}/estimate`)}
               />
             </section>
           </section>

@@ -18,6 +18,7 @@ import ActDetails from "./screens/ActionDetail.tsx";
 import AllActionsScreen from "./screens/AllActions.tsx";
 import CampaignContainer from "./screens/CampaignContainer.tsx";
 import CampaignScreen from "./screens/Campaign.tsx";
+import EstimateScreen from "./screens/Estimate.tsx";
 import AllCampaignScreen from "./screens/AllCampaigns.tsx";
 import Chat from "./screens/Chat.tsx";
 import CampaignDetails from "./screens/CampaignDetails.tsx";
@@ -54,6 +55,7 @@ const router = createBrowserRouter(
         </Route>
         <Route path="all-campaign" element={<AllCampaignScreen />} />
         <Route path="settings" element={<SettingsScreen />} />
+        <Route path="estimate" element={<EstimateScreen />} />
       </Route>
     </Route>
   )
