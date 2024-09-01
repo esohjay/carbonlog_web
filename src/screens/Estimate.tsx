@@ -114,27 +114,7 @@ function EstimateScreen() {
           width="100%"
         />
       )}
-      {/* <article>
-          <PieChart
-            donut
-            data={surveyCategory}
-            radius={120}
-            // showText
-            // textColor="black"
-            // textSize={10}
-            // showTextBackground
-            // textBackgroundRadius={20}
-            innerRadius={87}
-            innerCircleColor={"#FFF7F2"}
-            centerLabelComponent={() => {
-              return (
-                <ChartCenter
-                  value={(survey?.totalEmission / 1000).toFixed(2)}
-                />
-              );
-            }}
-          />
-        </article> */}
+
       <article className={`grid grid-cols-2 py-5 gap-x-3`}>
         <article className={`flex flex-col rounded-lg bg-[#EDE4F1] px-3 py-2`}>
           <p className={`text-[#51315E] text-sm lg:text-base font-bold`}>

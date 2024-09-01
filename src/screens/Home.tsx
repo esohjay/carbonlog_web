@@ -91,7 +91,7 @@ export default function Home() {
                 text={"Start now"}
                 Icon={FaPaw}
                 variant="outline"
-                onClick={() => navigate("/survey")}
+                onClick={() => navigate(`/${userId}/survey`)}
                 mode="inline"
               />
             </section>

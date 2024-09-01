@@ -9,7 +9,8 @@ type BtnProp = {
     | "outline"
     | "outlineBorder"
     | "light"
-    | "destructive";
+    | "destructive"
+    | "black";
   onClick?: () => void;
   mode?: "block" | "inline";
   padding?: string;
@@ -34,6 +35,7 @@ function Btn({
   ...props
 }: BtnProp) {
   const fill = "text-white  bg-mainColor text-center rounded-md";
+  const black = "text-white  bg-black text-center rounded-md";
   const light = "text-mainColor  bg-altColor text-center rounded-md";
   const destructive = "text-white  bg-red-500 text-center rounded-md";
   const disabled = "text-white  bg-[#D7D3D1] text-center rounded-md";
@@ -58,6 +60,8 @@ function Btn({
           ? light
           : variant === "destructive"
           ? destructive
+          : variant === "black"
+          ? black
           : outlineBorder
       } ${
         mode === "block" ? block : inline
