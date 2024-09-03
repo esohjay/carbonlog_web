@@ -9,6 +9,8 @@ import {
   UPDATE_SURVEY_FAIL,
   // UPDATE_SURVEY_REQUEST,
   UPDATE_SURVEY_SUCCESS,
+  SET_CAR_DETAILS,
+  SET_BIKE_DETAILS,
 } from "../constants/survey";
 import { SurveyAction, SurveyState } from "../../types/survey";
 
@@ -48,6 +50,16 @@ export const SurveyReducer = (state: SurveyState, action: SurveyAction) => {
         ...state,
         fetchingSurvey: false,
         survey: action.payload,
+      };
+    case SET_CAR_DETAILS:
+      return {
+        ...state,
+        carDetails: action.payload,
+      };
+    case SET_BIKE_DETAILS:
+      return {
+        ...state,
+        bikeDetails: action.payload,
       };
 
     default:

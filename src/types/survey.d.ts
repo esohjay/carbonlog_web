@@ -1,5 +1,16 @@
 import { ErrorType } from "./context";
 import { SurveyActionType } from "../context/constants/survey";
+
+export type EnergyValueUnion =
+  | "electricity"
+  | "coal"
+  | "gas"
+  | "lpg"
+  | "propane"
+  | "wood";
+
+export type PublicTransportValueUnion = "bus" | "train" | "coach";
+
 export interface EnergyType {
   value: string;
   unit: string;
@@ -10,12 +21,14 @@ export interface CarType {
   value: string;
   unit: string;
   period: string;
+  id: string;
 }
 export interface BikeType {
   size: string;
   value: string;
   unit: string;
   period: string;
+  id: string;
 }
 
 export interface PublicTransportType {

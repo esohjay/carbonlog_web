@@ -77,6 +77,7 @@ const initialState: SurveyState = {
     period: "",
     value: "",
     unit: "",
+    id: "",
   },
   carDetails: {
     size: "",
@@ -84,6 +85,7 @@ const initialState: SurveyState = {
     value: "",
     unit: "",
     period: "",
+    id: "",
   },
 };
 const SurveyContext = createContext<SurveyContextProps | undefined>(undefined);

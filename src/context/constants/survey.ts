@@ -12,6 +12,8 @@ export const GET_SURVEY_REQUEST = "GET_SURVEY_REQUEST";
 export const GET_SURVEY_SUCCESS = "GET_SURVEY_SUCCESS";
 export const GET_SURVEY_FAIL = "GET_SURVEY_FAIL";
 export const GET_SURVEY_RESET = "GET_SURVEY_RESET";
+export const SET_CAR_DETAILS = "SET_CAR_DETAILS";
+export const SET_BIKE_DETAILS = "SET_BIKE_DETAILS";
 
 export type SurveyActionType =
   | typeof CREATE_SURVEY_REQUEST
@@ -26,4 +28,6 @@ export type SurveyActionType =
   | typeof GET_SURVEY_REQUEST
   | typeof GET_SURVEY_SUCCESS
   | typeof GET_SURVEY_FAIL
-  | typeof GET_SURVEY_RESET;
+  | typeof GET_SURVEY_RESET
+  | typeof SET_BIKE_DETAILS
+  | typeof SET_CAR_DETAILS;

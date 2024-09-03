@@ -25,6 +25,11 @@ import CampaignDetails from "./screens/CampaignDetails.tsx";
 import SettingsScreen from "./screens/Settings.tsx";
 import SurveyContaier from "./screens/Survey/SurveyContaier.tsx";
 import Household from "./screens/Survey/household/Household.tsx";
+import Energy from "./screens/Survey/energy/Energy.tsx";
+import Flight from "./screens/Survey/flight/Flight.tsx";
+import Car from "./screens/Survey/car/Car.tsx";
+import Bike from "./screens/Survey/bike/Bike.tsx";
+import PublicTransport from "./screens/Survey/public_transport/PublicTransport.tsx";
 import About from "./screens/About.tsx";
 import ProfileScreen from "./screens/Profile.tsx";
 import { AuthProvider } from "./context/providers/auth.tsx";
@@ -60,6 +65,11 @@ const router = createBrowserRouter(
         <Route path="estimate" element={<EstimateScreen />} />
         <Route element={<SurveyContaier />} path="survey">
           <Route index element={<Household />} />
+          <Route path="energy" element={<Energy />} />
+          <Route path="flight" element={<Flight />} />
+          <Route path="car" element={<Car />} />
+          <Route path="bike" element={<Bike />} />
+          <Route path="public-transport" element={<PublicTransport />} />
         </Route>
       </Route>
     </Route>

@@ -42,7 +42,7 @@ export default function BikeQuestionForm({
     <section>
       <section className={`flex flex-row gap-x-3 mb-3`}>
         <div className={`w-2/3`}>
-          <p className={`font-semibold mb-2 text-dark`}>Car size</p>
+          <p className={`font-semibold mb-2 text-dark`}>Bike size</p>
           <select
             name=""
             className="bg-transparent text-sm block text-mainColor w-full border outline-none p-2 rounded-md "

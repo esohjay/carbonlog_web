@@ -3,12 +3,14 @@ import {
   CREATE_SURVEY_REQUEST,
   CREATE_SURVEY_SUCCESS,
   UPDATE_SURVEY_SUCCESS,
+  SET_CAR_DETAILS,
+  SET_BIKE_DETAILS,
 } from "../constants/survey";
 import { ErrorType } from "../../types/context";
 
 import { useSurveyContext } from "../providers/survey";
 import { auth } from "../../lib/firebaseConfig";
-import { SurveyType } from "../../types/survey";
+import { SurveyType, CarType, BikeType } from "../../types/survey";
 
 export const useSurveyActions = () => {
   const { dispatch } = useSurveyContext();
@@ -49,8 +51,16 @@ export const useSurveyActions = () => {
   const updateSurvey = (surveyData: Partial<SurveyType>) => {
     dispatch({ type: UPDATE_SURVEY_SUCCESS, payload: surveyData });
   };
+  const setCarDetails = (surveyData: CarType) => {
+    dispatch({ type: SET_CAR_DETAILS, payload: surveyData });
+  };
+  const setBikeDetails = (surveyData: BikeType) => {
+    dispatch({ type: SET_BIKE_DETAILS, payload: surveyData });
+  };
   return {
     createSurvey,
     updateSurvey,
+    setCarDetails,
+    setBikeDetails,
   };
 };
