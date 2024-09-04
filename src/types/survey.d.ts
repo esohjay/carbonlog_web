@@ -1,15 +1,9 @@
 import { ErrorType } from "./context";
 import { SurveyActionType } from "../context/constants/survey";
 
-export type EnergyValueUnion =
-  | "electricity"
-  | "coal"
-  | "gas"
-  | "lpg"
-  | "propane"
-  | "wood";
+export type EnergyValueUnion = keyof SurveyType["energy"];
 
-export type PublicTransportValueUnion = "bus" | "train" | "coach";
+export type PublicTransportValueUnion = keyof SurveyType["publicTransport"];
 
 export interface EnergyType {
   value: string;
@@ -90,6 +84,9 @@ export interface SurveyType {
     saloonAndGrooming: ServicesConsumptionType;
   };
 }
+
+export type GoodsConsumptionUnion = keyof SurveyType["goodsConsumption"];
+export type ServicesConsumptionUnion = keyof SurveyType["servicesConsumption"];
 
 export interface EmissionCategoryType {
   home: number;

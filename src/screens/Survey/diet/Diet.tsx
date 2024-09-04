@@ -15,7 +15,7 @@ export default function Diet() {
       section={"diet"}
       Icon={IoFastFoodOutline}
       progress={`w-[${77.77}%]`}
-      nextScreen={() => nextScreen("Goods")}
+      nextScreen={() => nextScreen("goods")}
       disabled={survey.survey.diet === ""}
     >
       <Question />

@@ -11,7 +11,7 @@ export default function DietQuestion() {
       <p className={`font-semibold text-lg mb-3 text-mainColor`}>
         How would you describe your diet?
       </p>
-      <section className={`flex gap-y-5 py-5`}>
+      <section className={`flex flex-col gap-y-5 py-5`}>
         <Btn
           variant={survey.survey.diet === "highMeatEater" ? "light" : "black"}
           textSize={`text-base`}

@@ -13,10 +13,12 @@ type PropType = {
 };
 
 const unitOptions = [
+  { label: "Unit", value: "" },
   { label: "Km", value: "km" },
   { label: "Mile", value: "mile" },
 ];
 const periodOptions = [
+  { label: "Period", value: "" },
   { label: "Monthly", value: "monthly" },
   { label: "Yearly", value: "yearly" },
 ];
