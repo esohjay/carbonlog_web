@@ -31,6 +31,7 @@ import Car from "./screens/Survey/car/Car.tsx";
 import Bike from "./screens/Survey/bike/Bike.tsx";
 import Diet from "./screens/Survey/diet/Diet.tsx";
 import Goods from "./screens/Survey/goods/Goods.tsx";
+import Services from "./screens/Survey/services/Services.tsx";
 import PublicTransport from "./screens/Survey/public_transport/PublicTransport.tsx";
 import About from "./screens/About.tsx";
 import ProfileScreen from "./screens/Profile.tsx";
@@ -73,6 +74,7 @@ const router = createBrowserRouter(
           <Route path="bike" element={<Bike />} />
           <Route path="diet" element={<Diet />} />
           <Route path="goods" element={<Goods />} />
+          <Route path="services" element={<Services />} />
           <Route path="public-transport" element={<PublicTransport />} />
         </Route>
       </Route>

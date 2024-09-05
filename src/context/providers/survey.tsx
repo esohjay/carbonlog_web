@@ -59,7 +59,7 @@ export const surveyInitialData: SurveyInitialDataType = {
       education: { value: "", period: "" },
       veterinaryServices: { value: "", period: "" },
       financialServices: { value: "", period: "" },
-      saloonAndGrooming: { value: "", period: "" },
+      salonAndGrooming: { value: "", period: "" },
     },
   },
 };

@@ -27,14 +27,14 @@ export default function Goods() {
         setError("");
       }
     }
-    nextScreen("Services");
+    nextScreen("services");
   };
   return (
     <QuestionLayout
       color={"bg-sky-500"}
       section={"Goods consumption"}
       Icon={IoCartOutline}
-      progress={`w-[${88.88}%]`}
+      progress={`88.88%`}
       nextScreen={handleNextPage}
       disabled={false}
     >

@@ -46,7 +46,10 @@ export default function QuestionLayout({
         <section
           className={`w-full flex flex-col bg-gray-300 p-[2px] rounded-full`}
         >
-          <div className={` ${progress} ${color} h-1 rounded-md `}></div>
+          <div
+            style={{ width: progress }}
+            className={` ${color} h-1 rounded-md `}
+          ></div>
         </section>
       </section>
       {/* Form */}

@@ -36,7 +36,7 @@ export default function PublicTransport() {
       color={"bg-lime-500"}
       section={"Public Transport"}
       Icon={IoTrainOutline}
-      progress={`w-[${66.66}%]`}
+      progress={`66.66%`}
       nextScreen={handleNextPage}
       disabled={false}
     >

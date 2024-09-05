@@ -10,7 +10,7 @@ export default function Flight() {
       color={"bg-rose-500"}
       section={"flight"}
       Icon={IoAirplaneOutline}
-      progress={`w-[${33.33}%]`}
+      progress={`33.33%`}
       nextScreen={() => nextScreen("car")}
       disabled={false}
     >

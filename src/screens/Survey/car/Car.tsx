@@ -53,7 +53,7 @@ export default function Car() {
       color={"bg-cyan-500"}
       section={"car"}
       Icon={IoCarSportOutline}
-      progress={`w-[${44.44}%]`}
+      progress={`44.44%`}
       nextScreen={submitCarQuestion}
       disabled={false}
     >

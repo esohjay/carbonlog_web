@@ -13,7 +13,7 @@ export default function Household() {
       color={"bg-blue-500"}
       section={"household"}
       Icon={IoHomeOutline}
-      progress={`w-[${11.11}%] `}
+      progress={`11.11%`}
       nextScreen={() => nextScreen("energy")}
       // disabled={survey && survey.survey.householdSize === 0}
     >

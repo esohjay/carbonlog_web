@@ -81,7 +81,7 @@ export interface SurveyType {
     education: ServicesConsumptionType;
     veterinaryServices: ServicesConsumptionType;
     financialServices: ServicesConsumptionType;
-    saloonAndGrooming: ServicesConsumptionType;
+    salonAndGrooming: ServicesConsumptionType;
   };
 }
 

@@ -1,10 +1,10 @@
-import { GoodsConsumptionUnion } from "../../../types/survey";
+import { ServicesConsumptionUnion } from "../../../types/survey";
 type PropType = {
   label: string;
-  field: GoodsConsumptionUnion;
-  setValue: (arg1: GoodsConsumptionUnion, arg2: string) => void;
+  field: ServicesConsumptionUnion;
+  setValue: (arg1: ServicesConsumptionUnion, arg2: string) => void;
   inputValue: string;
-  setPeriod: (arg1: GoodsConsumptionUnion, arg2: string) => void;
+  setPeriod: (arg1: ServicesConsumptionUnion, arg2: string) => void;
   dropdownValue: string;
 };
 

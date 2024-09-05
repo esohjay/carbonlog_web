@@ -33,7 +33,7 @@ export default function Energy() {
       color={"bg-yellow-500"}
       section={"energy"}
       Icon={IoFlashOutline}
-      progress={`w-[${22.22}%]`}
+      progress={`22.22%`}
       nextScreen={handleNextPage}
       disabled={false}
     >

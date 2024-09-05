@@ -50,7 +50,7 @@ export default function Bike() {
       color={"bg-violet-500"}
       section={"motorbike"}
       Icon={IoBicycleOutline}
-      progress={`w-[${55.55}%]`}
+      progress={`55.55%`}
       nextScreen={submitBikeQuestion}
       disabled={false}
     >
