@@ -19,16 +19,16 @@ import {
   DELETE_PROFILE_FAIL,
   DELETE_PROFILE_REQUEST,
   DELETE_PROFILE_SUCCESS,
-  // RESET_PASSWORD_FAIL,
-  // RESET_PASSWORD_REQUEST,
-  // RESET_PASSWORD_SUCCESS,
+  RESET_PASSWORD_FAIL,
+  RESET_PASSWORD_REQUEST,
+  RESET_PASSWORD_SUCCESS,
 } from "../constants/auth";
 // import { User } from "../../types/auth";
 import { ErrorType } from "../../types/context";
 import { useAuthContext } from "../providers/auth";
 import {
   // createUserWithEmailAndPassword,
-  // sendPasswordResetEmail,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signOut,
   User,
@@ -182,18 +182,20 @@ export const useAuthActions = () => {
   //     dispatch({ type: SIGN_UP_FAIL, payload: errorMessage });
   //   }
   // };
-  // const resetPassword = async (email) => {
-  //   dispatch({ type: RESET_PASSWORD_REQUEST });
-  //   try {
-  //     await sendPasswordResetEmail(auth, email);
-  //     dispatch({
-  //       type: RESET_PASSWORD_SUCCESS,
-  //     });
-  //   } catch (error) {
-  //     const errorMessage = handleError(error);
-  //     dispatch({ type: RESET_PASSWORD_FAIL, payload: errorMessage });
-  //   }
-  // };
+  const resetPassword = async (email: string) => {
+    dispatch({ type: RESET_PASSWORD_REQUEST });
+    try {
+      await sendPasswordResetEmail(auth, email);
+      dispatch({
+        type: RESET_PASSWORD_SUCCESS,
+      });
+    } catch (error) {
+      if (error instanceof Error) {
+        const errorMessage = handleError(error);
+        dispatch({ type: RESET_PASSWORD_FAIL, payload: errorMessage });
+      }
+    }
+  };
 
   const signIn = async ({
     email,
@@ -285,5 +287,6 @@ export const useAuthActions = () => {
     updateProfile,
     updatePassword,
     delteProfile,
+    resetPassword,
   };
 };

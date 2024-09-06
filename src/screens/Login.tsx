@@ -10,6 +10,8 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useAuthContext } from "../context/providers/auth";
 import { useAuthActions } from "../context/actions/auth";
 import { useNavigate } from "react-router-dom";
+import { Modal } from "../components/Modal";
+import ResetPassword from "../components/ResetPassword";
 
 type Inputs = {
   password: string;
@@ -19,6 +21,7 @@ type Inputs = {
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const { signIn } = useAuthActions();
+  const [modalOpened, setModalOpened] = useState("");
   const { state } = useAuthContext();
   const navigate = useNavigate();
   console.log(state);
@@ -31,7 +34,7 @@ export default function Login() {
 
   useEffect(() => {
     if (state.isAuthenticated && state.user) {
-      navigate(`/${state.user?.uid}`);
+      navigate(`/${state.user?.uid}/home`);
     }
   }, [state.isAuthenticated]);
   return (
@@ -114,12 +117,12 @@ export default function Login() {
                 </span>
               )}
             </div>
-            <Link
-              to={"/sign-up"}
-              className="font-medium block text-xs text-mainColor py-3 underline text-end"
+            <button
+              onClick={() => setModalOpened("Opened")}
+              className="font-medium block text-xs text-mainColor py-3 underline border-none outline-none text-end"
             >
               Forgot password?
-            </Link>
+            </button>
             {errors.password && (
               <span className="text-xs text-red-500">
                 This field is required
@@ -135,6 +138,9 @@ export default function Login() {
           </Link>
         </form>
       </section>
+      <Modal isOpen={modalOpened === "Opened"} closeModal={setModalOpened}>
+        <ResetPassword closeForm={() => setModalOpened("")} />
+      </Modal>
     </main>
   );
 }

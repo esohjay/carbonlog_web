@@ -104,18 +104,20 @@ export default function CampaignDetails() {
             </section>
             <article className={`py-5`}>
               <p
-                className={`font-extrabold mb-3 capitalize text-mainColor text-center text-lg`}
+                className={`font-extrabold mb-3 capitalize text-mainColor text-center text-lg lg:text-2xl`}
               >
                 {campaign?.title}
               </p>
-              <p className={`font-medium text-justify text-dark text-sm mb-2`}>
+              <p
+                className={`font-medium text-center text-dark text-sm lg:text-base mb-2`}
+              >
                 {campaign?.description}
               </p>
             </article>
           </section>
           <section className={`mt-16`}>
             {joined && (
-              <p className={`my-2 text-sm text-green-500`}>
+              <p className={`my-2 text-sm text-green-500 lg:text-lg`}>
                 You have joined this campaign!
               </p>
             )}
@@ -137,8 +139,8 @@ export default function CampaignDetails() {
                     {userState.user &&
                     campaign?.users?.includes(userState?.user?.uid) ? (
                       <Btn
-                        padding="px-4 py-1"
-                        textSize="text-[9px]"
+                        padding="px-4 py-1 lg:px-6 lg:py-3"
+                        textSize="text-[9px] lg:text-sm"
                         text={"leave campaign"}
                         Icon={IoPersonRemove}
                         isLoading={state.leaving}
@@ -147,8 +149,8 @@ export default function CampaignDetails() {
                       />
                     ) : (
                       <Btn
-                        padding="px-4 py-1"
-                        textSize="text-[9px]"
+                        padding="px-4 py-1 lg:px-6 lg:py-3"
+                        textSize="text-[9px] lg:text-sm"
                         text={"join campaign"}
                         Icon={IoPersonAdd}
                         isLoading={state.joining}
@@ -163,16 +165,16 @@ export default function CampaignDetails() {
             {campaign?.createdBy === userState?.user?.uid && (
               <div className={`flex flex-row my-3 gap-x-4`}>
                 <Btn
-                  padding="px-4 py-1"
-                  textSize="text-[9px]"
+                  padding="px-4 py-1 lg:px-6 lg:py-3"
+                  textSize="text-[9px] lg:text-sm"
                   text={"edit"}
                   Icon={TbEdit}
                   mode="inline"
                   onClick={() => setModalOpened("Opened")}
                 />
                 <Btn
-                  padding="px-4 py-1"
-                  textSize="text-[9px]"
+                  padding="px-4 py-1 lg:px-6 lg:py-3"
+                  textSize="text-[9px] lg:text-sm"
                   text="delete"
                   Icon={MdDelete}
                   isLoading={state.deleting}
@@ -187,8 +189,8 @@ export default function CampaignDetails() {
                 <div className={`w-full flex flex-row justify-end pt-4`}>
                   <div className={`max-w-2/3`}>
                     <Btn
-                      padding="px-4 py-1"
-                      textSize="text-[9px]"
+                      padding="px-4 py-1 lg:px-6 lg:py-3"
+                      textSize="text-[9px] lg:text-sm"
                       text={"go to chat"}
                       Icon={IoChatbubbles}
                       onClick={() => navigate(`chat`)}

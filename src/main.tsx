@@ -50,14 +50,14 @@ const router = createBrowserRouter(
       <Route path="login" element={<Login />} />
       <Route path="sign-up" element={<Register />} />
       <Route path=":userId" element={<Template />}>
-        <Route path="" index element={<Home />} />
+        <Route path="home" index element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="track" element={<Track />} />
         <Route path="act" element={<Action />} />
         <Route path="profile" element={<ProfileScreen />} />
         <Route path="my-actions" element={<MyActions />} />
         <Route path="all-actions" element={<AllActionsScreen />} />
-        <Route path=":actionsId" element={<ActDetails />} />
+        <Route path=":actionId" element={<ActDetails />} />
         <Route element={<CampaignContainer />} path="campaign">
           <Route index element={<CampaignScreen />} />
           <Route path=":campaignId" element={<CampaignDetails />} />

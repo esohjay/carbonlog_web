@@ -13,30 +13,30 @@ import { useAuthContext } from "../context/providers/auth";
 
 function Nav() {
   const pathname = useLocation().pathname;
-  console.log(pathname);
   const { state } = useAuthContext();
-  console.log(state);
   return (
     <div
       className={`fixed bottom-0 left-0 w-full place-items-center block lg:hidden`}
     >
       <nav className="z-20 flex  justify-around gap-4 border-t border-gray-200 bg-white p-2.5 shadow-lg backdrop-blur-2xl fixed bottom-0  h-[75px]  w-full rounded-t-xl border">
         <NavLink
-          to={`/${state.user?.uid}`}
+          to={`/${state.user?.uid}/home`}
           className={({ isActive }) =>
             isActive
               ? "text-mainColor flex aspect-square text-2xl  flex-col items-center justify-center gap-y-1 "
               : "text-mainColor flex aspect-square text-2xl  flex-col items-center justify-center gap-y-1 "
           }
         >
-          {pathname === `/${state.user?.uid}` ? (
+          {pathname === `/${state.user?.uid}/home` ? (
             <RiHome5Fill />
           ) : (
             <RiHome5Line />
           )}
           <small
             className={`text-center text-xs ${
-              pathname === `/${state.user?.uid}` ? "font-bold" : "font-medium"
+              pathname === `/${state.user?.uid}/home`
+                ? "font-bold"
+                : "font-medium"
             } `}
           >
             Home

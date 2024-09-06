@@ -9,7 +9,7 @@ export default function TopNav() {
   const { userId } = useParams();
   return (
     <nav className="w-full flex bg-white z-30 justify-between h-16 lg:h-20 items-center px-5 lg:px-20 shadow py-2 fixed left-0 top-0">
-      <Link to={`/${userId}`} className="block">
+      <Link to={`/${userId}/home`} className="block">
         <Image
           path={Logo}
           height="h-[50px] lg:h-[80px]"

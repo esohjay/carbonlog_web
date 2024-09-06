@@ -75,7 +75,7 @@ export default function SearchAction() {
           Search actions
         </p>
         <article>
-          <div className={`lg:w-1/3`}>
+          <div className={``}>
             <input
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 optimizedFn(e.target.value)
@@ -89,7 +89,7 @@ export default function SearchAction() {
           </div>
         </article>
 
-        <article className={`grid grid-cols-1 md:grid-cols-2 py-3`}>
+        <article className={`grid grid-cols-1 gap-3 py-3`}>
           {filteredActions &&
             filteredActions.map((action) => (
               <ActionCard key={action.id} data={action} isFullWidth={true} />

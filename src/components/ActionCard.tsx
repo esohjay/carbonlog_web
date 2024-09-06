@@ -13,8 +13,8 @@ function ActionCard({ data, isFullWidth = false }: PropType) {
   const { title, category, description, sdg, id, emission, point } = data;
   return (
     <article
-      onClick={() => navigate(`/${userId}/action/${id}`)}
-      className={`shadow bg-white p-3 rounded-lg shrink-0  ${
+      onClick={() => navigate(`/${userId}/${id}`)}
+      className={`shadow bg-white p-3 rounded-lg shrink-0  cursor-pointer ${
         isFullWidth ? "w-full" : "w-[300px]"
       }`}
     >

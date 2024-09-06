@@ -56,7 +56,7 @@ function CampaignScreen() {
   return (
     <section className={``}>
       <section className={`lg:py-5`}>
-        <p className={`font-normal text-sm mb-2`}>
+        <p className={`font-normal text-sm lg:text-lg text-dark mb-2`}>
           Join and explore campaigns to improve your positive impact!
         </p>
         <div className={`flex flex-row items-start`}>

@@ -9,7 +9,7 @@ type PropType = {
 
 export default function SupportList({ text, Icon, onClick }: PropType) {
   return (
-    <section onClick={onClick}>
+    <section onClick={onClick} className="cursor-pointer">
       <div className={`flex flex-row justify-between items-center `}>
         <div className={`flex flex-row items-center gap-x-3`}>
           <Icon size={30} color="#7d4f50" />

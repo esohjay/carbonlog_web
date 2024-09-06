@@ -58,24 +58,30 @@ export default function ProfileScreen() {
         </button>
       </article>
       <article
-        className={`flex flex-row items-start p-3 bg-white rounded-lg shadow gap-x-3`}
+        className={`flex flex-row items-start p-3 lg:py-8 lg:px-6 bg-white rounded-lg shadow gap-x-3 lg:gap-x-6`}
       >
-        <article className={`flex items-center gap-y-1  w-[20%]`}>
-          {profile && <TextAbbrevavtion text={profile?.fullName} />}
+        <article className={`flex items-center gap-y-1  w-[20%`}>
+          {profile && (
+            <TextAbbrevavtion
+              text={profile?.fullName}
+              size="w-16 h-16 lg:w-20 lg:h-20"
+              textSize="text-3xl lg:text-4xl"
+            />
+          )}
         </article>
-        <article className={`w-[70%] flex flex-col gap-1`}>
-          <p className={`text-lg text-mainColor font-bold `}>
+        <article className={`w-[70% flex flex-col gap-3`}>
+          <p className={`text-lg lg:text-3xl text-mainColor font-bold `}>
             {profile?.fullName}
           </p>
 
-          <article className={`flex flex-row gap-x-2`}>
+          <article className={`flex flex-row items-center gap-x-2`}>
             <IoMail name={"mail"} size={20} color="#7d4f50" />
-            <p className={`text-sm text-dark font-medium mb-1`}>
+            <p className={`text-sm text-dark font-medium  lg:text-lg`}>
               {profile?.email}
             </p>
           </article>
           <button
-            className={`flex items-center flex-row mb-1 gap-x-1`}
+            className={`flex items-center flex-row  gap-x-1`}
             onClick={() => setOpenPasswordModal("Opened")}
           >
             <IoCreateOutline
@@ -83,7 +89,9 @@ export default function ProfileScreen() {
               size={20}
               color="#7d4f50"
             />
-            <p className={`text-sm text-dark font-medium`}>Update password</p>
+            <p className={`text-sm text-dark lg:text-lg font-medium`}>
+              Update password
+            </p>
           </button>
         </article>
       </article>
@@ -120,12 +128,14 @@ export default function ProfileScreen() {
         </article>
       </article>
       <article
-        className={`w-full h-40 relative flex flex-row justify-between bg-white rounded-lg shadow`}
+        className={`w-full h-40 lg:h-52 relative flex flex-row justify-between bg-white rounded-lg shadow`}
       >
         <article
           className={`absolute p-4 flex flex-col items-center gap-3 h-full bg-transparent top-0 left-0 w-full bg-white bg-opacity-30 z-10`}
         >
-          <p className={`text-sm font-medium text-center text-mainColor`}>
+          <p
+            className={`text-sm lg:text-lg font-medium text-center text-mainColor`}
+          >
             According to{" "}
             <a
               href="https://www.eea.europa.eu/articles/forests-health-and-climate-change"
@@ -141,7 +151,7 @@ export default function ProfileScreen() {
             would equate to
           </p>
 
-          <p className={`font-extrabold text-base text-green-800`}>
+          <p className={`font-extrabold text-base lg:text-2xl text-green-800`}>
             {actionSummary?.treeCount < 1
               ? "Less than 1 tree"
               : actionSummary?.treeCount === 1
@@ -149,11 +159,11 @@ export default function ProfileScreen() {
               : `${actionSummary?.treeCount} trees`}
           </p>
         </article>
-        <article className={`w-1/3 h-24 mb-3 bg-transparent self-end`}>
-          <Image width="w-full" height="h-20" path={LeftTree} />
+        <article className={`w-1/3 h-24 lg:h-36 mb-3 bg-transparent self-end`}>
+          <Image width="w-full" height="h-32" path={LeftTree} />
         </article>
-        <article className={`w-1/3 h-24 mb-3 bg-transparent self-end`}>
-          <Image width="w-full" height="h-20" path={RightTree} />
+        <article className={`w-1/3 h-24 lg:h-36 mb-3 bg-transparent self-end`}>
+          <Image width="w-full" height="h-32" path={RightTree} />
         </article>
       </article>
       <article className={`py-4`}>
@@ -161,6 +171,7 @@ export default function ProfileScreen() {
           text={"Delete account"}
           isLoading={state?.deleting}
           onClick={() => setOpenDeleteModal(true)}
+          mode="inline"
         />
       </article>
       <Modal isOpen={openEditModal === "Opened"} closeModal={setOpenEditModal}>

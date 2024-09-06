@@ -11,6 +11,7 @@ import CampaignList from "../components/CampaignList";
 import ActionsList from "../components/ActionsList";
 import LinkBtn from "../components/LinkBtn";
 import { MdRocketLaunch } from "react-icons/md";
+import ShareButtons from "../components/SocialShare";
 
 export default function Home() {
   const { survey } = useGetSurvey();
@@ -23,9 +24,9 @@ export default function Home() {
     <main className="">
       {/* <Btn text="Logout" onClick={logOut} /> */}
       {survey && survey?.totalEmission ? (
-        <section className={`mb-7`}>
+        <section className={`mb-7 lg:pt-5`}>
           <section
-            className={`w-full h-48 rounded-lg relative bg-white shadow`}
+            className={`w-full h-48 lg:h-[350px] rounded-lg relative bg-white shadow`}
           >
             <Image
               width="w-full"
@@ -34,16 +35,20 @@ export default function Home() {
               path="https://cdn.pixabay.com/photo/2018/04/04/13/38/nature-3289812_1280.jpg"
             />
             <section
-              className={`h-full absolute top-0 left-0 w-full flex flex-col items-center p-3 rounded-lg bg-black bg-opacity-60`}
+              className={`h-full absolute top-0 left-0 w-full flex flex-col justify-center items-center p-3 rounded-lg bg-black bg-opacity-60`}
             >
-              <p className={`text-primaryLight font-bold text-2xl  `}>
+              <p
+                className={`text-primaryLight font-bold text-2xl lg:text-5xl `}
+              >
                 {(survey?.totalEmission / 1000).toFixed(2)} tonnes
               </p>
-              <p className={`text-primaryLight font-bold text-sm mb-3 `}>
+              <p
+                className={`text-primaryLight font-bold text-sm mb-3 lg:text-lg `}
+              >
                 (Estimated footprint)
               </p>
               <p
-                className={`text-altColor text-sm font-semibold mb-3 text-center w-3/4`}
+                className={`text-altColor text-sm font-semibold mb-3 lg:text-lg text-center w-3/4`}
               >
                 View more details about your carbon footprint
               </p>
@@ -128,7 +133,9 @@ export default function Home() {
         <ActionsList />
       </section>
       <section className={`mb-7 rounded-lg`}>
-        <section className={`w-full h-52 rounded-lg relative bg-white shadow`}>
+        <section
+          className={`w-full h-52 lg:h-72 rounded-lg relative bg-white shadow`}
+        >
           <Image
             height="h-full"
             width="w-full"
@@ -136,12 +143,16 @@ export default function Home() {
             path="https://cdn.pixabay.com/photo/2017/09/20/06/27/bridge-2767545_1280.jpg"
           />
           <div
-            className={`h-full w-full flex flex-col items-center absolute top-0 left-0 p-3 rounded-lg bg-black bg-opacity-60`}
+            className={`h-full w-full flex flex-col items-center justify-center absolute top-0 left-0 p-3 rounded-lg bg-black bg-opacity-60`}
           >
-            <p className={`text-primaryLight font-bold text-2xl mb-3 `}>
+            <p
+              className={`text-primaryLight font-bold text-2xl mb-3 lg:text-4xl `}
+            >
               Did you know?
             </p>
-            <p className={`text-altColor font-semibold mb-3 text-center w-3/4`}>
+            <p
+              className={`text-altColor font-semibold mb-3 text-center w-3/4 lg:text-xl`}
+            >
               Regular visits to greenspaces improves your mental health.
             </p>
             <LinkBtn
@@ -163,12 +174,13 @@ export default function Home() {
           <p className={` font-medium mb-2 text-mainColor`}>
             Make a big impact by helping others reduce their carbon emission.
           </p>
-          <LinkBtn
+          <ShareButtons />
+          {/* <LinkBtn
             text={"Invite friends"}
             variant="fill"
             mode="inline"
             path="https://greenspace-explorer.vercel.app/"
-          />
+          /> */}
         </section>
       </section>
     </main>

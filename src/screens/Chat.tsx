@@ -122,8 +122,9 @@ export default function Chat() {
           <div className="flex items-center  p-2 bg-white rounded-md border">
             <input
               {...register("message", { required: true })}
-              className="bg-transparent text-sm block w-full border-none outline-none px-2"
+              className="bg-transparent text-sm lg:text-base text-dark block w-full border-none outline-none px-2"
               placeholder="say something"
+              autoFocus
             />
           </div>
         </div>

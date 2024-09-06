@@ -21,7 +21,7 @@ export const Modal: React.FC<PropType> = ({ children, isOpen, closeModal }) => {
         ref={ref}
         isOpen={isOpen}
         onClose={() => closeModal("")}
-        snapPoints={[600, 500, 300, 100, 0]}
+        snapPoints={[700, 500, 300, 100, 0]}
         initialSnap={1}
         onSnap={(snapIndex) =>
           console.log("> Current snap point index:", snapIndex)
@@ -36,7 +36,7 @@ export const Modal: React.FC<PropType> = ({ children, isOpen, closeModal }) => {
 
           <Sheet.Content>
             <section className="w-full flex justify-center overflow-y-scroll">
-              <section className="w-full md:max-w-md lg:bg-slate-50 lg:shadow-md rounded-lg overflow-y-scroll">
+              <section className="w-full md:max-w-md  lg:shadow-md rounded-lg overflow-y-scroll">
                 {children}
               </section>
             </section>

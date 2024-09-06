@@ -21,7 +21,7 @@ export default function TeamCard({ data, isFullWidth = true }: PropType) {
       to={`/${userId}/campaign/${id}`}
       className={`${
         isFullWidth ? "w-full" : "w-[300px]"
-      } bg-white flex justify-between gap-y-5 shadow rounded-lg p-5`}
+      } bg-white flex justify-between gap-5 shadow rounded-lg p-5`}
     >
       <section className={`bg-white`}>
         <article className={`flex gap-x-3 flex-row items-center`}>
@@ -32,7 +32,7 @@ export default function TeamCard({ data, isFullWidth = true }: PropType) {
             {title}
           </p>
         </article>
-        <p className={`font-normal text-xs py-1 text-dark`}>
+        <p className={`font-normal text-xs lg:text-base py-1 text-dark`}>
           {description.substring(0, 60)}...
         </p>
       </section>

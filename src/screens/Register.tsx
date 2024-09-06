@@ -33,8 +33,8 @@ export default function Register() {
 
   useEffect(() => {
     if (state.isAuthenticated && state.user) {
-      console.log(state.user.uid);
-      navigate(`/${state.user?.uid}`);
+      // console.log(state.user.uid);
+      navigate(`/${state.user?.uid}/home`);
     }
   }, [state.isAuthenticated]);
   return (

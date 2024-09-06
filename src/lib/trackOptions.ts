@@ -1,4 +1,5 @@
 export const shoppingOptions = [
+  { label: "Select an activity", value: "" },
   { label: "Shoes and footwears", value: "shoesAndFootwear" },
   { label: "Clothing", value: "clothingMaterials" },
   { label: "Jewellery and watch", value: "jewelleryAndWatch" },
@@ -23,6 +24,7 @@ export const shoppingOptions = [
   },
 ];
 export const homeOptions = [
+  { label: "Select an activity", value: "" },
   { label: "Water supply", value: "waterSupply" },
   { label: "Refuse collection", value: "refuseCollection" },
   { label: "Electricity", value: "electricity" },
@@ -36,6 +38,7 @@ export const homeOptions = [
   },
 ];
 export const foodAndDrinkOptions = [
+  { label: "Select an activity", value: "" },
   { label: "Bread or Cereals", value: "breadAndCereals" },
   { label: "Meat", value: "meat" },
   { label: "Fish and seafood", value: "fishAndSeafood" },

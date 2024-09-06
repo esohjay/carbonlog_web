@@ -164,7 +164,7 @@ function TrackScreen() {
               <p
                 className={`text-primaryLight font-semibold text-lg lg:text-2xl`}
               >
-                My emissions
+                Emmisions from my actions
               </p>
               <article
                 className={`w-full h-[155px] lg:h-[250px] flex justify-center items-center `}
@@ -209,7 +209,8 @@ function TrackScreen() {
               className={`h-full w-full absolute top-0 left-0 flex flex-row justify-center items-center p-3 rounded-lg bg-black bg-opacity-60`}
             >
               <p className={`text-primaryLight font-bold text-base `}>
-                Record and article your activities under each category
+                You can log the activities you performed today under each
+                category to estimate the amount of carbon emmitted.
               </p>
             </article>
           </article>

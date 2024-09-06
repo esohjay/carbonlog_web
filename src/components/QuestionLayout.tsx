@@ -27,7 +27,7 @@ export default function QuestionLayout({
   const navigate = useNavigate();
   const { state } = useSurveyContext();
   return (
-    <section className={`py-3`}>
+    <section className={`py-3 max-w-screen-md`}>
       {/* Heading */}
       <section className={`flex flex-col gap-y-2`}>
         <section className={`flex flex-row items-center gap-x-2`}>

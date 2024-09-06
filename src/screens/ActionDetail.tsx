@@ -33,6 +33,7 @@ export default function ActDetails() {
       setAction(actionDetails);
     }
   }, [state.actionList]);
+
   useEffect(() => {
     if (state.actionAdded) {
       const timeoutId = setTimeout(() => {
@@ -64,7 +65,7 @@ export default function ActDetails() {
         </section>
         <section className={`pt-5 pb-8 flex flex-col gap-5 items-center mb-2`}>
           <p
-            className={`font-extrabold capitalize text-mainColor text-center text-lg`}
+            className={`font-extrabold capitalize text-mainColor text-center text-lg lg:text-2xl`}
           >
             {action?.title}
           </p>
@@ -75,7 +76,9 @@ export default function ActDetails() {
               textStyle={`capitalize`}
             />
           )}
-          <p className={`font-medium text-justify text-dark text-sm mb-2`}>
+          <p
+            className={`font-medium text-justify text-dark text-sm lg:text-base mb-2`}
+          >
             {action?.description}
           </p>
         </section>
@@ -85,7 +88,7 @@ export default function ActDetails() {
           <p className={`my-2 text-sm text-green-500`}>Action logged!</p>
         )}
         <section className={` bg-mainColor p-4 shadow-md rounded-lg`}>
-          <p className={`font-semibold mb-2 text-primaryLight`}>
+          <p className={`font-semibold mb-2 text-primaryLight lg:text-lg`}>
             By taking this action, you are saving
           </p>
           <article
@@ -105,8 +108,8 @@ export default function ActDetails() {
             <div className={` max-w-2/3`}>
               {action && (
                 <Btn
-                  textSize="text-[9px]"
-                  padding="px-4 py-2"
+                  textSize="text-[9px] lg:text-sm"
+                  padding="px-4 py-2 lg:px-6 lg:py-3"
                   text={"log action"}
                   Icon={IoCloudDownloadSharp}
                   isLoading={state.addingAction}
@@ -118,15 +121,21 @@ export default function ActDetails() {
           </div>
         </section>
         <article className={`flex flex-col gap-5 my-6`}>
-          <p className={`font-bold text-lg text-center text-mainColor`}>
+          <p
+            className={`font-bold text-lg lg:text-2xl text-center text-mainColor`}
+          >
             Sustainable Development Goals
           </p>
-          <p className={`font-medium text-center text-sm text-dark`}>
+          <p
+            className={`font-medium text-center text-sm lg:text-base text-dark`}
+          >
             These action relates to the following United Nations Developemnt
             Goals. By completing this action, you're contributing to the
             acomplishment of the SDGs.
           </p>
-          <section className={`flex flex-col gap-5`}>
+          <section
+            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5`}
+          >
             {action?.sdg?.map((sdgNumber) => {
               const sdg = getGoal(sdgNumber);
               return <SdgCard key={sdg.goal} data={sdg} />;
