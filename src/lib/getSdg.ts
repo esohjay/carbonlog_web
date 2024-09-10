@@ -145,6 +145,7 @@ export const getGoal = (goal: number) => {
           "Ensure sustainable consumption and production patterns by promoting resource efficiency, reducing waste generation, and minimizing environmental impact.",
         url: "https://www.un.org/sustainabledevelopment/sustainable-consumption-production/",
       };
+      break;
     case 13:
       sdg = {
         goal,

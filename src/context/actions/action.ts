@@ -5,9 +5,6 @@ import {
   GET_ALL_ACTION_FAIL,
   GET_ALL_ACTION_REQUEST,
   GET_ALL_ACTION_SUCCESS,
-  GET_LOGGED_ACTION_FAIL,
-  GET_LOGGED_ACTION_REQUEST,
-  GET_LOGGED_ACTION_SUCCESS,
 } from "../constants/action";
 
 import { useActionContext } from "../providers/action";
