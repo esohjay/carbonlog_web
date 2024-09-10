@@ -26,9 +26,12 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
-// export const authPersist = initializeAuth(app, {
-//   persistence: getReactNativePersistence(AsyncStorage),
-// });
 export const auth = getAuth(app);
-await setPersistence(auth, browserLocalPersistence);
+async function initSetPersistence() {
+  await setPersistence(auth, browserLocalPersistence);
+}
+initSetPersistence().catch((error) => {
+  console.error("Error initializing app:", error);
+});
+// await setPersistence(auth, browserLocalPersistence);
 export const db = getFirestore();
