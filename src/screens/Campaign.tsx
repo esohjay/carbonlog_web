@@ -2,21 +2,13 @@ import { useState, useEffect } from "react";
 import Btn from "../components/Button";
 import TeamCard from "../components/TeamCard";
 import CampaignForm from "../components/CampaignForm";
-// import { useCampaignActions } from "../context/actions/campaign";
 import { Modal } from "../components/Modal";
 import { Link } from "react-router-dom";
 import { IoAddCircleOutline } from "react-icons/io5";
 import Spinner from "../components/Spinner";
 import { useCampaignContext } from "../context/providers/campaign";
-// import CampaignCardSkeleton from "../components/skeletons/CampaignCardSkeleton";
 import useGetCampaigns from "../lib/useGetCampaigns";
-import {
-  onSnapshot,
-  collection,
-  // orderBy,
-  query,
-  where,
-} from "firebase/firestore";
+import { onSnapshot, collection, query, where } from "firebase/firestore";
 import {
   GET_JOINED_CAMPAIGN_REQUEST,
   GET_JOINED_CAMPAIGN_SUCCESS,
@@ -48,11 +40,6 @@ function CampaignScreen() {
       return () => unsubscribe();
     }
   }, [userState?.user?.uid]);
-  // useEffect(() => {
-  //   if (!state.joinedCampaignList) {
-  //     getJoinedCampaigns();
-  //   }
-  // }, [state.joinedCampaignList]);
   return (
     <section className={``}>
       <section className={`lg:py-5`}>
