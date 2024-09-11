@@ -11,8 +11,13 @@ import PopUpModal from "./PopUpModal";
 type PropType = {
   data: Activity;
   category: keyof ActivityList;
+  categoryData: Activity[];
 };
-export default function ActivityCard({ data, category }: PropType) {
+export default function ActivityCard({
+  data,
+  category,
+  categoryData,
+}: PropType) {
   const [popUpModalOpened, setPopUpModalOpened] = useState(false);
   const { deleteActivity } = useTrackActions();
   const { state, dispatch } = useTrackContext();
@@ -22,7 +27,7 @@ export default function ActivityCard({ data, category }: PropType) {
       type: SET_ACTIVITY_TOBEDELETED,
       payload: { ...data, category },
     });
-    deleteActivity({ ...data, category });
+    deleteActivity({ ...data, category }, categoryData);
   };
   return (
     <section style={{ flex: 1 }}>

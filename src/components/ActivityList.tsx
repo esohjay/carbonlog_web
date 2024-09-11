@@ -27,7 +27,12 @@ export default function ActivityLists({
       </Text> */}
 
       {sliderData.map((item) => (
-        <ActivityCard key={item.id} data={item} category={category} />
+        <ActivityCard
+          key={item.id}
+          data={item}
+          category={category}
+          categoryData={sliderData}
+        />
       ))}
     </section>
   );

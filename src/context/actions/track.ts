@@ -104,10 +104,16 @@ export const useTrackActions = () => {
       }
     }
   };
-  const deleteActivity = async (activityData: Activity) => {
+  const deleteActivity = async (
+    activityData: Activity,
+    categoryData: Activity[]
+  ) => {
     try {
       dispatch({ type: DELETE_ACTIVITY_REQUEST });
       const token = await auth?.currentUser?.getIdToken();
+      const newActivityArray = categoryData.filter(
+        (activity) => activity.id !== activityData.id
+      );
       await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/track`, {
         method: "DELETE",
         headers: {
@@ -115,7 +121,10 @@ export const useTrackActions = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(activityData),
+        body: JSON.stringify({
+          activityList: newActivityArray,
+          category: activityData.category,
+        }),
       });
       // const data = await response.json();
       dispatch({ type: DELETE_ACTIVITY_SUCCESS });
