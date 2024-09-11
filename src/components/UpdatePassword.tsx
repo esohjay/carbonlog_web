@@ -214,8 +214,8 @@ export default function UpdatePassword() {
       {updated && !updating && (
         <p className={`my-2 text-sm text-green-500`}>Password updated!</p>
       )}
-      {error && (
-        <p className={`my-2 text-sm text-green-500`}>{error.message}</p>
+      {error && typeof error === "string" && (
+        <p className={`my-2 text-sm text-green-500`}>{error}</p>
       )}
       <Btn
         text={"Save"}

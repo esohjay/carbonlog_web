@@ -177,8 +177,8 @@ export default function UpdateName() {
       {updated && !updating && (
         <p className={`my-2 text-sm text-green-500`}>Profile updated!</p>
       )}
-      {error && (
-        <p className={`my-2 text-sm text-green-500`}>{error.message}</p>
+      {error && typeof error === "string" && (
+        <p className={`my-2 text-sm text-green-500`}>{error}</p>
       )}
       <Btn
         text={"Save"}
