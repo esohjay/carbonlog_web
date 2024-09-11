@@ -83,7 +83,8 @@ export const useTrackActions = () => {
   const getActivity = async () => {
     try {
       dispatch({ type: GET_ACTIVITY_REQUEST });
-      const token = await auth?.currentUser?.getIdToken(true);
+      const token = await auth?.currentUser?.getIdToken();
+      console.log(token);
       const response = await fetch(
         `${import.meta.env.VITE_BACKEND_URL}/api/v1/track`,
         {
@@ -123,7 +124,7 @@ export const useTrackActions = () => {
         },
         body: JSON.stringify({
           activityList: newActivityArray,
-          category: activityData.category,
+          data: activityData,
         }),
       });
       // const data = await response.json();

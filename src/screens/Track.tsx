@@ -3,7 +3,7 @@ import Image from "../components/Image";
 // import Btn from "../components/Button";
 import TrackCategoryCard from "../components/TrackCategoryCard";
 import { Modal } from "../components/Modal";
-import { useTrackActions } from "../context/actions/track";
+// import { useTrackActions } from "../context/actions/track";
 import { useTrackContext } from "../context/providers/track";
 import {
   shoppingOptions,
@@ -18,6 +18,7 @@ import {
   SET_ACTIVITY_TOBEDELETED,
 } from "../context/constants/track";
 import { Activity } from "../types/track";
+import useGetTrack from "../lib/useGetTrack";
 
 type Category = {
   sum: number;
@@ -40,6 +41,7 @@ const FOODANDDRINKLIST = "FOODANDDRINKLIST";
 const TRAVELLIST = "TRAVELLIST";
 
 function TrackScreen() {
+  const {} = useGetTrack();
   const { state, dispatch } = useTrackContext();
   const {
     activityList,
@@ -56,16 +58,16 @@ function TrackScreen() {
     travel: { sum: 0, data: [] },
     shopping: { sum: 0, data: [] },
   });
-  const { getActivity } = useTrackActions();
+  // const { getActivity } = useTrackActions();
   // function handleShowModal(ref) {
   //   ref?.present();
   // }
 
-  useEffect(() => {
-    if (!activityFetched) {
-      getActivity();
-    }
-  }, [activityFetched]);
+  // useEffect(() => {
+  //   if (!activityFetched) {
+  //     getActivity();
+  //   }
+  // }, [activityFetched]);
   const sumEmission = (category: Activity[]) => {
     return category?.reduce(
       (accumulator, categoryData) => accumulator + categoryData.emission,
