@@ -194,7 +194,7 @@ function TrackScreen() {
         </article>
         <article className={`mb-7`}>
           <article
-            className={`w-full h-20 rounded-lg relative bg-white shadow`}
+            className={`w-full h-32 rounded-lg relative bg-white shadow`}
           >
             <div
               className={`h-full max-h-full absolute top-0 left-0 rounded-lg flex max-w-full w-full`}
