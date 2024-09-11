@@ -7,7 +7,13 @@ import NavItem from "./NavItem";
 //icons
 import { RiHome5Fill } from "react-icons/ri";
 import { AiFillDashboard } from "react-icons/ai";
-import { IoMedal, IoLeaf, IoCalculator, IoSettings } from "react-icons/io5";
+import {
+  IoMedal,
+  IoLeaf,
+  IoCalculator,
+  IoSettings,
+  IoInformationCircleSharp,
+} from "react-icons/io5";
 
 function DesktopNav({}) {
   const { userId } = useParams();
@@ -37,6 +43,11 @@ function DesktopNav({}) {
             text={"campaign"}
             path={`/${userId}/campaign`}
             Icon={IoLeaf}
+          />
+          <NavItem
+            text={"about"}
+            path={`/${userId}/about`}
+            Icon={IoInformationCircleSharp}
           />
           <NavItem
             text={"settings"}

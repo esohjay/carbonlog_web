@@ -79,6 +79,26 @@ export default function About() {
           </p>
         </article>
       </article>
+      <article>
+        <h3 className="text-dark font-semibold">Credits</h3>
+        <p className="text-mainColor">
+          Illustration images used on this website were created by storyset
+        </p>
+        <a
+          className="text-mainColor underline font-bold"
+          target="_blank"
+          href="https://storyset.com/nature"
+        >
+          Nature illustrations by Storyset
+        </a>
+        <a
+          className="text-mainColor underline font-bold"
+          target="_blank"
+          href="https://storyset.com/people"
+        >
+          People illustrations by Storyset
+        </a>
+      </article>
     </section>
   );
 }

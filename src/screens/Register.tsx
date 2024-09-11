@@ -10,6 +10,7 @@ import { FaEye, FaEyeSlash, FaUser } from "react-icons/fa";
 import { useAuthActions } from "../context/actions/auth";
 import { useAuthContext } from "../context/providers/auth";
 import { useNavigate } from "react-router-dom";
+import { formatError } from "../lib/firebaseError";
 
 type Inputs = {
   password: string;
@@ -21,6 +22,8 @@ type Inputs = {
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const { state } = useAuthContext();
+  const [errorMsg, setErrorMsg] = useState("");
+  const { error } = state;
   const { createProfile } = useAuthActions();
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
@@ -37,6 +40,12 @@ export default function Register() {
       navigate(`/${state.user?.uid}/home`);
     }
   }, [state.isAuthenticated]);
+  useEffect(() => {
+    if (error && typeof error === "string") {
+      const formattedError = formatError(error);
+      setErrorMsg(formattedError);
+    }
+  }, [error]);
   return (
     <main className="bg-white p-5 min-h-screen grid lg:grid-cols-2 gap-5">
       <section className="flex flex-col items-center gap-5">
@@ -181,6 +190,9 @@ export default function Register() {
               </span>
             )}
           </div>
+          {error && (
+            <p className={`mt-1 py-2 text-sm text-red-500`}>{errorMsg}</p>
+          )}
           <Btn text="Sign Up" isLoading={state.loading} />
           <Link
             to={"/login"}

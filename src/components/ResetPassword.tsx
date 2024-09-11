@@ -30,8 +30,8 @@ export default function ResetPassword({
     resetPassword(data.email);
   };
   useEffect(() => {
-    if (state?.error) {
-      const formattedError = formatError(state?.error.message);
+    if (state?.error && typeof state?.error === "string") {
+      const formattedError = formatError(state.error);
       setErrorMsg(formattedError);
     }
   }, [state?.error]);

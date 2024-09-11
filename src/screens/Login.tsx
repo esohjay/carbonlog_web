@@ -12,6 +12,7 @@ import { useAuthActions } from "../context/actions/auth";
 import { useNavigate } from "react-router-dom";
 import { Modal } from "../components/Modal";
 import ResetPassword from "../components/ResetPassword";
+import { formatError } from "../lib/firebaseError";
 
 type Inputs = {
   password: string;
@@ -20,11 +21,12 @@ type Inputs = {
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
   const { signIn } = useAuthActions();
   const [modalOpened, setModalOpened] = useState("");
   const { state } = useAuthContext();
   const navigate = useNavigate();
-  console.log(state);
+  const { error } = state;
   const {
     register,
     handleSubmit,
@@ -37,6 +39,12 @@ export default function Login() {
       navigate(`/${state.user?.uid}/home`);
     }
   }, [state.isAuthenticated]);
+  useEffect(() => {
+    if (error && typeof error === "string") {
+      const formattedError = formatError(error);
+      setErrorMsg(formattedError);
+    }
+  }, [error]);
   return (
     <main className="bg-white p-5 min-h-screen grid lg:grid-cols-2 gap-5">
       <section className="flex flex-col items-center gap-5">
@@ -129,6 +137,9 @@ export default function Login() {
               </span>
             )}
           </div>
+          {error && (
+            <p className={`mt-1 py-2 text-sm text-red-500`}>{errorMsg}</p>
+          )}
           <Btn text="Login" isLoading={state.loading} />
           <Link
             to={"/sign-up"}

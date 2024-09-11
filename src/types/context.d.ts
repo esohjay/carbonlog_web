@@ -11,3 +11,4 @@ export type ErrorType = {
     };
   };
 };
+export type FirebaseAuthError = string;
