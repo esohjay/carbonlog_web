@@ -202,6 +202,7 @@ function TrackScreen() {
               <Image
                 width="w-full"
                 height="h-full"
+                borderRadius="rounded-lg"
                 path="https://cdn.pixabay.com/photo/2020/07/24/01/26/e-scooter-5432641_1280.jpg"
               />
             </div>
