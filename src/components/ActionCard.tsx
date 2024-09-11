@@ -21,7 +21,7 @@ function ActionCard({ data, isFullWidth = false }: PropType) {
       <p className={`font-semibold lg:text-lg mb-2 text-dark`}>{title}</p>
       <div className={`flex flex-row justify-start gap-2 mb-3 flex-wrap`}>
         <Badge text={category} variant="success" textStyle={`capitalize`} />
-        <div className={`flex gap-x-1 flex-row items-center flex-wrap`}>
+        <div className={`flex gap-1 flex-row items-center flex-wrap`}>
           {sdg.map((goal, i) => {
             if (i === 2) {
               return;

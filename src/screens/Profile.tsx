@@ -160,10 +160,10 @@ export default function ProfileScreen() {
           </p>
         </article>
         <article className={`w-1/3 h-24 lg:h-36 mb-3 bg-transparent self-end`}>
-          <Image width="w-full" height="h-32" path={LeftTree} />
+          <Image width="w-full" height="h-full" path={LeftTree} />
         </article>
         <article className={`w-1/3 h-24 lg:h-36 mb-3 bg-transparent self-end`}>
-          <Image width="w-full" height="h-32" path={RightTree} />
+          <Image width="w-full" height="h-full" path={RightTree} />
         </article>
       </article>
       <article className={`py-4`}>
