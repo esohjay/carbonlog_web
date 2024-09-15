@@ -34,6 +34,7 @@ import Goods from "./screens/Survey/goods/Goods.tsx";
 import Services from "./screens/Survey/services/Services.tsx";
 import PublicTransport from "./screens/Survey/public_transport/PublicTransport.tsx";
 import About from "./screens/About.tsx";
+import AddAction from "./screens/AddAction.tsx";
 import ProfileScreen from "./screens/Profile.tsx";
 import { AuthProvider } from "./context/providers/auth.tsx";
 import { SurveyProvider } from "./context/providers/survey.tsx";
@@ -52,6 +53,7 @@ const router = createBrowserRouter(
       <Route path=":userId" element={<Template />}>
         <Route path="home" index element={<Home />} />
         <Route path="about" element={<About />} />
+        <Route path="add-action" element={<AddAction />} />
         <Route path="track" element={<Track />} />
         <Route path="act" element={<Action />} />
         <Route path="profile" element={<ProfileScreen />} />
