@@ -195,7 +195,7 @@ export default function ProfileScreen() {
         heading="Delete profile?"
         text="Your profile will be deleted permanently"
         show={openDeleteModal}
-        onConfirm={() => handleProfileDelete}
+        onConfirm={handleProfileDelete}
       />
     </section>
   );

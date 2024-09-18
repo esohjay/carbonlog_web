@@ -30,25 +30,30 @@ export default function BikeQuestion({
     setBikeDetails({ ...bikeDetails, unit });
   };
   const addBikeList = () => {
-    if (
-      bikeDetails.period &&
-      bikeDetails.size &&
-      bikeDetails.value &&
-      bikeDetails.unit
-    ) {
-      updateSurvey({
-        bike: [...survey.survey.bike, { ...bikeDetails, id: generateId() }],
-      });
-      setBikeDetails({
-        size: "",
-        period: "",
-        value: "",
-        unit: "",
-        id: "",
-      });
-      setErrMsg("");
+    if (typeof parseFloat(bikeDetails.value) === "number") {
+      if (
+        bikeDetails.period &&
+        bikeDetails.size &&
+        bikeDetails.value &&
+        bikeDetails.unit
+      ) {
+        updateSurvey({
+          bike: [...survey.survey.bike, { ...bikeDetails, id: generateId() }],
+        });
+        setBikeDetails({
+          size: "",
+          period: "",
+          value: "",
+          unit: "",
+          id: "",
+        });
+        setErrMsg("");
+      } else {
+        setErrMsg("All field must be filled");
+        return;
+      }
     } else {
-      setErrMsg("All field must be filled");
+      setErrMsg("Value must be a number");
       return;
     }
   };

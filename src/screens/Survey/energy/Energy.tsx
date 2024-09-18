@@ -18,9 +18,10 @@ export default function Energy() {
         (survey.survey.energy[energyKey].value &&
           !survey.survey.energy[energyKey].unit) ||
         (!survey.survey.energy[energyKey].value &&
-          survey.survey.energy[energyKey].unit)
+          survey.survey.energy[energyKey].unit) ||
+        typeof parseFloat(survey.survey.energy[energyKey].value) !== "number"
       ) {
-        setError("Ensure both value and unit are filled.");
+        setError("Ensure both value and unit are filled correctly.");
         return;
       } else {
         setError("");

@@ -14,7 +14,7 @@ export default function AddAction() {
   } = useForm<Action>();
   const onSubmit: SubmitHandler<Action> = (data) => addAction(data);
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg">
       <div className="w-full mb-5">
         <label
           htmlFor="title"

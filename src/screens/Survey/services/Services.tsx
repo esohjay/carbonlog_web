@@ -22,7 +22,10 @@ export default function Services() {
         (survey.survey.servicesConsumption[servicesConsumptionKey].value &&
           !survey.survey.servicesConsumption[servicesConsumptionKey].period) ||
         (!survey.survey.servicesConsumption[servicesConsumptionKey].value &&
-          survey.survey.servicesConsumption[servicesConsumptionKey].period)
+          survey.survey.servicesConsumption[servicesConsumptionKey].period) ||
+        typeof parseFloat(
+          survey.survey.servicesConsumption[servicesConsumptionKey].value
+        ) !== "number"
       ) {
         setError("Ensure amount and period are filled.");
         return;

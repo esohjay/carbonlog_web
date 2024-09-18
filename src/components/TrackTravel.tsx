@@ -64,86 +64,90 @@ export default function TrackTravel() {
   };
 
   const handleSubmit = () => {
-    if (mode === CAR) {
-      console.log(detail);
-      if (
-        detail.fuelType &&
-        detail.size &&
-        detail.value &&
-        detail.unit &&
-        detail.period
-      ) {
-        addTravelActivity({ car: detail });
-        setDetail({
-          size: "",
-          fuelType: "",
-          value: "",
-          period: "monthly",
-          unit: "",
-        });
-        setErrMsg("");
-      } else {
-        setErrMsg("All field must be filled");
-        return;
+    if (detail && typeof parseFloat(detail.value) === "number") {
+      if (mode === CAR) {
+        if (
+          detail.fuelType &&
+          detail.size &&
+          detail.value &&
+          detail.unit &&
+          detail.period
+        ) {
+          addTravelActivity({ car: detail });
+          setDetail({
+            size: "",
+            fuelType: "",
+            value: "",
+            period: "monthly",
+            unit: "",
+          });
+          setErrMsg("");
+        } else {
+          setErrMsg("All field must be filled");
+          return;
+        }
       }
-    }
-    if (mode === BIKE) {
-      if (detail.size && detail.value && detail.unit && detail.period) {
-        addTravelActivity({
-          bike: {
-            size: detail.size,
-            unit: detail.unit,
-            period: detail.period,
-            value: detail.value,
-          },
-        });
-        setDetail({
-          size: "",
-          fuelType: "",
-          value: "",
-          period: "monthly",
-          unit: "",
-        });
-        setErrMsg("");
-      } else {
-        setErrMsg("All field must be filled");
-        return;
+      if (mode === BIKE) {
+        if (detail.size && detail.value && detail.unit && detail.period) {
+          addTravelActivity({
+            bike: {
+              size: detail.size,
+              unit: detail.unit,
+              period: detail.period,
+              value: detail.value,
+            },
+          });
+          setDetail({
+            size: "",
+            fuelType: "",
+            value: "",
+            period: "monthly",
+            unit: "",
+          });
+          setErrMsg("");
+        } else {
+          setErrMsg("All field must be filled");
+          return;
+        }
       }
-    }
-    if (mode === PUBLIC) {
-      if (
-        publicTransport.distance &&
-        publicTransport.transportMode &&
-        publicTransport.unit
-      ) {
-        addTravelActivity({
-          publicTransport,
-        });
-        setPublicTransport({
-          distance: "",
-          transportMode: "",
-          unit: "",
-        });
-        setErrMsg("");
-      } else {
-        setErrMsg("All field must be filled");
-        return;
+      if (mode === PUBLIC) {
+        if (
+          publicTransport.distance &&
+          publicTransport.transportMode &&
+          publicTransport.unit
+        ) {
+          addTravelActivity({
+            publicTransport,
+          });
+          setPublicTransport({
+            distance: "",
+            transportMode: "",
+            unit: "",
+          });
+          setErrMsg("");
+        } else {
+          setErrMsg("All field must be filled");
+          return;
+        }
       }
-    }
-    if (mode === FLIGHT) {
-      if (flight.distance && flight.trip) {
-        addTravelActivity({
-          flight,
-        });
-        setFlight({
-          distance: "",
-          trip: "",
-        });
-        setErrMsg("");
-      } else {
-        setErrMsg("All field must be filled");
-        return;
+      if (mode === FLIGHT) {
+        if (flight.distance && flight.trip) {
+          addTravelActivity({
+            flight,
+          });
+          setFlight({
+            distance: "",
+            trip: "",
+          });
+          setErrMsg("");
+        } else {
+          setErrMsg("All field must be filled");
+          return;
+        }
       }
+    } else {
+      setErrMsg("Value has to be a number");
+      return;
     }
   };
 

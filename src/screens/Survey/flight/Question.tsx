@@ -7,12 +7,14 @@ export default function FlightQuestion() {
   const { survey } = state;
   const { updateSurvey } = useSurveyActions();
   const setValue = (field: string, value: string) => {
-    updateSurvey({
-      flight: {
-        ...survey.survey.flight,
-        [field]: value,
-      },
-    });
+    if (typeof parseFloat(value) === "number") {
+      updateSurvey({
+        flight: {
+          ...survey.survey.flight,
+          [field]: value,
+        },
+      });
+    }
   };
   return (
     <section className={``}>

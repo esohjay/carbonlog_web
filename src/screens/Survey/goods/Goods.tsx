@@ -19,9 +19,12 @@ export default function Goods() {
         (survey.survey.goodsConsumption[goodsConsumptionKey].value &&
           !survey.survey.goodsConsumption[goodsConsumptionKey].period) ||
         (!survey.survey.goodsConsumption[goodsConsumptionKey].value &&
-          survey.survey.goodsConsumption[goodsConsumptionKey].period)
+          survey.survey.goodsConsumption[goodsConsumptionKey].period) ||
+        typeof parseFloat(
+          survey.survey.goodsConsumption[goodsConsumptionKey].value
+        ) !== "number"
       ) {
-        setError("Ensure amount and period are filled.");
+        setError("Ensure amount and period are filled correctly.");
         return;
       } else {
         setError("");

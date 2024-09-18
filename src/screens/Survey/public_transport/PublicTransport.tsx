@@ -21,9 +21,12 @@ export default function PublicTransport() {
             !survey.survey.publicTransport[publicTransportKey].period)) ||
         ((survey.survey.publicTransport[publicTransportKey].unit ||
           survey.survey.publicTransport[publicTransportKey].period) &&
-          !survey.survey.publicTransport[publicTransportKey].value)
+          !survey.survey.publicTransport[publicTransportKey].value) ||
+        typeof parseFloat(
+          survey.survey.publicTransport[publicTransportKey].value
+        ) !== "number"
       ) {
-        setError("Ensure distance, unit and period are filled.");
+        setError("Ensure distance, unit and period are filled correctly.");
         return;
       } else {
         setError("");

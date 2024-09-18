@@ -12,7 +12,11 @@ type PropType = {
 };
 export default function SdgCard({ data }: PropType) {
   return (
-    <section className={`rounded-3xl shadow bg-white`}>
+    <a
+      href={data.url}
+      target="_blank"
+      className={`rounded-3xl block shadow bg-white`}
+    >
       <div className={`w-full rounded-t-3xl h-80 bg-transparent`}>
         <Image
           height="h-80"
@@ -22,6 +26,6 @@ export default function SdgCard({ data }: PropType) {
         />
       </div>
       <p className={`font-medium text-sm text-dark p-5`}>{data.description}</p>
-    </section>
+    </a>
   );
 }
