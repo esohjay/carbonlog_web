@@ -1,13 +1,13 @@
 import { useEffect } from "react";
-import { User } from "firebase/auth";
+// import { User } from "firebase/auth";
+import { auth } from "./firebaseConfig";
 
-export const useTokenRefresher = (user: User | null) => {
+export const useTokenRefresher = () => {
   useEffect(() => {
-    if (!user) return;
-
     const refreshToken = async () => {
       try {
-        await user.getIdToken(true);
+        await auth?.currentUser?.getIdToken(true);
+        // await user.getIdToken(true);
         console.log("Token refreshed successfully");
       } catch (error) {
         console.error("Error refreshing token:", error);
@@ -15,9 +15,10 @@ export const useTokenRefresher = (user: User | null) => {
     };
 
     // Refresh token every 50 minutes
+    // const intervalId = setInterval(refreshToken, 5 * 1000);
     const intervalId = setInterval(refreshToken, 50 * 60 * 1000);
 
     // Clear interval on unmount
     return () => clearInterval(intervalId);
-  }, [user]);
+  }, []);
 };
