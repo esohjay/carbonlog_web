@@ -111,8 +111,8 @@ export default function Home() {
           Want to start a campaign?
         </p>
         <p
-          onClick={() => navigate("/campaign")}
-          className={`text-base font-semibold text-dark`}
+          onClick={() => navigate(`/${userId}/campaign`)}
+          className={`text-base font-semibold text-dark cursor-pointer`}
         >
           Start campaign
         </p>

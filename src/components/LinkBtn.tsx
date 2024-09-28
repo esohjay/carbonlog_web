@@ -7,6 +7,7 @@ type LinkProp = {
   variant?: "fill" | "disabled" | "outline" | "outlineBorder";
   padding?: string;
   mode?: "inline" | "block";
+  target?: string;
   Icon?: IconType;
 };
 export default function LinkBtn({
@@ -15,6 +16,7 @@ export default function LinkBtn({
   variant = "fill",
   mode = "block",
   padding = "px-6 py-2",
+  target,
   Icon,
 }: LinkProp) {
   const fill = "text-white  bg-mainColor text-center rounded-full";
@@ -36,6 +38,7 @@ export default function LinkBtn({
           : outlineBorder
       } ${mode === "block" ? block : inline}`}
       to={path}
+      target={target}
     >
       {text}
       {Icon && <Icon className="text-sm text-mainColor" />}

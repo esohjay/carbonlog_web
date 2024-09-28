@@ -109,7 +109,7 @@ export default function CampaignDetails() {
                 {campaign?.title}
               </p>
               <p
-                className={`font-medium text-center text-dark text-sm lg:text-base mb-2`}
+                className={`font-medium text-justify text-dark text-sm lg:text-base mb-2`}
               >
                 {campaign?.description}
               </p>
