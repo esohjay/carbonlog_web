@@ -30,9 +30,16 @@ export default function Register() {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => createProfile(data);
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    if (data.confirmPassword !== data.password) {
+      setError("root", { type: "validate" });
+      return;
+    }
+    createProfile(data);
+  };
 
   useEffect(() => {
     if (state.isAuthenticated && state.user) {
@@ -187,6 +194,11 @@ export default function Register() {
             {errors.confirmPassword && (
               <span className="text-xs text-red-500">
                 This field is required
+              </span>
+            )}
+            {errors.root?.type === "validate" && (
+              <span className="text-xs text-red-500">
+                Passwords do not match
               </span>
             )}
           </div>
