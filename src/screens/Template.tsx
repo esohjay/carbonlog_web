@@ -5,11 +5,11 @@ import TopNav from "../components/TopNav";
 
 function Template() {
   return (
-    <main className="flex justify-center bg-primaryLight">
+    <main className="flex justify-center">
       {/* <MobileNav />
        */}
       <section
-        className={`bg-white w-full max-w-screen-lg flex justify-center items-center`}
+        className={`bg-white relative w-full max-w-screen-lg flex justify-center items-center`}
       >
         <section className="w-full">
           <TopNav />
