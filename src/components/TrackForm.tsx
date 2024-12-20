@@ -43,9 +43,12 @@ export default function TrackForm({ options, category, heading }: PropType) {
     formState: { errors },
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
-    addActivity({ ...data, category });
-    reset();
+    if (typeof parseFloat(data.amount) === "number") {
+      addActivity({ ...data, category });
+      reset();
+    } else {
+      return;
+    }
   };
   return (
     <section className={`flex flex-col gap-2 p-5`}>
@@ -82,7 +85,7 @@ export default function TrackForm({ options, category, heading }: PropType) {
         <section>
           <div className="w-full mb-5">
             <label
-              htmlFor="email"
+              htmlFor="amount"
               className="block mb-1 font-semibold text-sm text-mainColor"
             >
               Amount
@@ -91,6 +94,8 @@ export default function TrackForm({ options, category, heading }: PropType) {
               <AiFillPoundCircle className="text-mainColor text-2xl" />
               <input
                 {...register("amount", { required: true })}
+                type="number"
+                autoFocus
                 className="bg-transparent text-sm block w-full border-none outline-none px-2"
               />
             </div>
@@ -100,9 +105,7 @@ export default function TrackForm({ options, category, heading }: PropType) {
               </span>
             )}
           </div>
-          {errors.amount && (
-            <p className={`mt-1 text-sm text-red-500`}>Amount is required</p>
-          )}
+
           {state.activityAdded && (
             <p className={`mt-1 text-sm text-green-500`}>Activity added!</p>
           )}

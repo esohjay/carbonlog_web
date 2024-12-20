@@ -25,8 +25,7 @@ export default function About() {
           </article>
           <p className={`ml-7 text-sm text-dark font-normal text-justify`}>
             Complete a short questionnaire to estimate your annual carbon
-            emissions and you can update it to reflect new habits, motivating
-            continuous improvement.
+            emissions and you can update it to reflect new habits.
           </p>
         </article>
         <article className={`flex flex-col gap-x-2 items-start w-full `}>

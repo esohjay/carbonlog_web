@@ -32,8 +32,8 @@ import {
   signInWithEmailAndPassword,
   signOut,
   User,
-  setPersistence,
-  browserSessionPersistence,
+  // setPersistence,
+  // browserSessionPersistence,
 } from "firebase/auth";
 import { auth } from "../../lib/firebaseConfig";
 import { useNavigate } from "react-router-dom";
@@ -207,36 +207,30 @@ export const useAuthActions = () => {
     password: string;
   }) => {
     dispatch({ type: SIGN_IN_REQUEST });
-    setPersistence(auth, browserSessionPersistence).then(() => {
-      // Existing and future Auth states are now persisted in the current
-      // session only. Closing the window would clear any existing state even
-      // if a user forgets to sign out.
-      // ...
-      // New sign-in will be persisted with session persistence.
-      return signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          // Signed up
-          const user = userCredential.user;
-          getProfile();
-          dispatch({
-            type: SIGN_IN_SUCCESS,
-            payload: user,
-            //   payload: {
-            //     id: user.uid,
-            //     email: user.email,
-            //     name: user.displayName,
-            //     phone: user.phoneNumber,
-            //   },
-          });
-          // ...
-        })
-        .catch((error) => {
-          //   const errorCode = error.code;
-          const errorMessage = error.message;
-          dispatch({ type: SIGN_IN_FAIL, payload: errorMessage });
-          // ..
+
+    return signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed up
+        const user = userCredential.user;
+        getProfile();
+        dispatch({
+          type: SIGN_IN_SUCCESS,
+          payload: user,
+          //   payload: {
+          //     id: user.uid,
+          //     email: user.email,
+          //     name: user.displayName,
+          //     phone: user.phoneNumber,
+          //   },
         });
-    });
+        // ...
+      })
+      .catch((error) => {
+        //   const errorCode = error.code;
+        const errorMessage = error.message;
+        dispatch({ type: SIGN_IN_FAIL, payload: errorMessage });
+        // ..
+      });
   };
   const createProfile = async ({
     email,

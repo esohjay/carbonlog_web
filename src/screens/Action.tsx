@@ -62,14 +62,22 @@ function ActScreen({}) {
 
         <div className={`flex flex-col items-start gap-y-3 py-5`}>
           <p className={`text-lg font-bold text-mainColor`}>Recent action</p>
-          {actions && actions.length > 0 && <MyActionCard data={actions[0]} />}
+          {actions && actions.length > 0 ? (
+            <MyActionCard data={actions[actions.length - 1]} />
+          ) : (
+            <p className="font-medium py-1 text-dark">
+              You have not logged any action yet.
+            </p>
+          )}
 
-          <LinkBtn
-            text={"See my actions"}
-            variant="fill"
-            path={`/${userId}/my-actions`}
-            mode="inline"
-          />
+          {actions && actions.length > 0 && (
+            <LinkBtn
+              text={"See my actions"}
+              variant="fill"
+              path={`/${userId}/my-actions`}
+              mode="inline"
+            />
+          )}
         </div>
         <div className={`h-[1px] bg-gray-200 w-full`}></div>
         <div className={`pt-5 pb-2 flex justify-between flex-row items-center`}>
@@ -90,27 +98,6 @@ function ActScreen({}) {
             path={`/${userId}/all-actions`}
           />
         </div>
-        {/* <BottomSheetModal
-          ref={bottomSheetRef}
-          snapPoints={snapPoints}
-          backgroundStyle={{ borderRadius: 25 }}
-          className={`shadow-lg bg-white rounded-3xl flex-1 flex`}
-        >
-          <View className={`p-5 flex-1 flex`}>
-            <FlatList
-              data={actions.length && actions}
-              // extraData={refresh}
-              ItemSeparatorComponent={() => (
-                <View style={{ height: 10, width: 8 }}></View>
-              )}
-              showsVerticalScrollIndicator={false}
-              renderItem={({ item }) => {
-                return <MyActionCard data={item} />;
-              }}
-              keyExtractor={(item) => item.id}
-            />
-          </View>
-        </BottomSheetModal> */}
       </section>
     </section>
   );

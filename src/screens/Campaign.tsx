@@ -3,7 +3,7 @@ import Btn from "../components/Button";
 import TeamCard from "../components/TeamCard";
 import CampaignForm from "../components/CampaignForm";
 import { Modal } from "../components/Modal";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { IoAddCircleOutline } from "react-icons/io5";
 import Spinner from "../components/Spinner";
 import { useCampaignContext } from "../context/providers/campaign";
@@ -22,6 +22,7 @@ function CampaignScreen() {
   const {} = useGetCampaigns();
   const { state, dispatch } = useCampaignContext();
   const [modalOpened, setModalOpened] = useState("");
+  const { userId } = useParams();
   useEffect(() => {
     if (userState?.user?.uid) {
       dispatch({ type: GET_JOINED_CAMPAIGN_REQUEST });
@@ -71,7 +72,7 @@ function CampaignScreen() {
             </section>
           ) : state?.joinedCampaignList &&
             !state?.joinedCampaignList?.length ? (
-            <p className={`font-medium text-base`}>
+            <p className={`font-medium text-base text-dark`}>
               You have not joined any campaign yet.
             </p>
           ) : !state?.joinedCampaignList && state.fetchingJoinedCampaign ? (
@@ -85,7 +86,7 @@ function CampaignScreen() {
             <p className={`text-xl text-mainColor font-bold mb-3`}>Campaigns</p>
             <Link
               className={`text-secondaryAlt text-base font-normal`}
-              to={"all-campaign"}
+              to={`/${userId}/all-campaign`}
             >
               See all
             </Link>

@@ -3,7 +3,7 @@ import { AuthState, AuthAction } from "../../types/auth";
 import { authReducer } from "../reducers/auth";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../lib/firebaseConfig";
-// import { useTokenRefresher } from "../../lib/useTokenRefresher";
+import { useTokenRefresher } from "../../lib/useTokenRefresher";
 
 interface AuthContextProps {
   state: AuthState;
@@ -68,7 +68,7 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
     return () => unsubscribe();
   }, []);
-  // useTokenRefresher(state.user);
+  useTokenRefresher();
   return (
     <AuthContext.Provider
       value={{

@@ -6,11 +6,12 @@ import { LuSearch } from "react-icons/lu";
 import BackButton from "../components/BackButton";
 import TeamCard from "../components/TeamCard";
 import { useCampaignContext } from "../context/providers/campaign";
+import useGetCampaigns from "../lib/useGetCampaigns";
 
 export default function AllCampaignScreen() {
   const [searchOpened, setSearchOpened] = useState("");
   const { state } = useCampaignContext();
-
+  const {} = useGetCampaigns();
   return (
     <section className={`lg:py-5`}>
       <div className="flex items-center justify-between pb-3">

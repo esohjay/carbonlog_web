@@ -79,15 +79,21 @@ function TrackScreen() {
     if (activityFetched && activityList) {
       const { travel, home, foodAndDrink, shopping } = activityList;
       setCategories({
-        home: { data: home, sum: Number(sumEmission(home)?.toFixed(2)) },
-        travel: { data: travel, sum: Number(sumEmission(travel)?.toFixed(2)) },
+        home: {
+          data: home ?? [],
+          sum: home ? Number(sumEmission(home)?.toFixed(2)) : 0,
+        },
+        travel: {
+          data: travel ?? [],
+          sum: travel ? Number(sumEmission(travel)?.toFixed(2)) : 0,
+        },
         shopping: {
-          data: shopping,
-          sum: Number(sumEmission(shopping)?.toFixed(2)),
+          data: shopping ?? [],
+          sum: shopping ? Number(sumEmission(shopping)?.toFixed(2)) : 0,
         },
         foodAndDrink: {
-          data: foodAndDrink,
-          sum: Number(sumEmission(foodAndDrink)?.toFixed(2)),
+          data: foodAndDrink ?? [],
+          sum: foodAndDrink ? Number(sumEmission(foodAndDrink)?.toFixed(2)) : 0,
         },
       });
       setTotalEmission(

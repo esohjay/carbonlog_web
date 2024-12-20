@@ -46,9 +46,10 @@ export default function Landing() {
             <LinkBtn
               text="Download the app"
               variant="fill"
-              path="/login"
+              path="https://drive.google.com/drive/folders/1SVLgRLZR8AUuNvi0uXX_G_gRe5gn5Kpt?usp=drive_link"
               mode="inline"
               padding="px-10 py-2"
+              target="_blank"
             />
           </div>
         </article>

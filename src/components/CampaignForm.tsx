@@ -57,6 +57,7 @@ export default function CampaignForm({ closeForm }: { closeForm: () => void }) {
               {...register("title", { required: true })}
               className="bg-transparent text-sm block w-full border-none outline-none px-2"
               placeholder="Enter campaign title"
+              autoFocus
             />
           </div>
           {errors.title && (
@@ -75,6 +76,7 @@ export default function CampaignForm({ closeForm }: { closeForm: () => void }) {
               {...register("description", { required: true })}
               className="bg-transparent text-sm block w-full border-none outline-none px-2"
               placeholder="Enter campaign description"
+              rows={15}
             />
           </div>
           {errors.description && (

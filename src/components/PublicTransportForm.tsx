@@ -67,6 +67,7 @@ export default function PublicTransportForm({
                 setValue("distance", e.target.value)
               }
               type="number"
+              autoFocus
               placeholder="0"
               className="bg-transparent text-sm block text-mainColor w-full border outline-none p-2 rounded-md "
               // label={"Distance travelled"}

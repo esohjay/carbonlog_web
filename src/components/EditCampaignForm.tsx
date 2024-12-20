@@ -74,6 +74,7 @@ export default function CampaignForm({ closeForm }: { closeForm: () => void }) {
           </label>
           <div className="flex items-center  p-2 bg-white rounded-md border">
             <textarea
+              autoFocus
               {...register("description", { required: true })}
               className="bg-transparent text-sm block w-full border-none outline-none px-2"
               placeholder="Enter campaign description"

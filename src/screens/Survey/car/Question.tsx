@@ -35,27 +35,32 @@ export default function CarQuestion({
     setCarDetails({ ...carDetail, unit });
   };
   const addCarList = () => {
-    if (
-      carDetail.fuelType &&
-      carDetail.size &&
-      carDetail.value &&
-      carDetail.unit &&
-      carDetail.period
-    ) {
-      updateSurvey({
-        car: [...survey.survey.car, { ...carDetail, id: generateId() }],
-      });
-      setCarDetails({
-        size: "",
-        fuelType: "",
-        period: "",
-        value: "",
-        unit: "",
-        id: "",
-      });
-      setErrMsg("");
+    if (typeof parseFloat(carDetail.value) === "number") {
+      if (
+        carDetail.fuelType &&
+        carDetail.size &&
+        carDetail.value &&
+        carDetail.unit &&
+        carDetail.period
+      ) {
+        updateSurvey({
+          car: [...survey.survey.car, { ...carDetail, id: generateId() }],
+        });
+        setCarDetails({
+          size: "",
+          fuelType: "",
+          period: "",
+          value: "",
+          unit: "",
+          id: "",
+        });
+        setErrMsg("");
+      } else {
+        setErrMsg("All field must be filled");
+        return;
+      }
     } else {
-      setErrMsg("All field must be filled");
+      setErrMsg("Value must be a number");
       return;
     }
   };

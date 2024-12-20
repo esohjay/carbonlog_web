@@ -13,7 +13,8 @@ import {
 
 const ShareButtons = () => {
   const shareUrl = import.meta.env.VITE_FRONTEND_URL;
-  const title = "Check out this website to reduce your carbon footprint!";
+  const title =
+    "Check out carbon log. It's a tool for estimating carbon footprint and getting tips on how to reduce your carbon footprint!";
 
   return (
     <div className="flex space-x-4">

@@ -62,6 +62,8 @@ export default function ResetPassword({
           <MdEmail className="text-mainColor text-2xl" />
           <input
             {...register("email", { required: true })}
+            autoFocus
+            type="email"
             className="bg-transparent text-sm block w-full border-none outline-none px-2"
           />
         </div>

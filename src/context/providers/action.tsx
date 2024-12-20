@@ -21,6 +21,8 @@ const initialState: ActionState = {
   fetchingAction: false,
   myActions: null,
   myActionsFetched: false,
+  adminAction: null,
+  adminActionAdded: false,
 };
 const ActionProvider: React.FC<{ children: React.ReactNode }> = ({
   children,

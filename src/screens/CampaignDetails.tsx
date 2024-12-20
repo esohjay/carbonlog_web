@@ -109,7 +109,7 @@ export default function CampaignDetails() {
                 {campaign?.title}
               </p>
               <p
-                className={`font-medium text-center text-dark text-sm lg:text-base mb-2`}
+                className={`font-medium text-justify text-dark text-sm lg:text-base mb-2`}
               >
                 {campaign?.description}
               </p>
@@ -134,7 +134,7 @@ export default function CampaignDetails() {
                   : "Join this campaign to make changes to our world"}
               </p>
               <div className={`w-full flex flex-row justify-start pt-4`}>
-                {campaignId && (
+                {campaignId && campaign?.createdBy !== userState?.user?.uid && (
                   <div className={`max-w-2/3`}>
                     {userState.user &&
                     campaign?.users?.includes(userState?.user?.uid) ? (

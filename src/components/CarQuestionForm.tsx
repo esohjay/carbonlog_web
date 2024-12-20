@@ -106,6 +106,7 @@ export default function CarQuestionForm({
               className="bg-transparent text-sm block text-mainColor w-full border outline-none p-2 rounded-md "
               // label={"Distance travelled"}
               value={value}
+              autoFocus
             />
           </div>
 

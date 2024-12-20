@@ -5,6 +5,9 @@ import {
   GET_ALL_ACTION_FAIL,
   GET_ALL_ACTION_REQUEST,
   GET_ALL_ACTION_SUCCESS,
+  ADMIN_ADD_ACTION_FAIL,
+  ADMIN_ADD_ACTION_REQUEST,
+  ADMIN_ADD_ACTION_SUCCESS,
 } from "../constants/action";
 
 import { useActionContext } from "../providers/action";
@@ -44,6 +47,38 @@ export const useActionActions = () => {
       if (error instanceof Error) {
         const message = handleError(error);
         dispatch({ type: ADD_ACTION_FAIL, payload: message });
+      }
+    }
+  };
+  const addAction = async (actionData: Action) => {
+    try {
+      dispatch({ type: ADMIN_ADD_ACTION_REQUEST });
+      const token = await auth?.currentUser?.getIdToken();
+      const sdgArray = actionData.sdg.map((sdg) => Number(sdg));
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/action`,
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            ...actionData,
+            sdg: sdgArray,
+            point: Number(actionData.point),
+            emission: Number(actionData.emission),
+          }),
+        }
+      );
+      const data = await response.json();
+      // const data = await response;
+      dispatch({ type: ADMIN_ADD_ACTION_SUCCESS, payload: data });
+    } catch (error) {
+      if (error instanceof Error) {
+        const message = handleError(error);
+        dispatch({ type: ADMIN_ADD_ACTION_FAIL, payload: message });
       }
     }
   };
@@ -98,5 +133,6 @@ export const useActionActions = () => {
     logAction,
     // getLoggedActions,
     getActions,
+    addAction,
   };
 };

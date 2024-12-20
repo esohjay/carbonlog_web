@@ -23,7 +23,7 @@ export default function MyActionCard({ data }: PropType) {
         >
           <IoCloudDownload name={"cloud-download"} size={16} color="#ffffff" />
           <p className={`text-white text-xs lg:text-base font-semibold`}>
-            {data.carbonSaved}kg saved
+            {data.carbonSaved.toFixed(2)}kg saved
           </p>
         </article>
         <article
